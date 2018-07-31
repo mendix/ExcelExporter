@@ -586,7 +586,7 @@ public class DataOQL
 			{
 				this.JOIN.append(" " + refMap.getOrDefault(referenceName, "") + " JOIN ").append(fromAlias).append("/"
                         + referenceNameQuoted + "/").append(tableName);
-				this.JOIN.append("\" AS ").append(toObject.getAlias()).append(" ON "
+				this.JOIN.append(" AS ").append(toObject.getAlias()).append(" ON "
 						+ toObject.getAlias()
 						+ "/ID = "
 						+ inputObject.getId().toLong() + " ");
@@ -595,7 +595,7 @@ public class DataOQL
 			{
 				this.JOIN.append(" " + refMap.getOrDefault(referenceName, "") + " JOIN ").append(fromAlias).append("/"
                         + referenceNameQuoted + "/").append(tableName);
-				this.JOIN.append("\" AS ").append(toObject.getAlias());
+				this.JOIN.append(" AS ").append(toObject.getAlias());
 			}
 			// Create further
 			result = createInnerJoin(refMap, toObject, null, null) ? true : result;
