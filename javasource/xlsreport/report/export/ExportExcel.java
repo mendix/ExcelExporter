@@ -5,7 +5,14 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.poi.hssf.record.crypto.Biff8EncryptionKey;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.openxml4j.opc.OPCPackage;
+import org.apache.poi.openxml4j.opc.PackageAccess;
+import org.apache.poi.poifs.crypt.EncryptionInfo;
+import org.apache.poi.poifs.crypt.EncryptionMode;
+import org.apache.poi.poifs.crypt.Encryptor;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -38,6 +45,8 @@ public class ExportExcel extends Export
 	private Workbook book;	
 	private boolean customExcel = false;
 	private InputStream stream;
+	private MxTemplate template;
+	
 
 	public ExportExcel(IContext context, MxTemplate template, IMendixObject inputObject) throws CoreException, IOException
 	{
@@ -76,7 +85,8 @@ public class ExportExcel extends Export
 		
 		// Initialize all the styling items for the excel 	
 		this.styling = new Styling(template);
-        this.styling.setAllStyles(context, template, this.book);        
+        this.styling.setAllStyles(context, template, this.book);
+        this.template = template;
 	}
 
 	@Override
@@ -166,12 +176,46 @@ public class ExportExcel extends Export
 	@Override
 	public void writeData(FileDocument outputDocument) throws Exception
 	{
-		try (ByteArrayOutputStream out = new ByteArrayOutputStream()) {
-            this.book.write(out);
-            try (ByteArrayInputStream inputStream = new ByteArrayInputStream(out.toByteArray())) {
-                Core.storeFileDocumentContent(context, outputDocument.getMendixObject(), inputStream);
-            }
-        }
+		File tmpFile = File.createTempFile("xlsreport-", template.getDocumentType().toString().toLowerCase());
+		FileOutputStream tmpFos = new FileOutputStream(tmpFile);
+
+		try {
+			if (template.getPasswordProtect()) {
+				if (template.getPassword() == null || template.getPassword().isEmpty()) {
+					throw new RuntimeException("No password has been set.");
+				}
+				
+				switch (template.getDocumentType()) {
+				case XLS:
+					Biff8EncryptionKey.setCurrentUserPassword(template.getPassword());
+					this.book.write(tmpFos);
+					tmpFos.close();
+					Biff8EncryptionKey.setCurrentUserPassword(null);
+					break;
+				case XLSX:
+					
+					POIFSFileSystem fs = new POIFSFileSystem();
+					EncryptionInfo info = new EncryptionInfo(EncryptionMode.agile);
+					Encryptor enc = info.getEncryptor();
+					enc.confirmPassword(template.getPassword());
+					OutputStream os = enc.getDataStream(fs);
+					this.book.write(os);
+					os.close();
+					fs.writeFilesystem(tmpFos);
+					tmpFos.close();
+					break;
+				default:
+					throw new RuntimeException("Unable to apply password protection because the format doesn't allow it: " + template.getDocumentType().toString());
+				}
+			}
+			Core.storeFileDocumentContent(context, outputDocument.getMendixObject(), new FileInputStream(tmpFile));
+			
+		} finally {
+			try { tmpFos.close(); } catch (Exception e) {}
+			tmpFile.delete();			
+		}
+		
+		
 	}
 	
 	private void processStaticData(List<IMendixObject> StaticList, Sheet sheet, Aggregator aggr) throws CoreException

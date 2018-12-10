@@ -31,9 +31,6 @@ import xlsreport.report.export.ExportExcel;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 
-/**
- * 
- */
 public class GenerateExcelDoc extends CustomJavaAction<IMendixObject>
 {
 	private IMendixObject __TemplateObject;
@@ -155,7 +152,7 @@ public class GenerateExcelDoc extends CustomJavaAction<IMendixObject>
 	 * Returns a string representation of this action
 	 */
 	@Override
-	public String toString()
+	public java.lang.String toString()
 	{
 		return "GenerateExcelDoc";
 	}
