@@ -18,10 +18,7 @@ import com.mendix.webui.CustomJavaAction;
 import com.mendix.webui.FeedbackHelper;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 
-/**
- * 
- */
-public class TestThePattern extends CustomJavaAction<Boolean>
+public class TestThePattern extends CustomJavaAction<java.lang.Boolean>
 {
 	private IMendixObject __TestPatternObj;
 	private mxmodelreflection.proxies.TestPattern TestPatternObj;
@@ -33,7 +30,7 @@ public class TestThePattern extends CustomJavaAction<Boolean>
 	}
 
 	@Override
-	public Boolean executeAction() throws Exception
+	public java.lang.Boolean executeAction() throws Exception
 	{
 		this.TestPatternObj = __TestPatternObj == null ? null : mxmodelreflection.proxies.TestPattern.initialize(getContext(), __TestPatternObj);
 
@@ -81,7 +78,7 @@ public class TestThePattern extends CustomJavaAction<Boolean>
 	 * Returns a string representation of this action
 	 */
 	@Override
-	public String toString()
+	public java.lang.String toString()
 	{
 		return "TestThePattern";
 	}
