@@ -9,7 +9,6 @@ public enum JOINType
 	LEFT(new String[][] { new String[] { "en_US", "LEFT JOIN" }, new String[] { "nl_NL", "LEFT JOIN" } }),
 	INNER(new String[][] { new String[] { "en_US", "INNER JOIN" }, new String[] { "nl_NL", "INNER JOIN" } }),
 	RIGHT(new String[][] { new String[] { "en_US", "RIGHT JOIN" }, new String[] { "nl_NL", "RIGHT JOIN" } }),
-	OUTER(new String[][] { new String[] { "en_US", "OUTER JOIN" }, new String[] { "nl_NL", "OUTER JOIN" } }),
 	FULL(new String[][] { new String[] { "en_US", "FULL JOIN" }, new String[] { "nl_NL", "FULL JOIN" } });
 
 	private java.util.Map<String,String> captions;
