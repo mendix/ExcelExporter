@@ -4,9 +4,6 @@
 
 package xlsreport.proxies;
 
-/**
- * 
- */
 public class MxSorting
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject mxSortingMendixObject;
@@ -71,7 +68,7 @@ public class MxSorting
 
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
-	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.getSudoContext() can be used to obtain sudo access).
+	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
 	 */
 	public static xlsreport.proxies.MxSorting initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -126,7 +123,7 @@ public class MxSorting
 	/**
 	 * @return value of Sequence
 	 */
-	public final Integer getSequence()
+	public final java.lang.Integer getSequence()
 	{
 		return getSequence(getContext());
 	}
@@ -135,16 +132,16 @@ public class MxSorting
 	 * @param context
 	 * @return value of Sequence
 	 */
-	public final Integer getSequence(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getSequence(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.Sequence.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.Sequence.toString());
 	}
 
 	/**
 	 * Set value of Sequence
 	 * @param sequence
 	 */
-	public final void setSequence(Integer sequence)
+	public final void setSequence(java.lang.Integer sequence)
 	{
 		setSequence(getContext(), sequence);
 	}
@@ -154,7 +151,7 @@ public class MxSorting
 	 * @param context
 	 * @param sequence
 	 */
-	public final void setSequence(com.mendix.systemwideinterfaces.core.IContext context, Integer sequence)
+	public final void setSequence(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer sequence)
 	{
 		getMendixObject().setValue(context, MemberNames.Sequence.toString(), sequence);
 	}
@@ -162,7 +159,7 @@ public class MxSorting
 	/**
 	 * @return value of Summary
 	 */
-	public final String getSummary()
+	public final java.lang.String getSummary()
 	{
 		return getSummary(getContext());
 	}
@@ -171,16 +168,16 @@ public class MxSorting
 	 * @param context
 	 * @return value of Summary
 	 */
-	public final String getSummary(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getSummary(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Summary.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Summary.toString());
 	}
 
 	/**
 	 * Set value of Summary
 	 * @param summary
 	 */
-	public final void setSummary(String summary)
+	public final void setSummary(java.lang.String summary)
 	{
 		setSummary(getContext(), summary);
 	}
@@ -190,7 +187,7 @@ public class MxSorting
 	 * @param context
 	 * @param summary
 	 */
-	public final void setSummary(com.mendix.systemwideinterfaces.core.IContext context, String summary)
+	public final void setSummary(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String summary)
 	{
 		getMendixObject().setValue(context, MemberNames.Summary.toString(), summary);
 	}
@@ -198,7 +195,7 @@ public class MxSorting
 	/**
 	 * @return value of Attribute
 	 */
-	public final String getAttribute()
+	public final java.lang.String getAttribute()
 	{
 		return getAttribute(getContext());
 	}
@@ -207,16 +204,16 @@ public class MxSorting
 	 * @param context
 	 * @return value of Attribute
 	 */
-	public final String getAttribute(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getAttribute(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Attribute.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Attribute.toString());
 	}
 
 	/**
 	 * Set value of Attribute
 	 * @param attribute
 	 */
-	public final void setAttribute(String attribute)
+	public final void setAttribute(java.lang.String attribute)
 	{
 		setAttribute(getContext(), attribute);
 	}
@@ -226,7 +223,7 @@ public class MxSorting
 	 * @param context
 	 * @param attribute
 	 */
-	public final void setAttribute(com.mendix.systemwideinterfaces.core.IContext context, String attribute)
+	public final void setAttribute(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String attribute)
 	{
 		getMendixObject().setValue(context, MemberNames.Attribute.toString(), attribute);
 	}

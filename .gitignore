@@ -1,5 +1,12 @@
-/deployment
+deployment/
+javasource/*/proxies/*
+javasource/appcloudservices/
+javasource/system/
+javasource/core/
+javasource/com/
 .classpath
 .project
 *.launch
 [Tt]humbs.db
+XLSReport.mpr.lock
+XLSReport.mpr.bak

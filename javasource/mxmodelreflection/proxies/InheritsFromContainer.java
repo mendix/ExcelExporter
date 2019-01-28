@@ -4,9 +4,6 @@
 
 package mxmodelreflection.proxies;
 
-/**
- * 
- */
 public class InheritsFromContainer
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject inheritsFromContainerMendixObject;
@@ -66,7 +63,7 @@ public class InheritsFromContainer
 
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
-	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.getSudoContext() can be used to obtain sudo access).
+	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
 	 */
 	public static mxmodelreflection.proxies.InheritsFromContainer initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -113,7 +110,7 @@ public class InheritsFromContainer
 	/**
 	 * @return value of Summary
 	 */
-	public final String getSummary()
+	public final java.lang.String getSummary()
 	{
 		return getSummary(getContext());
 	}
@@ -122,16 +119,16 @@ public class InheritsFromContainer
 	 * @param context
 	 * @return value of Summary
 	 */
-	public final String getSummary(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getSummary(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Summary.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Summary.toString());
 	}
 
 	/**
 	 * Set value of Summary
 	 * @param summary
 	 */
-	public final void setSummary(String summary)
+	public final void setSummary(java.lang.String summary)
 	{
 		setSummary(getContext(), summary);
 	}
@@ -141,7 +138,7 @@ public class InheritsFromContainer
 	 * @param context
 	 * @param summary
 	 */
-	public final void setSummary(com.mendix.systemwideinterfaces.core.IContext context, String summary)
+	public final void setSummary(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String summary)
 	{
 		getMendixObject().setValue(context, MemberNames.Summary.toString(), summary);
 	}

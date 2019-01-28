@@ -6,26 +6,26 @@ package xlsreport.proxies;
 
 public enum DateTimeConstraint
 {
-	Before(new String[][] { new String[] { "en_US", "Before" }, new String[] { "nl_NL", "Voor" } }),
-	After(new String[][] { new String[] { "en_US", "After" }, new String[] { "nl_NL", "Later" } });
+	Before(new java.lang.String[][] { new java.lang.String[] { "en_US", "Before" }, new java.lang.String[] { "nl_NL", "Voor" } }),
+	After(new java.lang.String[][] { new java.lang.String[] { "en_US", "After" }, new java.lang.String[] { "nl_NL", "Later" } });
 
-	private java.util.Map<String,String> captions;
+	private java.util.Map<java.lang.String, java.lang.String> captions;
 
-	private DateTimeConstraint(String[][] captionStrings)
+	private DateTimeConstraint(java.lang.String[][] captionStrings)
 	{
-		this.captions = new java.util.HashMap<String,String>();
-		for (String[] captionString : captionStrings)
+		this.captions = new java.util.HashMap<java.lang.String, java.lang.String>();
+		for (java.lang.String[] captionString : captionStrings)
 			captions.put(captionString[0], captionString[1]);
 	}
 
-	public String getCaption(String languageCode)
+	public java.lang.String getCaption(java.lang.String languageCode)
 	{
 		if (captions.containsKey(languageCode))
 			return captions.get(languageCode);
 		return captions.get("en_US");
 	}
 
-	public String getCaption()
+	public java.lang.String getCaption()
 	{
 		return captions.get("en_US");
 	}

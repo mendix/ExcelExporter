@@ -4,9 +4,6 @@
 
 package mxmodelreflection.proxies;
 
-/**
- * 
- */
 public class Token
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject tokenMendixObject;
@@ -84,7 +81,7 @@ public class Token
 
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
-	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.getSudoContext() can be used to obtain sudo access).
+	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
 	 */
 	public static mxmodelreflection.proxies.Token initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -139,7 +136,7 @@ public class Token
 	/**
 	 * @return value of Token
 	 */
-	public final String getToken()
+	public final java.lang.String getToken()
 	{
 		return getToken(getContext());
 	}
@@ -148,16 +145,16 @@ public class Token
 	 * @param context
 	 * @return value of Token
 	 */
-	public final String getToken(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getToken(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Token.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Token.toString());
 	}
 
 	/**
 	 * Set value of Token
 	 * @param token
 	 */
-	public final void setToken(String token)
+	public final void setToken(java.lang.String token)
 	{
 		setToken(getContext(), token);
 	}
@@ -167,7 +164,7 @@ public class Token
 	 * @param context
 	 * @param token
 	 */
-	public final void setToken(com.mendix.systemwideinterfaces.core.IContext context, String token)
+	public final void setToken(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String token)
 	{
 		getMendixObject().setValue(context, MemberNames.Token.toString(), token);
 	}
@@ -175,7 +172,7 @@ public class Token
 	/**
 	 * @return value of Prefix
 	 */
-	public final String getPrefix()
+	public final java.lang.String getPrefix()
 	{
 		return getPrefix(getContext());
 	}
@@ -184,16 +181,16 @@ public class Token
 	 * @param context
 	 * @return value of Prefix
 	 */
-	public final String getPrefix(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getPrefix(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Prefix.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Prefix.toString());
 	}
 
 	/**
 	 * Set value of Prefix
 	 * @param prefix
 	 */
-	public final void setPrefix(String prefix)
+	public final void setPrefix(java.lang.String prefix)
 	{
 		setPrefix(getContext(), prefix);
 	}
@@ -203,7 +200,7 @@ public class Token
 	 * @param context
 	 * @param prefix
 	 */
-	public final void setPrefix(com.mendix.systemwideinterfaces.core.IContext context, String prefix)
+	public final void setPrefix(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String prefix)
 	{
 		getMendixObject().setValue(context, MemberNames.Prefix.toString(), prefix);
 	}
@@ -211,7 +208,7 @@ public class Token
 	/**
 	 * @return value of Suffix
 	 */
-	public final String getSuffix()
+	public final java.lang.String getSuffix()
 	{
 		return getSuffix(getContext());
 	}
@@ -220,16 +217,16 @@ public class Token
 	 * @param context
 	 * @return value of Suffix
 	 */
-	public final String getSuffix(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getSuffix(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Suffix.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Suffix.toString());
 	}
 
 	/**
 	 * Set value of Suffix
 	 * @param suffix
 	 */
-	public final void setSuffix(String suffix)
+	public final void setSuffix(java.lang.String suffix)
 	{
 		setSuffix(getContext(), suffix);
 	}
@@ -239,7 +236,7 @@ public class Token
 	 * @param context
 	 * @param suffix
 	 */
-	public final void setSuffix(com.mendix.systemwideinterfaces.core.IContext context, String suffix)
+	public final void setSuffix(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String suffix)
 	{
 		getMendixObject().setValue(context, MemberNames.Suffix.toString(), suffix);
 	}
@@ -247,7 +244,7 @@ public class Token
 	/**
 	 * @return value of CombinedToken
 	 */
-	public final String getCombinedToken()
+	public final java.lang.String getCombinedToken()
 	{
 		return getCombinedToken(getContext());
 	}
@@ -256,16 +253,16 @@ public class Token
 	 * @param context
 	 * @return value of CombinedToken
 	 */
-	public final String getCombinedToken(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getCombinedToken(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.CombinedToken.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.CombinedToken.toString());
 	}
 
 	/**
 	 * Set value of CombinedToken
 	 * @param combinedtoken
 	 */
-	public final void setCombinedToken(String combinedtoken)
+	public final void setCombinedToken(java.lang.String combinedtoken)
 	{
 		setCombinedToken(getContext(), combinedtoken);
 	}
@@ -275,7 +272,7 @@ public class Token
 	 * @param context
 	 * @param combinedtoken
 	 */
-	public final void setCombinedToken(com.mendix.systemwideinterfaces.core.IContext context, String combinedtoken)
+	public final void setCombinedToken(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String combinedtoken)
 	{
 		getMendixObject().setValue(context, MemberNames.CombinedToken.toString(), combinedtoken);
 	}
@@ -283,7 +280,7 @@ public class Token
 	/**
 	 * @return value of Description
 	 */
-	public final String getDescription()
+	public final java.lang.String getDescription()
 	{
 		return getDescription(getContext());
 	}
@@ -292,16 +289,16 @@ public class Token
 	 * @param context
 	 * @return value of Description
 	 */
-	public final String getDescription(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getDescription(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Description.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Description.toString());
 	}
 
 	/**
 	 * Set value of Description
 	 * @param description
 	 */
-	public final void setDescription(String description)
+	public final void setDescription(java.lang.String description)
 	{
 		setDescription(getContext(), description);
 	}
@@ -311,7 +308,7 @@ public class Token
 	 * @param context
 	 * @param description
 	 */
-	public final void setDescription(com.mendix.systemwideinterfaces.core.IContext context, String description)
+	public final void setDescription(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String description)
 	{
 		getMendixObject().setValue(context, MemberNames.Description.toString(), description);
 	}
@@ -319,7 +316,7 @@ public class Token
 	/**
 	 * @return value of MetaModelPath
 	 */
-	public final String getMetaModelPath()
+	public final java.lang.String getMetaModelPath()
 	{
 		return getMetaModelPath(getContext());
 	}
@@ -328,16 +325,16 @@ public class Token
 	 * @param context
 	 * @return value of MetaModelPath
 	 */
-	public final String getMetaModelPath(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getMetaModelPath(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.MetaModelPath.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.MetaModelPath.toString());
 	}
 
 	/**
 	 * Set value of MetaModelPath
 	 * @param metamodelpath
 	 */
-	public final void setMetaModelPath(String metamodelpath)
+	public final void setMetaModelPath(java.lang.String metamodelpath)
 	{
 		setMetaModelPath(getContext(), metamodelpath);
 	}
@@ -347,7 +344,7 @@ public class Token
 	 * @param context
 	 * @param metamodelpath
 	 */
-	public final void setMetaModelPath(com.mendix.systemwideinterfaces.core.IContext context, String metamodelpath)
+	public final void setMetaModelPath(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String metamodelpath)
 	{
 		getMendixObject().setValue(context, MemberNames.MetaModelPath.toString(), metamodelpath);
 	}
@@ -443,7 +440,7 @@ public class Token
 	/**
 	 * @return value of FindObjectStart
 	 */
-	public final String getFindObjectStart()
+	public final java.lang.String getFindObjectStart()
 	{
 		return getFindObjectStart(getContext());
 	}
@@ -452,16 +449,16 @@ public class Token
 	 * @param context
 	 * @return value of FindObjectStart
 	 */
-	public final String getFindObjectStart(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getFindObjectStart(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.FindObjectStart.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.FindObjectStart.toString());
 	}
 
 	/**
 	 * Set value of FindObjectStart
 	 * @param findobjectstart
 	 */
-	public final void setFindObjectStart(String findobjectstart)
+	public final void setFindObjectStart(java.lang.String findobjectstart)
 	{
 		setFindObjectStart(getContext(), findobjectstart);
 	}
@@ -471,7 +468,7 @@ public class Token
 	 * @param context
 	 * @param findobjectstart
 	 */
-	public final void setFindObjectStart(com.mendix.systemwideinterfaces.core.IContext context, String findobjectstart)
+	public final void setFindObjectStart(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String findobjectstart)
 	{
 		getMendixObject().setValue(context, MemberNames.FindObjectStart.toString(), findobjectstart);
 	}
@@ -479,7 +476,7 @@ public class Token
 	/**
 	 * @return value of FindObjectReference
 	 */
-	public final String getFindObjectReference()
+	public final java.lang.String getFindObjectReference()
 	{
 		return getFindObjectReference(getContext());
 	}
@@ -488,16 +485,16 @@ public class Token
 	 * @param context
 	 * @return value of FindObjectReference
 	 */
-	public final String getFindObjectReference(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getFindObjectReference(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.FindObjectReference.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.FindObjectReference.toString());
 	}
 
 	/**
 	 * Set value of FindObjectReference
 	 * @param findobjectreference
 	 */
-	public final void setFindObjectReference(String findobjectreference)
+	public final void setFindObjectReference(java.lang.String findobjectreference)
 	{
 		setFindObjectReference(getContext(), findobjectreference);
 	}
@@ -507,7 +504,7 @@ public class Token
 	 * @param context
 	 * @param findobjectreference
 	 */
-	public final void setFindObjectReference(com.mendix.systemwideinterfaces.core.IContext context, String findobjectreference)
+	public final void setFindObjectReference(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String findobjectreference)
 	{
 		getMendixObject().setValue(context, MemberNames.FindObjectReference.toString(), findobjectreference);
 	}
@@ -515,7 +512,7 @@ public class Token
 	/**
 	 * @return value of FindReference
 	 */
-	public final String getFindReference()
+	public final java.lang.String getFindReference()
 	{
 		return getFindReference(getContext());
 	}
@@ -524,16 +521,16 @@ public class Token
 	 * @param context
 	 * @return value of FindReference
 	 */
-	public final String getFindReference(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getFindReference(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.FindReference.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.FindReference.toString());
 	}
 
 	/**
 	 * Set value of FindReference
 	 * @param findreference
 	 */
-	public final void setFindReference(String findreference)
+	public final void setFindReference(java.lang.String findreference)
 	{
 		setFindReference(getContext(), findreference);
 	}
@@ -543,7 +540,7 @@ public class Token
 	 * @param context
 	 * @param findreference
 	 */
-	public final void setFindReference(com.mendix.systemwideinterfaces.core.IContext context, String findreference)
+	public final void setFindReference(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String findreference)
 	{
 		getMendixObject().setValue(context, MemberNames.FindReference.toString(), findreference);
 	}
@@ -551,7 +548,7 @@ public class Token
 	/**
 	 * @return value of FindMember
 	 */
-	public final String getFindMember()
+	public final java.lang.String getFindMember()
 	{
 		return getFindMember(getContext());
 	}
@@ -560,16 +557,16 @@ public class Token
 	 * @param context
 	 * @return value of FindMember
 	 */
-	public final String getFindMember(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getFindMember(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.FindMember.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.FindMember.toString());
 	}
 
 	/**
 	 * Set value of FindMember
 	 * @param findmember
 	 */
-	public final void setFindMember(String findmember)
+	public final void setFindMember(java.lang.String findmember)
 	{
 		setFindMember(getContext(), findmember);
 	}
@@ -579,7 +576,7 @@ public class Token
 	 * @param context
 	 * @param findmember
 	 */
-	public final void setFindMember(com.mendix.systemwideinterfaces.core.IContext context, String findmember)
+	public final void setFindMember(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String findmember)
 	{
 		getMendixObject().setValue(context, MemberNames.FindMember.toString(), findmember);
 	}
@@ -587,7 +584,7 @@ public class Token
 	/**
 	 * @return value of FindMemberReference
 	 */
-	public final String getFindMemberReference()
+	public final java.lang.String getFindMemberReference()
 	{
 		return getFindMemberReference(getContext());
 	}
@@ -596,16 +593,16 @@ public class Token
 	 * @param context
 	 * @return value of FindMemberReference
 	 */
-	public final String getFindMemberReference(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getFindMemberReference(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.FindMemberReference.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.FindMemberReference.toString());
 	}
 
 	/**
 	 * Set value of FindMemberReference
 	 * @param findmemberreference
 	 */
-	public final void setFindMemberReference(String findmemberreference)
+	public final void setFindMemberReference(java.lang.String findmemberreference)
 	{
 		setFindMemberReference(getContext(), findmemberreference);
 	}
@@ -615,7 +612,7 @@ public class Token
 	 * @param context
 	 * @param findmemberreference
 	 */
-	public final void setFindMemberReference(com.mendix.systemwideinterfaces.core.IContext context, String findmemberreference)
+	public final void setFindMemberReference(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String findmemberreference)
 	{
 		getMendixObject().setValue(context, MemberNames.FindMemberReference.toString(), findmemberreference);
 	}
@@ -623,7 +620,7 @@ public class Token
 	/**
 	 * @return value of IsOptional
 	 */
-	public final Boolean getIsOptional()
+	public final java.lang.Boolean getIsOptional()
 	{
 		return getIsOptional(getContext());
 	}
@@ -632,16 +629,16 @@ public class Token
 	 * @param context
 	 * @return value of IsOptional
 	 */
-	public final Boolean getIsOptional(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getIsOptional(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.IsOptional.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.IsOptional.toString());
 	}
 
 	/**
 	 * Set value of IsOptional
 	 * @param isoptional
 	 */
-	public final void setIsOptional(Boolean isoptional)
+	public final void setIsOptional(java.lang.Boolean isoptional)
 	{
 		setIsOptional(getContext(), isoptional);
 	}
@@ -651,7 +648,7 @@ public class Token
 	 * @param context
 	 * @param isoptional
 	 */
-	public final void setIsOptional(com.mendix.systemwideinterfaces.core.IContext context, Boolean isoptional)
+	public final void setIsOptional(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean isoptional)
 	{
 		getMendixObject().setValue(context, MemberNames.IsOptional.toString(), isoptional);
 	}
@@ -659,7 +656,7 @@ public class Token
 	/**
 	 * @return value of DisplayPattern
 	 */
-	public final String getDisplayPattern()
+	public final java.lang.String getDisplayPattern()
 	{
 		return getDisplayPattern(getContext());
 	}
@@ -668,16 +665,16 @@ public class Token
 	 * @param context
 	 * @return value of DisplayPattern
 	 */
-	public final String getDisplayPattern(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getDisplayPattern(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.DisplayPattern.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.DisplayPattern.toString());
 	}
 
 	/**
 	 * Set value of DisplayPattern
 	 * @param displaypattern
 	 */
-	public final void setDisplayPattern(String displaypattern)
+	public final void setDisplayPattern(java.lang.String displaypattern)
 	{
 		setDisplayPattern(getContext(), displaypattern);
 	}
@@ -687,7 +684,7 @@ public class Token
 	 * @param context
 	 * @param displaypattern
 	 */
-	public final void setDisplayPattern(com.mendix.systemwideinterfaces.core.IContext context, String displaypattern)
+	public final void setDisplayPattern(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String displaypattern)
 	{
 		getMendixObject().setValue(context, MemberNames.DisplayPattern.toString(), displaypattern);
 	}
