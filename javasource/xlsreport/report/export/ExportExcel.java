@@ -9,6 +9,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -310,40 +311,40 @@ public class ExportExcel extends Export
         }
         else if (data instanceof Integer)
         {       
-        	cell.setCellType(Cell.CELL_TYPE_NUMERIC);        	
+        	cell.setCellType(CellType.NUMERIC);        	
             cell.setCellValue(((Integer) data).doubleValue());
         }
         else if (data instanceof Boolean)
         {
-        	cell.setCellType(Cell.CELL_TYPE_BOOLEAN);
+        	cell.setCellType(CellType.BOOLEAN);
             cell.setCellValue((Boolean) data);
         }
         else if (data instanceof Double)
         {
-        	cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+        	cell.setCellType(CellType.NUMERIC);
             cell.setCellValue((Double) data);
         }
         else if (data instanceof Float)
         {
-        	cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+        	cell.setCellType(CellType.NUMERIC);
             cell.setCellValue((Float) data);
         }
         else if (data instanceof Date)
         {    
-        	cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+        	cell.setCellType(CellType.NUMERIC);
             cell.setCellValue((Date) data);            
         }
         else if (data instanceof Long)
         {
-        	cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+        	cell.setCellType(CellType.NUMERIC);
             cell.setCellValue((Long) data);            
         } else if (data instanceof String)
         {
-        	cell.setCellType(Cell.CELL_TYPE_STRING);
+        	cell.setCellType(CellType.STRING);
             cell.setCellValue((String) data);
         } else if (data instanceof BigDecimal)
         {
-        	cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+        	cell.setCellType(CellType.NUMERIC);
         	BigDecimal value = (BigDecimal) data;
             cell.setCellValue(value.doubleValue());
         }
