@@ -43,19 +43,15 @@ public class ExcelXLSXDataReader extends ExcelXLSXReader {
 		}
 		finally {
 			try {
-				if (excelRowProcessor != null) {
+				if (excelRowProcessor != null)
 					excelRowProcessor.finish();
-				}
-			} catch (MendixReplicationException mre) { /* Finish Quietly */}
+			} catch (MendixReplicationException e) {} // Quitely finishing
 			try {
-				if (sheet != null) {
+				if (sheet != null)
 					sheet.close();
-				}
-			} catch (Exception e) { /* Close Quietly */ }
-			
-			if (opcPackage != null) {
+			} catch (IOException ioe) {} // Quitely closing
+			if (opcPackage != null)
 				opcPackage.revert();
-			}
 		}
 	}
 
