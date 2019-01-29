@@ -4,9 +4,6 @@
 
 package xlsreport.proxies;
 
-/**
- * 
- */
 public class MxSheet
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject mxSheetMendixObject;
@@ -81,7 +78,7 @@ public class MxSheet
 
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
-	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.getSudoContext() can be used to obtain sudo access).
+	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
 	 */
 	public static xlsreport.proxies.MxSheet initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -136,7 +133,7 @@ public class MxSheet
 	/**
 	 * @return value of Sequence
 	 */
-	public final Integer getSequence()
+	public final java.lang.Integer getSequence()
 	{
 		return getSequence(getContext());
 	}
@@ -145,16 +142,16 @@ public class MxSheet
 	 * @param context
 	 * @return value of Sequence
 	 */
-	public final Integer getSequence(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getSequence(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.Sequence.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.Sequence.toString());
 	}
 
 	/**
 	 * Set value of Sequence
 	 * @param sequence
 	 */
-	public final void setSequence(Integer sequence)
+	public final void setSequence(java.lang.Integer sequence)
 	{
 		setSequence(getContext(), sequence);
 	}
@@ -164,7 +161,7 @@ public class MxSheet
 	 * @param context
 	 * @param sequence
 	 */
-	public final void setSequence(com.mendix.systemwideinterfaces.core.IContext context, Integer sequence)
+	public final void setSequence(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer sequence)
 	{
 		getMendixObject().setValue(context, MemberNames.Sequence.toString(), sequence);
 	}
@@ -172,7 +169,7 @@ public class MxSheet
 	/**
 	 * @return value of Name
 	 */
-	public final String getName()
+	public final java.lang.String getName()
 	{
 		return getName(getContext());
 	}
@@ -181,16 +178,16 @@ public class MxSheet
 	 * @param context
 	 * @return value of Name
 	 */
-	public final String getName(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getName(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Name.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Name.toString());
 	}
 
 	/**
 	 * Set value of Name
 	 * @param name
 	 */
-	public final void setName(String name)
+	public final void setName(java.lang.String name)
 	{
 		setName(getContext(), name);
 	}
@@ -200,7 +197,7 @@ public class MxSheet
 	 * @param context
 	 * @param name
 	 */
-	public final void setName(com.mendix.systemwideinterfaces.core.IContext context, String name)
+	public final void setName(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String name)
 	{
 		getMendixObject().setValue(context, MemberNames.Name.toString(), name);
 	}
@@ -208,7 +205,7 @@ public class MxSheet
 	/**
 	 * @return value of DataUsage
 	 */
-	public final Boolean getDataUsage()
+	public final java.lang.Boolean getDataUsage()
 	{
 		return getDataUsage(getContext());
 	}
@@ -217,16 +214,16 @@ public class MxSheet
 	 * @param context
 	 * @return value of DataUsage
 	 */
-	public final Boolean getDataUsage(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getDataUsage(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.DataUsage.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.DataUsage.toString());
 	}
 
 	/**
 	 * Set value of DataUsage
 	 * @param datausage
 	 */
-	public final void setDataUsage(Boolean datausage)
+	public final void setDataUsage(java.lang.Boolean datausage)
 	{
 		setDataUsage(getContext(), datausage);
 	}
@@ -236,7 +233,7 @@ public class MxSheet
 	 * @param context
 	 * @param datausage
 	 */
-	public final void setDataUsage(com.mendix.systemwideinterfaces.core.IContext context, Boolean datausage)
+	public final void setDataUsage(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean datausage)
 	{
 		getMendixObject().setValue(context, MemberNames.DataUsage.toString(), datausage);
 	}
@@ -288,7 +285,7 @@ public class MxSheet
 	/**
 	 * @return value of DistinctData
 	 */
-	public final Boolean getDistinctData()
+	public final java.lang.Boolean getDistinctData()
 	{
 		return getDistinctData(getContext());
 	}
@@ -297,16 +294,16 @@ public class MxSheet
 	 * @param context
 	 * @return value of DistinctData
 	 */
-	public final Boolean getDistinctData(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getDistinctData(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.DistinctData.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.DistinctData.toString());
 	}
 
 	/**
 	 * Set value of DistinctData
 	 * @param distinctdata
 	 */
-	public final void setDistinctData(Boolean distinctdata)
+	public final void setDistinctData(java.lang.Boolean distinctdata)
 	{
 		setDistinctData(getContext(), distinctdata);
 	}
@@ -316,7 +313,7 @@ public class MxSheet
 	 * @param context
 	 * @param distinctdata
 	 */
-	public final void setDistinctData(com.mendix.systemwideinterfaces.core.IContext context, Boolean distinctdata)
+	public final void setDistinctData(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean distinctdata)
 	{
 		getMendixObject().setValue(context, MemberNames.DistinctData.toString(), distinctdata);
 	}
@@ -324,7 +321,7 @@ public class MxSheet
 	/**
 	 * @return value of StartRow
 	 */
-	public final Integer getStartRow()
+	public final java.lang.Integer getStartRow()
 	{
 		return getStartRow(getContext());
 	}
@@ -333,16 +330,16 @@ public class MxSheet
 	 * @param context
 	 * @return value of StartRow
 	 */
-	public final Integer getStartRow(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getStartRow(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.StartRow.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.StartRow.toString());
 	}
 
 	/**
 	 * Set value of StartRow
 	 * @param startrow
 	 */
-	public final void setStartRow(Integer startrow)
+	public final void setStartRow(java.lang.Integer startrow)
 	{
 		setStartRow(getContext(), startrow);
 	}
@@ -352,7 +349,7 @@ public class MxSheet
 	 * @param context
 	 * @param startrow
 	 */
-	public final void setStartRow(com.mendix.systemwideinterfaces.core.IContext context, Integer startrow)
+	public final void setStartRow(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer startrow)
 	{
 		getMendixObject().setValue(context, MemberNames.StartRow.toString(), startrow);
 	}
@@ -360,7 +357,7 @@ public class MxSheet
 	/**
 	 * @return value of ColumnWidthDefault
 	 */
-	public final Boolean getColumnWidthDefault()
+	public final java.lang.Boolean getColumnWidthDefault()
 	{
 		return getColumnWidthDefault(getContext());
 	}
@@ -369,16 +366,16 @@ public class MxSheet
 	 * @param context
 	 * @return value of ColumnWidthDefault
 	 */
-	public final Boolean getColumnWidthDefault(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getColumnWidthDefault(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.ColumnWidthDefault.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.ColumnWidthDefault.toString());
 	}
 
 	/**
 	 * Set value of ColumnWidthDefault
 	 * @param columnwidthdefault
 	 */
-	public final void setColumnWidthDefault(Boolean columnwidthdefault)
+	public final void setColumnWidthDefault(java.lang.Boolean columnwidthdefault)
 	{
 		setColumnWidthDefault(getContext(), columnwidthdefault);
 	}
@@ -388,7 +385,7 @@ public class MxSheet
 	 * @param context
 	 * @param columnwidthdefault
 	 */
-	public final void setColumnWidthDefault(com.mendix.systemwideinterfaces.core.IContext context, Boolean columnwidthdefault)
+	public final void setColumnWidthDefault(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean columnwidthdefault)
 	{
 		getMendixObject().setValue(context, MemberNames.ColumnWidthDefault.toString(), columnwidthdefault);
 	}
@@ -396,7 +393,7 @@ public class MxSheet
 	/**
 	 * @return value of ColumnWidthPixels
 	 */
-	public final Integer getColumnWidthPixels()
+	public final java.lang.Integer getColumnWidthPixels()
 	{
 		return getColumnWidthPixels(getContext());
 	}
@@ -405,16 +402,16 @@ public class MxSheet
 	 * @param context
 	 * @return value of ColumnWidthPixels
 	 */
-	public final Integer getColumnWidthPixels(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getColumnWidthPixels(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.ColumnWidthPixels.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.ColumnWidthPixels.toString());
 	}
 
 	/**
 	 * Set value of ColumnWidthPixels
 	 * @param columnwidthpixels
 	 */
-	public final void setColumnWidthPixels(Integer columnwidthpixels)
+	public final void setColumnWidthPixels(java.lang.Integer columnwidthpixels)
 	{
 		setColumnWidthPixels(getContext(), columnwidthpixels);
 	}
@@ -424,7 +421,7 @@ public class MxSheet
 	 * @param context
 	 * @param columnwidthpixels
 	 */
-	public final void setColumnWidthPixels(com.mendix.systemwideinterfaces.core.IContext context, Integer columnwidthpixels)
+	public final void setColumnWidthPixels(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer columnwidthpixels)
 	{
 		getMendixObject().setValue(context, MemberNames.ColumnWidthPixels.toString(), columnwidthpixels);
 	}
@@ -432,7 +429,7 @@ public class MxSheet
 	/**
 	 * @return value of RowHeightDefault
 	 */
-	public final Boolean getRowHeightDefault()
+	public final java.lang.Boolean getRowHeightDefault()
 	{
 		return getRowHeightDefault(getContext());
 	}
@@ -441,16 +438,16 @@ public class MxSheet
 	 * @param context
 	 * @return value of RowHeightDefault
 	 */
-	public final Boolean getRowHeightDefault(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getRowHeightDefault(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.RowHeightDefault.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.RowHeightDefault.toString());
 	}
 
 	/**
 	 * Set value of RowHeightDefault
 	 * @param rowheightdefault
 	 */
-	public final void setRowHeightDefault(Boolean rowheightdefault)
+	public final void setRowHeightDefault(java.lang.Boolean rowheightdefault)
 	{
 		setRowHeightDefault(getContext(), rowheightdefault);
 	}
@@ -460,7 +457,7 @@ public class MxSheet
 	 * @param context
 	 * @param rowheightdefault
 	 */
-	public final void setRowHeightDefault(com.mendix.systemwideinterfaces.core.IContext context, Boolean rowheightdefault)
+	public final void setRowHeightDefault(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean rowheightdefault)
 	{
 		getMendixObject().setValue(context, MemberNames.RowHeightDefault.toString(), rowheightdefault);
 	}
@@ -468,7 +465,7 @@ public class MxSheet
 	/**
 	 * @return value of RowHeightPoint
 	 */
-	public final Integer getRowHeightPoint()
+	public final java.lang.Integer getRowHeightPoint()
 	{
 		return getRowHeightPoint(getContext());
 	}
@@ -477,16 +474,16 @@ public class MxSheet
 	 * @param context
 	 * @return value of RowHeightPoint
 	 */
-	public final Integer getRowHeightPoint(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getRowHeightPoint(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.RowHeightPoint.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.RowHeightPoint.toString());
 	}
 
 	/**
 	 * Set value of RowHeightPoint
 	 * @param rowheightpoint
 	 */
-	public final void setRowHeightPoint(Integer rowheightpoint)
+	public final void setRowHeightPoint(java.lang.Integer rowheightpoint)
 	{
 		setRowHeightPoint(getContext(), rowheightpoint);
 	}
@@ -496,7 +493,7 @@ public class MxSheet
 	 * @param context
 	 * @param rowheightpoint
 	 */
-	public final void setRowHeightPoint(com.mendix.systemwideinterfaces.core.IContext context, Integer rowheightpoint)
+	public final void setRowHeightPoint(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer rowheightpoint)
 	{
 		getMendixObject().setValue(context, MemberNames.RowHeightPoint.toString(), rowheightpoint);
 	}
@@ -504,7 +501,7 @@ public class MxSheet
 	/**
 	 * @return value of FormLayout_GroupBy
 	 */
-	public final Boolean getFormLayout_GroupBy()
+	public final java.lang.Boolean getFormLayout_GroupBy()
 	{
 		return getFormLayout_GroupBy(getContext());
 	}
@@ -513,16 +510,16 @@ public class MxSheet
 	 * @param context
 	 * @return value of FormLayout_GroupBy
 	 */
-	public final Boolean getFormLayout_GroupBy(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getFormLayout_GroupBy(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.FormLayout_GroupBy.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.FormLayout_GroupBy.toString());
 	}
 
 	/**
 	 * Set value of FormLayout_GroupBy
 	 * @param formlayout_groupby
 	 */
-	public final void setFormLayout_GroupBy(Boolean formlayout_groupby)
+	public final void setFormLayout_GroupBy(java.lang.Boolean formlayout_groupby)
 	{
 		setFormLayout_GroupBy(getContext(), formlayout_groupby);
 	}
@@ -532,7 +529,7 @@ public class MxSheet
 	 * @param context
 	 * @param formlayout_groupby
 	 */
-	public final void setFormLayout_GroupBy(com.mendix.systemwideinterfaces.core.IContext context, Boolean formlayout_groupby)
+	public final void setFormLayout_GroupBy(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean formlayout_groupby)
 	{
 		getMendixObject().setValue(context, MemberNames.FormLayout_GroupBy.toString(), formlayout_groupby);
 	}

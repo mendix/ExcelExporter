@@ -48,6 +48,7 @@ public class ExcelXLSXHeaderReader extends ExcelXLSXReader implements ExcelHeada
 			StylesTable stylesTable = reader.getStylesTable();
 
 			XMLReader parser = XMLReaderFactory.createXMLReader();
+			ExcelXLSXReader.setXMLReaderProperties(parser);
 			logNode.trace("Loaded SAX Parser: " + parser);
 			SheetHandler handler = new SheetHandler(stringsTable, stylesTable, rowNr, sheetNr);
 			parser.setContentHandler(handler);
@@ -57,10 +58,15 @@ public class ExcelXLSXHeaderReader extends ExcelXLSXReader implements ExcelHeada
 			parser.parse(sheetSource);
 		}
 		finally {
-			if ( sheet != null )
-				sheet.close();
-			if ( opcPackage != null )
+			try {
+				if (sheet != null) {
+					sheet.close();
+				} 
+			} catch (Exception e) { /* Close Quietly */ }
+				
+			if (opcPackage != null) {
 				opcPackage.revert();
+			}
 		}
 	}
 

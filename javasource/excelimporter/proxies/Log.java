@@ -4,9 +4,6 @@
 
 package excelimporter.proxies;
 
-/**
- * 
- */
 public class Log
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject logMendixObject;
@@ -67,7 +64,7 @@ public class Log
 
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
-	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.getSudoContext() can be used to obtain sudo access).
+	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
 	 */
 	public static excelimporter.proxies.Log initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -122,7 +119,7 @@ public class Log
 	/**
 	 * @return value of Logline
 	 */
-	public final String getLogline()
+	public final java.lang.String getLogline()
 	{
 		return getLogline(getContext());
 	}
@@ -131,16 +128,16 @@ public class Log
 	 * @param context
 	 * @return value of Logline
 	 */
-	public final String getLogline(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getLogline(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Logline.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Logline.toString());
 	}
 
 	/**
 	 * Set value of Logline
 	 * @param logline
 	 */
-	public final void setLogline(String logline)
+	public final void setLogline(java.lang.String logline)
 	{
 		setLogline(getContext(), logline);
 	}
@@ -150,7 +147,7 @@ public class Log
 	 * @param context
 	 * @param logline
 	 */
-	public final void setLogline(com.mendix.systemwideinterfaces.core.IContext context, String logline)
+	public final void setLogline(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String logline)
 	{
 		getMendixObject().setValue(context, MemberNames.Logline.toString(), logline);
 	}

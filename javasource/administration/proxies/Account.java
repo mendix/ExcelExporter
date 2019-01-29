@@ -4,9 +4,6 @@
 
 package administration.proxies;
 
-/**
- * 
- */
 public class Account extends system.proxies.User
 {
 	/**
@@ -72,7 +69,7 @@ public class Account extends system.proxies.User
 
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
-	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.getSudoContext() can be used to obtain sudo access).
+	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
 	 */
 	public static administration.proxies.Account initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -96,7 +93,7 @@ public class Account extends system.proxies.User
 	/**
 	 * @return value of FullName
 	 */
-	public final String getFullName()
+	public final java.lang.String getFullName()
 	{
 		return getFullName(getContext());
 	}
@@ -105,16 +102,16 @@ public class Account extends system.proxies.User
 	 * @param context
 	 * @return value of FullName
 	 */
-	public final String getFullName(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getFullName(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.FullName.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.FullName.toString());
 	}
 
 	/**
 	 * Set value of FullName
 	 * @param fullname
 	 */
-	public final void setFullName(String fullname)
+	public final void setFullName(java.lang.String fullname)
 	{
 		setFullName(getContext(), fullname);
 	}
@@ -124,7 +121,7 @@ public class Account extends system.proxies.User
 	 * @param context
 	 * @param fullname
 	 */
-	public final void setFullName(com.mendix.systemwideinterfaces.core.IContext context, String fullname)
+	public final void setFullName(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String fullname)
 	{
 		getMendixObject().setValue(context, MemberNames.FullName.toString(), fullname);
 	}
@@ -132,7 +129,7 @@ public class Account extends system.proxies.User
 	/**
 	 * @return value of OldPassword
 	 */
-	public final String getOldPassword()
+	public final java.lang.String getOldPassword()
 	{
 		return getOldPassword(getContext());
 	}
@@ -141,16 +138,16 @@ public class Account extends system.proxies.User
 	 * @param context
 	 * @return value of OldPassword
 	 */
-	public final String getOldPassword(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getOldPassword(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.OldPassword.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.OldPassword.toString());
 	}
 
 	/**
 	 * Set value of OldPassword
 	 * @param oldpassword
 	 */
-	public final void setOldPassword(String oldpassword)
+	public final void setOldPassword(java.lang.String oldpassword)
 	{
 		setOldPassword(getContext(), oldpassword);
 	}
@@ -160,7 +157,7 @@ public class Account extends system.proxies.User
 	 * @param context
 	 * @param oldpassword
 	 */
-	public final void setOldPassword(com.mendix.systemwideinterfaces.core.IContext context, String oldpassword)
+	public final void setOldPassword(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String oldpassword)
 	{
 		getMendixObject().setValue(context, MemberNames.OldPassword.toString(), oldpassword);
 	}
@@ -168,7 +165,7 @@ public class Account extends system.proxies.User
 	/**
 	 * @return value of NewPassword
 	 */
-	public final String getNewPassword()
+	public final java.lang.String getNewPassword()
 	{
 		return getNewPassword(getContext());
 	}
@@ -177,16 +174,16 @@ public class Account extends system.proxies.User
 	 * @param context
 	 * @return value of NewPassword
 	 */
-	public final String getNewPassword(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getNewPassword(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.NewPassword.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.NewPassword.toString());
 	}
 
 	/**
 	 * Set value of NewPassword
 	 * @param newpassword
 	 */
-	public final void setNewPassword(String newpassword)
+	public final void setNewPassword(java.lang.String newpassword)
 	{
 		setNewPassword(getContext(), newpassword);
 	}
@@ -196,7 +193,7 @@ public class Account extends system.proxies.User
 	 * @param context
 	 * @param newpassword
 	 */
-	public final void setNewPassword(com.mendix.systemwideinterfaces.core.IContext context, String newpassword)
+	public final void setNewPassword(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String newpassword)
 	{
 		getMendixObject().setValue(context, MemberNames.NewPassword.toString(), newpassword);
 	}
@@ -204,7 +201,7 @@ public class Account extends system.proxies.User
 	/**
 	 * @return value of ConfirmPassword
 	 */
-	public final String getConfirmPassword()
+	public final java.lang.String getConfirmPassword()
 	{
 		return getConfirmPassword(getContext());
 	}
@@ -213,16 +210,16 @@ public class Account extends system.proxies.User
 	 * @param context
 	 * @return value of ConfirmPassword
 	 */
-	public final String getConfirmPassword(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getConfirmPassword(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.ConfirmPassword.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.ConfirmPassword.toString());
 	}
 
 	/**
 	 * Set value of ConfirmPassword
 	 * @param confirmpassword
 	 */
-	public final void setConfirmPassword(String confirmpassword)
+	public final void setConfirmPassword(java.lang.String confirmpassword)
 	{
 		setConfirmPassword(getContext(), confirmpassword);
 	}
@@ -232,7 +229,7 @@ public class Account extends system.proxies.User
 	 * @param context
 	 * @param confirmpassword
 	 */
-	public final void setConfirmPassword(com.mendix.systemwideinterfaces.core.IContext context, String confirmpassword)
+	public final void setConfirmPassword(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String confirmpassword)
 	{
 		getMendixObject().setValue(context, MemberNames.ConfirmPassword.toString(), confirmpassword);
 	}

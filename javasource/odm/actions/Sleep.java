@@ -13,21 +13,18 @@ import com.mendix.systemwideinterfaces.core.UserAction;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 
-/**
- * 
- */
-public class Sleep extends CustomJavaAction<Boolean>
+public class Sleep extends CustomJavaAction<java.lang.Boolean>
 {
-	private Long SleepTime;
+	private java.lang.Long SleepTime;
 
-	public Sleep(IContext context, Long SleepTime)
+	public Sleep(IContext context, java.lang.Long SleepTime)
 	{
 		super(context);
 		this.SleepTime = SleepTime;
 	}
 
 	@Override
-	public Boolean executeAction() throws Exception
+	public java.lang.Boolean executeAction() throws Exception
 	{
 		// BEGIN USER CODE
 		Thread.sleep(this.SleepTime);
@@ -39,7 +36,7 @@ public class Sleep extends CustomJavaAction<Boolean>
 	 * Returns a string representation of this action
 	 */
 	@Override
-	public String toString()
+	public java.lang.String toString()
 	{
 		return "Sleep";
 	}

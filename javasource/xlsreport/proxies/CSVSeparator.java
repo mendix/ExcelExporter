@@ -6,27 +6,27 @@ package xlsreport.proxies;
 
 public enum CSVSeparator
 {
-	Comma(new String[][] { new String[] { "en_US", "Comma" }, new String[] { "nl_NL", "Komma" } }),
-	Semicolon(new String[][] { new String[] { "en_US", "Semicolon" }, new String[] { "nl_NL", "Puntkomma" } }),
-	Tab(new String[][] { new String[] { "en_US", "Tab" }, new String[] { "nl_NL", "Tab" } });
+	Comma(new java.lang.String[][] { new java.lang.String[] { "en_US", "Comma" }, new java.lang.String[] { "nl_NL", "Komma" } }),
+	Semicolon(new java.lang.String[][] { new java.lang.String[] { "en_US", "Semicolon" }, new java.lang.String[] { "nl_NL", "Puntkomma" } }),
+	Tab(new java.lang.String[][] { new java.lang.String[] { "en_US", "Tab" }, new java.lang.String[] { "nl_NL", "Tab" } });
 
-	private java.util.Map<String,String> captions;
+	private java.util.Map<java.lang.String, java.lang.String> captions;
 
-	private CSVSeparator(String[][] captionStrings)
+	private CSVSeparator(java.lang.String[][] captionStrings)
 	{
-		this.captions = new java.util.HashMap<String,String>();
-		for (String[] captionString : captionStrings)
+		this.captions = new java.util.HashMap<java.lang.String, java.lang.String>();
+		for (java.lang.String[] captionString : captionStrings)
 			captions.put(captionString[0], captionString[1]);
 	}
 
-	public String getCaption(String languageCode)
+	public java.lang.String getCaption(java.lang.String languageCode)
 	{
 		if (captions.containsKey(languageCode))
 			return captions.get(languageCode);
 		return captions.get("en_US");
 	}
 
-	public String getCaption()
+	public java.lang.String getCaption()
 	{
 		return captions.get("en_US");
 	}

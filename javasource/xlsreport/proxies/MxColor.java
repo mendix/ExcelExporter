@@ -6,39 +6,39 @@ package xlsreport.proxies;
 
 public enum MxColor
 {
-	Blank(new String[][] { new String[] { "en_US", "None" }, new String[] { "nl_NL", "Geen" } }),
-	Black(new String[][] { new String[] { "en_US", "Black" }, new String[] { "nl_NL", "Zwart" } }),
-	White(new String[][] { new String[] { "en_US", "White" }, new String[] { "nl_NL", "Wit" } }),
-	Pink(new String[][] { new String[] { "en_US", "Pink" }, new String[] { "nl_NL", "Rose" } }),
-	Red(new String[][] { new String[] { "en_US", "Red" }, new String[] { "nl_NL", "Rood" } }),
-	Orange(new String[][] { new String[] { "en_US", "Orange" }, new String[] { "nl_NL", "Oranje" } }),
-	Yellow(new String[][] { new String[] { "en_US", "Yellow" }, new String[] { "nl_NL", "Geel" } }),
-	Green(new String[][] { new String[] { "en_US", "Green" }, new String[] { "nl_NL", "Groen" } }),
-	Light_Blue(new String[][] { new String[] { "en_US", "Light Blue" }, new String[] { "nl_NL", "Licht blauw" } }),
-	Blue(new String[][] { new String[] { "en_US", "Blue" }, new String[] { "nl_NL", "Blauw" } }),
-	Brown(new String[][] { new String[] { "en_US", "Brown" }, new String[] { "nl_NL", "Bruin" } }),
-	Gray_1(new String[][] { new String[] { "en_US", "Gray 25%" }, new String[] { "nl_NL", "Grijs 25%" } }),
-	Gray_2(new String[][] { new String[] { "en_US", "Gray 40%" }, new String[] { "nl_NL", "Grijs 40%" } }),
-	Gray_3(new String[][] { new String[] { "en_US", "Gray 50%" }, new String[] { "nl_NL", "Grijs 50%" } }),
-	Gray_4(new String[][] { new String[] { "en_US", "Gray 80%" }, new String[] { "nl_NL", "Grijs 80%" } });
+	Blank(new java.lang.String[][] { new java.lang.String[] { "en_US", "None" }, new java.lang.String[] { "nl_NL", "Geen" } }),
+	Black(new java.lang.String[][] { new java.lang.String[] { "en_US", "Black" }, new java.lang.String[] { "nl_NL", "Zwart" } }),
+	White(new java.lang.String[][] { new java.lang.String[] { "en_US", "White" }, new java.lang.String[] { "nl_NL", "Wit" } }),
+	Pink(new java.lang.String[][] { new java.lang.String[] { "en_US", "Pink" }, new java.lang.String[] { "nl_NL", "Rose" } }),
+	Red(new java.lang.String[][] { new java.lang.String[] { "en_US", "Red" }, new java.lang.String[] { "nl_NL", "Rood" } }),
+	Orange(new java.lang.String[][] { new java.lang.String[] { "en_US", "Orange" }, new java.lang.String[] { "nl_NL", "Oranje" } }),
+	Yellow(new java.lang.String[][] { new java.lang.String[] { "en_US", "Yellow" }, new java.lang.String[] { "nl_NL", "Geel" } }),
+	Green(new java.lang.String[][] { new java.lang.String[] { "en_US", "Green" }, new java.lang.String[] { "nl_NL", "Groen" } }),
+	Light_Blue(new java.lang.String[][] { new java.lang.String[] { "en_US", "Light Blue" }, new java.lang.String[] { "nl_NL", "Licht blauw" } }),
+	Blue(new java.lang.String[][] { new java.lang.String[] { "en_US", "Blue" }, new java.lang.String[] { "nl_NL", "Blauw" } }),
+	Brown(new java.lang.String[][] { new java.lang.String[] { "en_US", "Brown" }, new java.lang.String[] { "nl_NL", "Bruin" } }),
+	Gray_1(new java.lang.String[][] { new java.lang.String[] { "en_US", "Gray 25%" }, new java.lang.String[] { "nl_NL", "Grijs 25%" } }),
+	Gray_2(new java.lang.String[][] { new java.lang.String[] { "en_US", "Gray 40%" }, new java.lang.String[] { "nl_NL", "Grijs 40%" } }),
+	Gray_3(new java.lang.String[][] { new java.lang.String[] { "en_US", "Gray 50%" }, new java.lang.String[] { "nl_NL", "Grijs 50%" } }),
+	Gray_4(new java.lang.String[][] { new java.lang.String[] { "en_US", "Gray 80%" }, new java.lang.String[] { "nl_NL", "Grijs 80%" } });
 
-	private java.util.Map<String,String> captions;
+	private java.util.Map<java.lang.String, java.lang.String> captions;
 
-	private MxColor(String[][] captionStrings)
+	private MxColor(java.lang.String[][] captionStrings)
 	{
-		this.captions = new java.util.HashMap<String,String>();
-		for (String[] captionString : captionStrings)
+		this.captions = new java.util.HashMap<java.lang.String, java.lang.String>();
+		for (java.lang.String[] captionString : captionStrings)
 			captions.put(captionString[0], captionString[1]);
 	}
 
-	public String getCaption(String languageCode)
+	public java.lang.String getCaption(java.lang.String languageCode)
 	{
 		if (captions.containsKey(languageCode))
 			return captions.get(languageCode);
 		return captions.get("en_US");
 	}
 
-	public String getCaption()
+	public java.lang.String getCaption()
 	{
 		return captions.get("en_US");
 	}

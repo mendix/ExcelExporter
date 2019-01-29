@@ -6,27 +6,27 @@ package xlsreport.proxies;
 
 public enum TextAlignment
 {
-	Left(new String[][] { new String[] { "en_US", "Left" }, new String[] { "nl_NL", "Links" } }),
-	Center(new String[][] { new String[] { "en_US", "Center" }, new String[] { "nl_NL", "Gecentreerd" } }),
-	Right(new String[][] { new String[] { "en_US", "Right" }, new String[] { "nl_NL", "Rechts" } });
+	Left(new java.lang.String[][] { new java.lang.String[] { "en_US", "Left" }, new java.lang.String[] { "nl_NL", "Links" } }),
+	Center(new java.lang.String[][] { new java.lang.String[] { "en_US", "Center" }, new java.lang.String[] { "nl_NL", "Gecentreerd" } }),
+	Right(new java.lang.String[][] { new java.lang.String[] { "en_US", "Right" }, new java.lang.String[] { "nl_NL", "Rechts" } });
 
-	private java.util.Map<String,String> captions;
+	private java.util.Map<java.lang.String, java.lang.String> captions;
 
-	private TextAlignment(String[][] captionStrings)
+	private TextAlignment(java.lang.String[][] captionStrings)
 	{
-		this.captions = new java.util.HashMap<String,String>();
-		for (String[] captionString : captionStrings)
+		this.captions = new java.util.HashMap<java.lang.String, java.lang.String>();
+		for (java.lang.String[] captionString : captionStrings)
 			captions.put(captionString[0], captionString[1]);
 	}
 
-	public String getCaption(String languageCode)
+	public java.lang.String getCaption(java.lang.String languageCode)
 	{
 		if (captions.containsKey(languageCode))
 			return captions.get(languageCode);
 		return captions.get("en_US");
 	}
 
-	public String getCaption()
+	public java.lang.String getCaption()
 	{
 		return captions.get("en_US");
 	}

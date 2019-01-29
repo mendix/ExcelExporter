@@ -32,6 +32,7 @@ public class ExcelXLSXDataReader extends ExcelXLSXReader {
 			excelRowProcessor = new ExcelRowProcessor(xlsReader);
 
 			XMLReader parser = XMLReaderFactory.createXMLReader();
+			ExcelXLSXReader.setXMLReaderProperties(parser);
 			ExcelReader.logNode.trace("Loaded SAX Parser: " + parser);
 			SheetHandler handler = new SheetHandler(xlsReader, stringsTable, stylesTable, startRowNr, excelRowProcessor, sheetNr);
 			parser.setContentHandler(handler);
@@ -41,12 +42,20 @@ public class ExcelXLSXDataReader extends ExcelXLSXReader {
 			parser.parse(sheetSource);
 		}
 		finally {
-			if ( excelRowProcessor != null )
-				excelRowProcessor.finish();
-			if ( sheet != null )
-				sheet.close();
-			if ( opcPackage != null )
+			try {
+				if (excelRowProcessor != null) {
+					excelRowProcessor.finish();
+				}
+			} catch (MendixReplicationException mre) { /* Finish Quietly */}
+			try {
+				if (sheet != null) {
+					sheet.close();
+				}
+			} catch (Exception e) { /* Close Quietly */ }
+			
+			if (opcPackage != null) {
 				opcPackage.revert();
+			}
 		}
 	}
 

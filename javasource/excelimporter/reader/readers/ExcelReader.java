@@ -120,27 +120,28 @@ public class ExcelReader {
 				
 				// Headers - 1st pass
 				{
-					InputStream content = Core.getFileDocumentContent(context, templateDocument);
-					if(content == null)
-						throw new CoreException("No content found in templatedocument");
-	
 					
+		
+						
 					switch(extension) {
 						case XLS: {
-							POIFSFileSystem poifs = new POIFSFileSystem(content);
-							InputStream workbook = poifs.createDocumentInputStream("Workbook");
+							try(InputStream content = Core.getFileDocumentContent(context, templateDocument)) {
+								if(content == null) {
+									throw new CoreException("No content found in templatedocument");
+								}
 							
-							ExcelXLSReaderHeaderFirstPassListener firstPass = new ExcelXLSReaderHeaderFirstPassListener(iCanHasSheet, iCanHasRow);
-							
-							HSSFRequest req = new HSSFRequest();
-							req.addListenerForAllRecords(firstPass);
-							HSSFEventFactory factory = new HSSFEventFactory();
-							factory.processEvents(req, workbook);
-							
-							sstmap = firstPass.getSSTMap();
-							
-							workbook.close();
-							content.close();
+								try (InputStream workbook = new POIFSFileSystem(content).createDocumentInputStream("Workbook")) {
+								
+									ExcelXLSReaderHeaderFirstPassListener firstPass = new ExcelXLSReaderHeaderFirstPassListener(iCanHasSheet, iCanHasRow);
+									
+									HSSFRequest req = new HSSFRequest();
+									req.addListenerForAllRecords(firstPass);
+									HSSFEventFactory factory = new HSSFEventFactory();
+									factory.processEvents(req, workbook);
+									
+									sstmap = firstPass.getSSTMap();
+								}
+							}
 							break;
 						}
 						case XLSX: {
@@ -152,27 +153,25 @@ public class ExcelReader {
 					}
 				}
 				
+				
 				ExcelHeadable header = null;
 				// Headers - 2nd pass
 				{
-					InputStream content = Core.getFileDocumentContent(context, templateDocument);
 					switch(extension) {
 						case XLS: {
-							POIFSFileSystem poifs = new POIFSFileSystem(content);
-							InputStream workbook = poifs.createDocumentInputStream("Workbook");
-							
-							if( sstmap == null ) {
-								throw new CoreException("No headers could be found on sheet: " + iCanHasSheet + " on row nr: " + iCanHasRow );
+							try(InputStream content = Core.getFileDocumentContent(context, templateDocument);
+								InputStream workbook = new POIFSFileSystem(content).createDocumentInputStream("Workbook");) {
+								if( sstmap == null ) {
+									throw new CoreException("No headers could be found on sheet: " + iCanHasSheet + " on row nr: " + iCanHasRow );
+								}
+								// second pass
+								header = new ExcelXLSReaderHeaderSecondPassListener(iCanHasSheet, iCanHasRow, sstmap);
+								HSSFRequest req = new HSSFRequest();
+								req.addListenerForAllRecords((HSSFListener)header);
+								HSSFEventFactory factory = new HSSFEventFactory();
+								factory.processEvents(req, workbook);
 							}
-							// second pass
-							header = new ExcelXLSReaderHeaderSecondPassListener(iCanHasSheet, iCanHasRow, sstmap);
-							HSSFRequest req = new HSSFRequest();
-							req.addListenerForAllRecords((HSSFListener)header);
-							HSSFEventFactory factory = new HSSFEventFactory();
-							factory.processEvents(req, workbook);
 							
-							content.close();
-							workbook.close();
 							break;
 						}
 						case XLSX: {
@@ -404,30 +403,26 @@ public class ExcelReader {
 				case XLS: {
 					ExcelXLSReaderDataFirstPassListener firstPass = new ExcelXLSReaderDataFirstPassListener(iCanHasSheet, startRow, this);
 					{
-						InputStream content = Core.getFileDocumentContent(this.settings.getContext(), fileDocument);
-						POIFSFileSystem poifs = new POIFSFileSystem(content);
-						InputStream workbook = poifs.createDocumentInputStream("Workbook");
-						HSSFRequest req = new HSSFRequest();
-						req.addListenerForAllRecords(firstPass);
-						HSSFEventFactory factory = new HSSFEventFactory();
-						factory.processEvents(req, workbook);
-						workbook.close();
-						content.close();
+						try (InputStream content = Core.getFileDocumentContent(this.settings.getContext(), fileDocument); 
+							InputStream workbook = new POIFSFileSystem(content).createDocumentInputStream("Workbook")) {
+							HSSFRequest req = new HSSFRequest();
+							req.addListenerForAllRecords(firstPass);
+							HSSFEventFactory factory = new HSSFEventFactory();
+							factory.processEvents(req, workbook);
+						}
 					}
 					HashMap<Integer, String> sstmap = firstPass.getSSTMap();
 					
 					// Data - 2nd pass
 					ExcelXLSReaderDataSecondPassListener secondPass = new ExcelXLSReaderDataSecondPassListener(iCanHasSheet, startRow, sstmap, this, firstPass.getNrOfColumns());
 					{
-						InputStream content = Core.getFileDocumentContent(this.settings.getContext(), fileDocument);
-						POIFSFileSystem poifs = new POIFSFileSystem(content);
-						InputStream workbook = poifs.createDocumentInputStream("Workbook");
-						HSSFRequest req = new HSSFRequest();
-						req.addListenerForAllRecords(secondPass);
-						HSSFEventFactory factory = new HSSFEventFactory();
-						factory.processEvents(req, workbook);
-						content.close();
-						workbook.close();
+						try (InputStream content = Core.getFileDocumentContent(this.settings.getContext(), fileDocument); 
+							InputStream workbook = new POIFSFileSystem(content).createDocumentInputStream("Workbook")) {
+							HSSFRequest req = new HSSFRequest();
+							req.addListenerForAllRecords(secondPass);
+							HSSFEventFactory factory = new HSSFEventFactory();
+							factory.processEvents(req, workbook);
+						}
 					}
 
 					break;
