@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import system.proxies.FileDocument;
-import au.com.bytecode.opencsv.CSVWriter;
+import com.opencsv.CSVWriter;
 
 import com.mendix.core.Core;
 import com.mendix.systemwideinterfaces.core.IContext;
@@ -78,7 +78,7 @@ public class ExportCSV  extends Export
 			}			
 			writer.writeNext(values);			
 		}
-		writer.close();
+		writer.flush();
 	}	
 	
 	@Override
