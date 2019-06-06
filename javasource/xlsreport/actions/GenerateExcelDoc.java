@@ -23,7 +23,6 @@ import xlsreport.proxies.MxCellStyle;
 import xlsreport.proxies.MxColumn;
 import xlsreport.proxies.MxData;
 import xlsreport.proxies.MxSheet;
-import xlsreport.proxies.MxXPath;
 import xlsreport.report.DataOQL;
 import xlsreport.report.data.ColumnPreset;
 import xlsreport.report.export.Export;
@@ -114,16 +113,6 @@ public class GenerateExcelDoc extends CustomJavaAction<IMendixObject>
 									styleGuid = defaultStyle;
 								}
 								ColumnPreset preset = new ColumnPreset(mxColumn.getName(), mxColumn.getNameAsHeader(), mxColumn.getColumnNumber(), mxColumn.getMxXPath_MxData(), styleGuid);
-								
-								//Check if it is a date column. If so indicate the column should use the date format
-								MxXPath xpath = mxColumn.getMxXPath_MxData();
-								if (xpath != null && xpath.getMxXPath_MxObjectMember() != null)	{
-									String attributeType = xpath.getMxXPath_MxObjectMember().getAttributeType();
-									if ("DateTime".equals(attributeType)) {
-										preset.setDateTimeFormat(true);
-									}
-								}
-								
 								if (mxColumn.getResultAggregate()) {
 									preset.addResultAggregation(mxColumn.getResultAggregateFunction());
 								}
