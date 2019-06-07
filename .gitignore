@@ -3,3 +3,7 @@
 .project
 *.launch
 [Tt]humbs.db
+*.bak
+*.iml
+.idea
+*.lock
