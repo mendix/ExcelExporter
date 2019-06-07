@@ -93,6 +93,19 @@ public class Microflows
 			throw new MendixRuntimeException(e);
 		}
 	}
+	public static java.lang.String dataFormatString(IContext context, xlsreport.proxies.MxCellStyle _mxCellStyle)
+	{
+		try
+		{
+			Map<java.lang.String, Object> params = new HashMap<java.lang.String, Object>();
+			params.put("MxCellStyle", _mxCellStyle == null ? null : _mxCellStyle.getMendixObject());
+			return (java.lang.String)Core.execute(context, "XLSReport.DataFormatString", params);
+		}
+		catch (CoreException e)
+		{
+			throw new MendixRuntimeException(e);
+		}
+	}
 	public static java.util.List<mxmodelreflection.proxies.MxObjectMember> dS_Attribute(IContext context, xlsreport.proxies.MxXPath _mxXPath)
 	{
 		try
@@ -303,6 +316,19 @@ public class Microflows
 			Map<java.lang.String, Object> params = new HashMap<java.lang.String, Object>();
 			params.put("Template", _template == null ? null : _template.getMendixObject());
 			Core.execute(context, "XLSReport.GenerateReport", params);
+		}
+		catch (CoreException e)
+		{
+			throw new MendixRuntimeException(e);
+		}
+	}
+	public static java.lang.String integerToNumberFormat(IContext context, java.lang.Long _decimalPlaces)
+	{
+		try
+		{
+			Map<java.lang.String, Object> params = new HashMap<java.lang.String, Object>();
+			params.put("DecimalPlaces", _decimalPlaces);
+			return (java.lang.String)Core.execute(context, "XLSReport.IntegerToNumberFormat", params);
 		}
 		catch (CoreException e)
 		{

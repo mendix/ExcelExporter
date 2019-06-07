@@ -9,15 +9,13 @@ import com.mendix.core.CoreException;
 import com.mendix.logging.ILogNode;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.*;
+import xlsreport.proxies.*;
+import xlsreport.report.export.Export;
 
 import java.util.HashMap;
 import java.util.List;
-
-import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.ss.usermodel.*;
-
-import xlsreport.proxies.*;
-import xlsreport.report.export.Export;
 
 /**
  *
@@ -57,8 +55,8 @@ public class Styling
 
     public void setDefaultStyle(Long GUID)
     {        
-    	this.defaultStyle = this.styleList.get(GUID);
-        this.defaultStyleDate = this.styleList.get(GUID+DATEFORMAT);
+      this.defaultStyle = this.styleList.get(GUID);
+      this.defaultStyleDate = this.styleList.get(GUID+DATEFORMAT);
     }
 
     public CellStyle getStyle(Long name, boolean useDateTimeFormat)
@@ -98,7 +96,7 @@ public class Styling
             
             // Create a normal version of the style
             CellStyle datestyle = createCellStyle(MxStyle, book, true);
-            this.styleList.put(MxStyle.getMendixObject().getId().toLong()+DATEFORMAT, datestyle);           
+            this.styleList.put(MxStyle.getMendixObject().getId().toLong()+DATEFORMAT, datestyle);
         }
     }
 
@@ -159,11 +157,16 @@ public class Styling
             style.setBottomBorderColor(getColor(MxStyle.getBorderColor()));
             style.setLeftBorderColor(getColor(MxStyle.getBorderColor()));
             style.setRightBorderColor(getColor(MxStyle.getBorderColor()));
-        } 
-        
+        }
+
+        if(MxStyle.getDataFormatString() != null)
+        {
+            style.setDataFormat(this.createHelper.createDataFormat().getFormat(MxStyle.getDataFormatString()));
+        }
+
         if(dateTimeFormat)
-        {        	
-        	style.setDataFormat(this.createHelper.createDataFormat().getFormat(this.datePresentation));
+        {
+          style.setDataFormat(this.createHelper.createDataFormat().getFormat(this.datePresentation));
         	log.trace("Created style with DateTimeFormat: " + style.getDataFormatString());
         }
     	    	   
