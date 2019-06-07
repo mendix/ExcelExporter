@@ -100,32 +100,37 @@ public class ExcelImporter {
 	 * @param parentObject the object to which the objects to be imported, must be associated.
 	 */
 	public static void startImport(IContext context, IMendixObject template, IMendixObject templateDocument, IMendixObject parentObject) throws CoreException {
-		if (template == null)
+		if(template == null) {
 			throw new CoreException("Template not found!");
+		}
 
-		try (InputStream content = Core.getFileDocumentContent(context, templateDocument);) {
-			if (content != null) {
+		try (InputStream content = Core.getFileDocumentContent(context, templateDocument)) {
+			if(content != null) {
+	
 				String fileName = (String) templateDocument.getValue(context, "Name");
 				if (fileName != null) {
-
-					// Determine file format for header extraction
+	
+					//Determine file format for header extraction
 					int lastdot = fileName.lastIndexOf(".");
-					if (lastdot < 0)
+					if (lastdot < 0) {
 						throw new CoreException("Found file has no extension to derive format from.");
-
+					}
+	
 					String extension = fileName.substring(lastdot).toLowerCase();
-
+	
 					if (".xls".equalsIgnoreCase(extension) || ".xlsx".equalsIgnoreCase(extension)) {
 						ExcelReader reader = new ExcelReader(context, template);
 						reader.importData(context, templateDocument, template, parentObject);
 					} else {
-						throw new CoreException("The extension: " + extension + " is not supported.");
+						throw new CoreException( "The extension: " + extension + " is not supported." );
 					}
-
-				} else
+	
+				} else {
 					throw new CoreException("No valid filepath found from template");
+				}
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			throw new CoreException(e);
 		}
 	}
