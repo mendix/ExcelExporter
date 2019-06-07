@@ -45,7 +45,7 @@ public class Template
 			metaName = s;
 		}
 
-		@Override
+		@java.lang.Override
 		public java.lang.String toString()
 		{
 			return metaName;
@@ -71,7 +71,7 @@ public class Template
 	/**
 	 * @deprecated Use 'Template.load(IContext, IMendixIdentifier)' instead.
 	 */
-	@Deprecated
+	@java.lang.Deprecated
 	public static excelimporter.proxies.Template initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
 	{
 		return excelimporter.proxies.Template.load(context, mendixIdentifier);
@@ -667,7 +667,7 @@ public class Template
 		return context;
 	}
 
-	@Override
+	@java.lang.Override
 	public boolean equals(Object obj)
 	{
 		if (obj == this)
@@ -681,7 +681,7 @@ public class Template
 		return false;
 	}
 
-	@Override
+	@java.lang.Override
 	public int hashCode()
 	{
 		return getMendixObject().hashCode();
@@ -699,7 +699,7 @@ public class Template
 	 * @return String GUID from this object, format: ID_0000000000
 	 * @deprecated Use getMendixObject().getId().toLong() to get a unique identifier for this object.
 	 */
-	@Deprecated
+	@java.lang.Deprecated
 	public java.lang.String getGUID()
 	{
 		return "ID_" + getMendixObject().getId().toLong();

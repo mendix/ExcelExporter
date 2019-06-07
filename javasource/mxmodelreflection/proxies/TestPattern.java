@@ -38,7 +38,7 @@ public class TestPattern
 			metaName = s;
 		}
 
-		@Override
+		@java.lang.Override
 		public java.lang.String toString()
 		{
 			return metaName;
@@ -64,7 +64,7 @@ public class TestPattern
 	/**
 	 * @deprecated Use 'TestPattern.load(IContext, IMendixIdentifier)' instead.
 	 */
-	@Deprecated
+	@java.lang.Deprecated
 	public static mxmodelreflection.proxies.TestPattern initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
 	{
 		return mxmodelreflection.proxies.TestPattern.load(context, mendixIdentifier);
@@ -235,7 +235,7 @@ public class TestPattern
 	/**
 	 * @return value of FloatAttribute
 	 */
-	public final java.lang.Double getFloatAttribute()
+	public final java.math.BigDecimal getFloatAttribute()
 	{
 		return getFloatAttribute(getContext());
 	}
@@ -244,16 +244,16 @@ public class TestPattern
 	 * @param context
 	 * @return value of FloatAttribute
 	 */
-	public final java.lang.Double getFloatAttribute(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.math.BigDecimal getFloatAttribute(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (java.lang.Double) getMendixObject().getValue(context, MemberNames.FloatAttribute.toString());
+		return (java.math.BigDecimal) getMendixObject().getValue(context, MemberNames.FloatAttribute.toString());
 	}
 
 	/**
 	 * Set value of FloatAttribute
 	 * @param floatattribute
 	 */
-	public final void setFloatAttribute(java.lang.Double floatattribute)
+	public final void setFloatAttribute(java.math.BigDecimal floatattribute)
 	{
 		setFloatAttribute(getContext(), floatattribute);
 	}
@@ -263,7 +263,7 @@ public class TestPattern
 	 * @param context
 	 * @param floatattribute
 	 */
-	public final void setFloatAttribute(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Double floatattribute)
+	public final void setFloatAttribute(com.mendix.systemwideinterfaces.core.IContext context, java.math.BigDecimal floatattribute)
 	{
 		getMendixObject().setValue(context, MemberNames.FloatAttribute.toString(), floatattribute);
 	}
@@ -500,7 +500,7 @@ public class TestPattern
 		return context;
 	}
 
-	@Override
+	@java.lang.Override
 	public boolean equals(Object obj)
 	{
 		if (obj == this)
@@ -514,7 +514,7 @@ public class TestPattern
 		return false;
 	}
 
-	@Override
+	@java.lang.Override
 	public int hashCode()
 	{
 		return getMendixObject().hashCode();
@@ -532,7 +532,7 @@ public class TestPattern
 	 * @return String GUID from this object, format: ID_0000000000
 	 * @deprecated Use getMendixObject().getId().toLong() to get a unique identifier for this object.
 	 */
-	@Deprecated
+	@java.lang.Deprecated
 	public java.lang.String getGUID()
 	{
 		return "ID_" + getMendixObject().getId().toLong();

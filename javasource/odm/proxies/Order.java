@@ -38,7 +38,7 @@ public class Order
 			metaName = s;
 		}
 
-		@Override
+		@java.lang.Override
 		public java.lang.String toString()
 		{
 			return metaName;
@@ -64,7 +64,7 @@ public class Order
 	/**
 	 * @deprecated Use 'Order.load(IContext, IMendixIdentifier)' instead.
 	 */
-	@Deprecated
+	@java.lang.Deprecated
 	public static odm.proxies.Order initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
 	{
 		return odm.proxies.Order.load(context, mendixIdentifier);
@@ -315,7 +315,7 @@ public class Order
 	/**
 	 * @return value of VAT
 	 */
-	public final java.lang.Double getVAT()
+	public final java.math.BigDecimal getVAT()
 	{
 		return getVAT(getContext());
 	}
@@ -324,16 +324,16 @@ public class Order
 	 * @param context
 	 * @return value of VAT
 	 */
-	public final java.lang.Double getVAT(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.math.BigDecimal getVAT(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (java.lang.Double) getMendixObject().getValue(context, MemberNames.VAT.toString());
+		return (java.math.BigDecimal) getMendixObject().getValue(context, MemberNames.VAT.toString());
 	}
 
 	/**
 	 * Set value of VAT
 	 * @param vat
 	 */
-	public final void setVAT(java.lang.Double vat)
+	public final void setVAT(java.math.BigDecimal vat)
 	{
 		setVAT(getContext(), vat);
 	}
@@ -343,7 +343,7 @@ public class Order
 	 * @param context
 	 * @param vat
 	 */
-	public final void setVAT(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Double vat)
+	public final void setVAT(com.mendix.systemwideinterfaces.core.IContext context, java.math.BigDecimal vat)
 	{
 		getMendixObject().setValue(context, MemberNames.VAT.toString(), vat);
 	}
@@ -351,7 +351,7 @@ public class Order
 	/**
 	 * @return value of TotalExclVAT
 	 */
-	public final java.lang.Double getTotalExclVAT()
+	public final java.math.BigDecimal getTotalExclVAT()
 	{
 		return getTotalExclVAT(getContext());
 	}
@@ -360,16 +360,16 @@ public class Order
 	 * @param context
 	 * @return value of TotalExclVAT
 	 */
-	public final java.lang.Double getTotalExclVAT(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.math.BigDecimal getTotalExclVAT(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (java.lang.Double) getMendixObject().getValue(context, MemberNames.TotalExclVAT.toString());
+		return (java.math.BigDecimal) getMendixObject().getValue(context, MemberNames.TotalExclVAT.toString());
 	}
 
 	/**
 	 * Set value of TotalExclVAT
 	 * @param totalexclvat
 	 */
-	public final void setTotalExclVAT(java.lang.Double totalexclvat)
+	public final void setTotalExclVAT(java.math.BigDecimal totalexclvat)
 	{
 		setTotalExclVAT(getContext(), totalexclvat);
 	}
@@ -379,7 +379,7 @@ public class Order
 	 * @param context
 	 * @param totalexclvat
 	 */
-	public final void setTotalExclVAT(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Double totalexclvat)
+	public final void setTotalExclVAT(com.mendix.systemwideinterfaces.core.IContext context, java.math.BigDecimal totalexclvat)
 	{
 		getMendixObject().setValue(context, MemberNames.TotalExclVAT.toString(), totalexclvat);
 	}
@@ -387,7 +387,7 @@ public class Order
 	/**
 	 * @return value of TotalInclVAT
 	 */
-	public final java.lang.Double getTotalInclVAT()
+	public final java.math.BigDecimal getTotalInclVAT()
 	{
 		return getTotalInclVAT(getContext());
 	}
@@ -396,16 +396,16 @@ public class Order
 	 * @param context
 	 * @return value of TotalInclVAT
 	 */
-	public final java.lang.Double getTotalInclVAT(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.math.BigDecimal getTotalInclVAT(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (java.lang.Double) getMendixObject().getValue(context, MemberNames.TotalInclVAT.toString());
+		return (java.math.BigDecimal) getMendixObject().getValue(context, MemberNames.TotalInclVAT.toString());
 	}
 
 	/**
 	 * Set value of TotalInclVAT
 	 * @param totalinclvat
 	 */
-	public final void setTotalInclVAT(java.lang.Double totalinclvat)
+	public final void setTotalInclVAT(java.math.BigDecimal totalinclvat)
 	{
 		setTotalInclVAT(getContext(), totalinclvat);
 	}
@@ -415,7 +415,7 @@ public class Order
 	 * @param context
 	 * @param totalinclvat
 	 */
-	public final void setTotalInclVAT(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Double totalinclvat)
+	public final void setTotalInclVAT(com.mendix.systemwideinterfaces.core.IContext context, java.math.BigDecimal totalinclvat)
 	{
 		getMendixObject().setValue(context, MemberNames.TotalInclVAT.toString(), totalinclvat);
 	}
@@ -508,7 +508,7 @@ public class Order
 		return context;
 	}
 
-	@Override
+	@java.lang.Override
 	public boolean equals(Object obj)
 	{
 		if (obj == this)
@@ -522,7 +522,7 @@ public class Order
 		return false;
 	}
 
-	@Override
+	@java.lang.Override
 	public int hashCode()
 	{
 		return getMendixObject().hashCode();
@@ -540,7 +540,7 @@ public class Order
 	 * @return String GUID from this object, format: ID_0000000000
 	 * @deprecated Use getMendixObject().getId().toLong() to get a unique identifier for this object.
 	 */
-	@Deprecated
+	@java.lang.Deprecated
 	public java.lang.String getGUID()
 	{
 		return "ID_" + getMendixObject().getId().toLong();

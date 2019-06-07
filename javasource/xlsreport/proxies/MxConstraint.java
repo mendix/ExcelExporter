@@ -27,7 +27,7 @@ public class MxConstraint
 		AttributeType("AttributeType"),
 		ConstraintText("ConstraintText"),
 		ConstraintNumber("ConstraintNumber"),
-		ConstraintFloat("ConstraintFloat"),
+		ConstraintDecimal("ConstraintDecimal"),
 		ConstraintDateTime("ConstraintDateTime"),
 		ConstraintBoolean("ConstraintBoolean"),
 		AndOr("AndOr"),
@@ -41,7 +41,7 @@ public class MxConstraint
 			metaName = s;
 		}
 
-		@Override
+		@java.lang.Override
 		public java.lang.String toString()
 		{
 			return metaName;
@@ -67,7 +67,7 @@ public class MxConstraint
 	/**
 	 * @deprecated Use 'MxConstraint.load(IContext, IMendixIdentifier)' instead.
 	 */
-	@Deprecated
+	@java.lang.Deprecated
 	public static xlsreport.proxies.MxConstraint initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
 	{
 		return xlsreport.proxies.MxConstraint.load(context, mendixIdentifier);
@@ -396,39 +396,39 @@ public class MxConstraint
 	}
 
 	/**
-	 * @return value of ConstraintFloat
+	 * @return value of ConstraintDecimal
 	 */
-	public final java.lang.Double getConstraintFloat()
+	public final java.math.BigDecimal getConstraintDecimal()
 	{
-		return getConstraintFloat(getContext());
+		return getConstraintDecimal(getContext());
 	}
 
 	/**
 	 * @param context
-	 * @return value of ConstraintFloat
+	 * @return value of ConstraintDecimal
 	 */
-	public final java.lang.Double getConstraintFloat(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.math.BigDecimal getConstraintDecimal(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (java.lang.Double) getMendixObject().getValue(context, MemberNames.ConstraintFloat.toString());
+		return (java.math.BigDecimal) getMendixObject().getValue(context, MemberNames.ConstraintDecimal.toString());
 	}
 
 	/**
-	 * Set value of ConstraintFloat
-	 * @param constraintfloat
+	 * Set value of ConstraintDecimal
+	 * @param constraintdecimal
 	 */
-	public final void setConstraintFloat(java.lang.Double constraintfloat)
+	public final void setConstraintDecimal(java.math.BigDecimal constraintdecimal)
 	{
-		setConstraintFloat(getContext(), constraintfloat);
+		setConstraintDecimal(getContext(), constraintdecimal);
 	}
 
 	/**
-	 * Set value of ConstraintFloat
+	 * Set value of ConstraintDecimal
 	 * @param context
-	 * @param constraintfloat
+	 * @param constraintdecimal
 	 */
-	public final void setConstraintFloat(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Double constraintfloat)
+	public final void setConstraintDecimal(com.mendix.systemwideinterfaces.core.IContext context, java.math.BigDecimal constraintdecimal)
 	{
-		getMendixObject().setValue(context, MemberNames.ConstraintFloat.toString(), constraintfloat);
+		getMendixObject().setValue(context, MemberNames.ConstraintDecimal.toString(), constraintdecimal);
 	}
 
 	/**
@@ -657,7 +657,7 @@ public class MxConstraint
 		return context;
 	}
 
-	@Override
+	@java.lang.Override
 	public boolean equals(Object obj)
 	{
 		if (obj == this)
@@ -671,7 +671,7 @@ public class MxConstraint
 		return false;
 	}
 
-	@Override
+	@java.lang.Override
 	public int hashCode()
 	{
 		return getMendixObject().hashCode();
@@ -689,7 +689,7 @@ public class MxConstraint
 	 * @return String GUID from this object, format: ID_0000000000
 	 * @deprecated Use getMendixObject().getId().toLong() to get a unique identifier for this object.
 	 */
-	@Deprecated
+	@java.lang.Deprecated
 	public java.lang.String getGUID()
 	{
 		return "ID_" + getMendixObject().getId().toLong();

@@ -38,7 +38,7 @@ public class StartImportByTemplate extends CustomJavaAction<java.lang.Boolean>
 		this.ImportObjectParameter = ImportObjectParameter;
 	}
 
-	@Override
+	@java.lang.Override
 	public java.lang.Boolean executeAction() throws Exception
 	{
 		this.TemplateObject = __TemplateObject == null ? null : excelimporter.proxies.Template.initialize(getContext(), __TemplateObject);
@@ -59,7 +59,7 @@ public class StartImportByTemplate extends CustomJavaAction<java.lang.Boolean>
 	/**
 	 * Returns a string representation of this action
 	 */
-	@Override
+	@java.lang.Override
 	public java.lang.String toString()
 	{
 		return "StartImportByTemplate";

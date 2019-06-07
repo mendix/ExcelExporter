@@ -32,7 +32,7 @@ public class GetHeaderInformationFromExcelFile extends CustomJavaAction<java.lan
 		this.__ExcelFileDocument = ExcelFileDocument;
 	}
 
-	@Override
+	@java.lang.Override
 	public java.lang.Boolean executeAction() throws Exception
 	{
 		this.TemplateObject = __TemplateObject == null ? null : excelimporter.proxies.Template.initialize(getContext(), __TemplateObject);
@@ -48,7 +48,7 @@ public class GetHeaderInformationFromExcelFile extends CustomJavaAction<java.lan
 	/**
 	 * Returns a string representation of this action
 	 */
-	@Override
+	@java.lang.Override
 	public java.lang.String toString()
 	{
 		return "GetHeaderInformationFromExcelFile";
