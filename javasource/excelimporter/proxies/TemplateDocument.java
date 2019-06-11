@@ -24,6 +24,7 @@ public class TemplateDocument extends system.proxies.FileDocument
 		DeleteAfterDownload("DeleteAfterDownload"),
 		Contents("Contents"),
 		HasContents("HasContents"),
+		Size("Size"),
 		TemplateDocument_Template("ExcelImporter.TemplateDocument_Template");
 
 		private java.lang.String metaName;
@@ -33,7 +34,7 @@ public class TemplateDocument extends system.proxies.FileDocument
 			metaName = s;
 		}
 
-		@Override
+		@java.lang.Override
 		public java.lang.String toString()
 		{
 			return metaName;
@@ -55,7 +56,7 @@ public class TemplateDocument extends system.proxies.FileDocument
 	/**
 	 * @deprecated Use 'TemplateDocument.load(IContext, IMendixIdentifier)' instead.
 	 */
-	@Deprecated
+	@java.lang.Deprecated
 	public static excelimporter.proxies.TemplateDocument initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
 	{
 		return excelimporter.proxies.TemplateDocument.load(context, mendixIdentifier);
@@ -127,7 +128,7 @@ public class TemplateDocument extends system.proxies.FileDocument
 			getMendixObject().setValue(context, MemberNames.TemplateDocument_Template.toString(), templatedocument_template.getMendixObject().getId());
 	}
 
-	@Override
+	@java.lang.Override
 	public boolean equals(Object obj)
 	{
 		if (obj == this)
@@ -141,7 +142,7 @@ public class TemplateDocument extends system.proxies.FileDocument
 		return false;
 	}
 
-	@Override
+	@java.lang.Override
 	public int hashCode()
 	{
 		return getMendixObject().hashCode();
@@ -159,8 +160,8 @@ public class TemplateDocument extends system.proxies.FileDocument
 	 * @return String GUID from this object, format: ID_0000000000
 	 * @deprecated Use getMendixObject().getId().toLong() to get a unique identifier for this object.
 	 */
-	@Override
-	@Deprecated
+	@java.lang.Override
+	@java.lang.Deprecated
 	public java.lang.String getGUID()
 	{
 		return "ID_" + getMendixObject().getId().toLong();

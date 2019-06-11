@@ -36,6 +36,9 @@ public class MxCellStyle
 		BorderLeft("BorderLeft"),
 		BorderRight("BorderRight"),
 		BorderColor("BorderColor"),
+		Format("Format"),
+		DecimalPlaces("DecimalPlaces"),
+		DataFormatString("DataFormatString"),
 		MxCellStyle_Template("XLSReport.MxCellStyle_Template");
 
 		private java.lang.String metaName;
@@ -45,7 +48,7 @@ public class MxCellStyle
 			metaName = s;
 		}
 
-		@Override
+		@java.lang.Override
 		public java.lang.String toString()
 		{
 			return metaName;
@@ -71,7 +74,7 @@ public class MxCellStyle
 	/**
 	 * @deprecated Use 'MxCellStyle.load(IContext, IMendixIdentifier)' instead.
 	 */
-	@Deprecated
+	@java.lang.Deprecated
 	public static xlsreport.proxies.MxCellStyle initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
 	{
 		return xlsreport.proxies.MxCellStyle.load(context, mendixIdentifier);
@@ -748,6 +751,122 @@ public class MxCellStyle
 	}
 
 	/**
+	 * Set value of Format
+	 * @param format
+	 */
+	public final xlsreport.proxies.CellFormat getFormat()
+	{
+		return getFormat(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of Format
+	 */
+	public final xlsreport.proxies.CellFormat getFormat(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		Object obj = getMendixObject().getValue(context, MemberNames.Format.toString());
+		if (obj == null)
+			return null;
+
+		return xlsreport.proxies.CellFormat.valueOf((java.lang.String) obj);
+	}
+
+	/**
+	 * Set value of Format
+	 * @param format
+	 */
+	public final void setFormat(xlsreport.proxies.CellFormat format)
+	{
+		setFormat(getContext(), format);
+	}
+
+	/**
+	 * Set value of Format
+	 * @param context
+	 * @param format
+	 */
+	public final void setFormat(com.mendix.systemwideinterfaces.core.IContext context, xlsreport.proxies.CellFormat format)
+	{
+		if (format != null)
+			getMendixObject().setValue(context, MemberNames.Format.toString(), format.toString());
+		else
+			getMendixObject().setValue(context, MemberNames.Format.toString(), null);
+	}
+
+	/**
+	 * @return value of DecimalPlaces
+	 */
+	public final java.lang.Integer getDecimalPlaces()
+	{
+		return getDecimalPlaces(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of DecimalPlaces
+	 */
+	public final java.lang.Integer getDecimalPlaces(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.DecimalPlaces.toString());
+	}
+
+	/**
+	 * Set value of DecimalPlaces
+	 * @param decimalplaces
+	 */
+	public final void setDecimalPlaces(java.lang.Integer decimalplaces)
+	{
+		setDecimalPlaces(getContext(), decimalplaces);
+	}
+
+	/**
+	 * Set value of DecimalPlaces
+	 * @param context
+	 * @param decimalplaces
+	 */
+	public final void setDecimalPlaces(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer decimalplaces)
+	{
+		getMendixObject().setValue(context, MemberNames.DecimalPlaces.toString(), decimalplaces);
+	}
+
+	/**
+	 * @return value of DataFormatString
+	 */
+	public final java.lang.String getDataFormatString()
+	{
+		return getDataFormatString(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of DataFormatString
+	 */
+	public final java.lang.String getDataFormatString(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.DataFormatString.toString());
+	}
+
+	/**
+	 * Set value of DataFormatString
+	 * @param dataformatstring
+	 */
+	public final void setDataFormatString(java.lang.String dataformatstring)
+	{
+		setDataFormatString(getContext(), dataformatstring);
+	}
+
+	/**
+	 * Set value of DataFormatString
+	 * @param context
+	 * @param dataformatstring
+	 */
+	public final void setDataFormatString(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String dataformatstring)
+	{
+		getMendixObject().setValue(context, MemberNames.DataFormatString.toString(), dataformatstring);
+	}
+
+	/**
 	 * @return value of MxCellStyle_Template
 	 */
 	public final xlsreport.proxies.MxTemplate getMxCellStyle_Template() throws com.mendix.core.CoreException
@@ -806,7 +925,7 @@ public class MxCellStyle
 		return context;
 	}
 
-	@Override
+	@java.lang.Override
 	public boolean equals(Object obj)
 	{
 		if (obj == this)
@@ -820,7 +939,7 @@ public class MxCellStyle
 		return false;
 	}
 
-	@Override
+	@java.lang.Override
 	public int hashCode()
 	{
 		return getMendixObject().hashCode();
@@ -838,7 +957,7 @@ public class MxCellStyle
 	 * @return String GUID from this object, format: ID_0000000000
 	 * @deprecated Use getMendixObject().getId().toLong() to get a unique identifier for this object.
 	 */
-	@Deprecated
+	@java.lang.Deprecated
 	public java.lang.String getGUID()
 	{
 		return "ID_" + getMendixObject().getId().toLong();

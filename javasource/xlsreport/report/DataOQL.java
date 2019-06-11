@@ -12,17 +12,19 @@ import com.mendix.systemwideinterfaces.connectionbus.data.IDataTable;
 import com.mendix.systemwideinterfaces.connectionbus.requests.types.IOQLTextGetRequest;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
-
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import mxmodelreflection.proxies.MxObjectMember;
 import mxmodelreflection.proxies.MxObjectType;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import xlsreport.proxies.*;
-import xlsreport.report.data.*;
+import xlsreport.report.data.AttributeData;
+import xlsreport.report.data.ColumnPreset;
+import xlsreport.report.data.ObjectData;
+import xlsreport.report.data.ReferenceData;
+
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 
@@ -359,7 +361,7 @@ public class DataOQL
 			case Text:
 				return "'" + constraint.getConstraintText() + "'";
 			case Decimal:
-				return " " + constraint.getConstraintFloat() + "";
+				return " " + constraint.getConstraintDecimal() + "";
 			case Number:
 				return " " + constraint.getConstraintNumber() + "";
 			case YesNo:

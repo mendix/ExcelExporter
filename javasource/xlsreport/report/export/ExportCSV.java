@@ -1,5 +1,14 @@
 package xlsreport.report.export;
 
+import com.mendix.core.Core;
+import com.mendix.systemwideinterfaces.core.IContext;
+import com.mendix.systemwideinterfaces.core.IMendixObject;
+import com.opencsv.CSVWriter;
+import system.proxies.FileDocument;
+import xlsreport.proxies.MxSheet;
+import xlsreport.proxies.MxTemplate;
+import xlsreport.report.data.ColumnPreset;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -7,17 +16,6 @@ import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
-import system.proxies.FileDocument;
-import com.opencsv.CSVWriter;
-
-import com.mendix.core.Core;
-import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.systemwideinterfaces.core.IMendixObject;
-
-import xlsreport.proxies.MxSheet;
-import xlsreport.proxies.MxTemplate;
-import xlsreport.report.data.ColumnPreset;
 
 public class ExportCSV  extends Export
 {
@@ -50,7 +48,7 @@ public class ExportCSV  extends Export
 		// Create the OpenCSV writer
 		this.baos = new ByteArrayOutputStream();
 		
-		this.writer = new CSVWriter(new OutputStreamWriter(baos), separator, CSVWriter.DEFAULT_QUOTE_CHARACTER, "\r\n");
+		this.writer = new CSVWriter(new OutputStreamWriter(baos), separator, CSVWriter.DEFAULT_QUOTE_CHARACTER, '"', "\r\n");
 	}
 
 	@Override

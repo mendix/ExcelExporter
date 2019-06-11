@@ -47,7 +47,7 @@ public class GenerateExcelDoc extends CustomJavaAction<IMendixObject>
 		this.InputObject = InputObject;
 	}
 
-	@Override
+	@java.lang.Override
 	public IMendixObject executeAction() throws Exception
 	{
 		this.TemplateObject = __TemplateObject == null ? null : xlsreport.proxies.MxTemplate.initialize(getContext(), __TemplateObject);
@@ -151,7 +151,7 @@ public class GenerateExcelDoc extends CustomJavaAction<IMendixObject>
 	/**
 	 * Returns a string representation of this action
 	 */
-	@Override
+	@java.lang.Override
 	public java.lang.String toString()
 	{
 		return "GenerateExcelDoc";
