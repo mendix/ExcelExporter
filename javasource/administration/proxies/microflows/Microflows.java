@@ -15,12 +15,12 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
 public class Microflows
 {
 	// These are the microflows for the Administration module
-	public static void changeMyPassword(IContext context, administration.proxies.Account _account)
+	public static void changeMyPassword(IContext context, administration.proxies.AccountPasswordData _accountPasswordData)
 	{
 		try
 		{
 			Map<java.lang.String, Object> params = new HashMap<java.lang.String, Object>();
-			params.put("Account", _account == null ? null : _account.getMendixObject());
+			params.put("AccountPasswordData", _accountPasswordData == null ? null : _accountPasswordData.getMendixObject());
 			Core.execute(context, "Administration.ChangeMyPassword", params);
 		}
 		catch (CoreException e)
@@ -28,12 +28,12 @@ public class Microflows
 			throw new MendixRuntimeException(e);
 		}
 	}
-	public static void changePassword(IContext context, administration.proxies.Account _account)
+	public static void changePassword(IContext context, administration.proxies.AccountPasswordData _accountPasswordData)
 	{
 		try
 		{
 			Map<java.lang.String, Object> params = new HashMap<java.lang.String, Object>();
-			params.put("Account", _account == null ? null : _account.getMendixObject());
+			params.put("AccountPasswordData", _accountPasswordData == null ? null : _accountPasswordData.getMendixObject());
 			Core.execute(context, "Administration.ChangePassword", params);
 		}
 		catch (CoreException e)
@@ -47,6 +47,18 @@ public class Microflows
 		{
 			Map<java.lang.String, Object> params = new HashMap<java.lang.String, Object>();
 			Core.execute(context, "Administration.ManageMyAccount", params);
+		}
+		catch (CoreException e)
+		{
+			throw new MendixRuntimeException(e);
+		}
+	}
+	public static void newAccount(IContext context)
+	{
+		try
+		{
+			Map<java.lang.String, Object> params = new HashMap<java.lang.String, Object>();
+			Core.execute(context, "Administration.NewAccount", params);
 		}
 		catch (CoreException e)
 		{
@@ -89,12 +101,12 @@ public class Microflows
 			throw new MendixRuntimeException(e);
 		}
 	}
-	public static void saveNewAccount(IContext context, administration.proxies.Account _account)
+	public static void saveNewAccount(IContext context, administration.proxies.AccountPasswordData _accountPasswordData)
 	{
 		try
 		{
 			Map<java.lang.String, Object> params = new HashMap<java.lang.String, Object>();
-			params.put("Account", _account == null ? null : _account.getMendixObject());
+			params.put("AccountPasswordData", _accountPasswordData == null ? null : _accountPasswordData.getMendixObject());
 			Core.execute(context, "Administration.SaveNewAccount", params);
 		}
 		catch (CoreException e)
