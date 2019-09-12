@@ -17,9 +17,8 @@ public class Account extends system.proxies.User
 	public enum MemberNames
 	{
 		FullName("FullName"),
-		OldPassword("OldPassword"),
-		NewPassword("NewPassword"),
-		ConfirmPassword("ConfirmPassword"),
+		Email("Email"),
+		IsLocalUser("IsLocalUser"),
 		Name("Name"),
 		Password("Password"),
 		LastLogin("LastLogin"),
@@ -127,111 +126,75 @@ public class Account extends system.proxies.User
 	}
 
 	/**
-	 * @return value of OldPassword
+	 * @return value of Email
 	 */
-	public final java.lang.String getOldPassword()
+	public final java.lang.String getEmail()
 	{
-		return getOldPassword(getContext());
+		return getEmail(getContext());
 	}
 
 	/**
 	 * @param context
-	 * @return value of OldPassword
+	 * @return value of Email
 	 */
-	public final java.lang.String getOldPassword(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getEmail(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (java.lang.String) getMendixObject().getValue(context, MemberNames.OldPassword.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Email.toString());
 	}
 
 	/**
-	 * Set value of OldPassword
-	 * @param oldpassword
+	 * Set value of Email
+	 * @param email
 	 */
-	public final void setOldPassword(java.lang.String oldpassword)
+	public final void setEmail(java.lang.String email)
 	{
-		setOldPassword(getContext(), oldpassword);
+		setEmail(getContext(), email);
 	}
 
 	/**
-	 * Set value of OldPassword
+	 * Set value of Email
 	 * @param context
-	 * @param oldpassword
+	 * @param email
 	 */
-	public final void setOldPassword(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String oldpassword)
+	public final void setEmail(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String email)
 	{
-		getMendixObject().setValue(context, MemberNames.OldPassword.toString(), oldpassword);
+		getMendixObject().setValue(context, MemberNames.Email.toString(), email);
 	}
 
 	/**
-	 * @return value of NewPassword
+	 * @return value of IsLocalUser
 	 */
-	public final java.lang.String getNewPassword()
+	public final java.lang.Boolean getIsLocalUser()
 	{
-		return getNewPassword(getContext());
-	}
-
-	/**
-	 * @param context
-	 * @return value of NewPassword
-	 */
-	public final java.lang.String getNewPassword(com.mendix.systemwideinterfaces.core.IContext context)
-	{
-		return (java.lang.String) getMendixObject().getValue(context, MemberNames.NewPassword.toString());
-	}
-
-	/**
-	 * Set value of NewPassword
-	 * @param newpassword
-	 */
-	public final void setNewPassword(java.lang.String newpassword)
-	{
-		setNewPassword(getContext(), newpassword);
-	}
-
-	/**
-	 * Set value of NewPassword
-	 * @param context
-	 * @param newpassword
-	 */
-	public final void setNewPassword(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String newpassword)
-	{
-		getMendixObject().setValue(context, MemberNames.NewPassword.toString(), newpassword);
-	}
-
-	/**
-	 * @return value of ConfirmPassword
-	 */
-	public final java.lang.String getConfirmPassword()
-	{
-		return getConfirmPassword(getContext());
+		return getIsLocalUser(getContext());
 	}
 
 	/**
 	 * @param context
-	 * @return value of ConfirmPassword
+	 * @return value of IsLocalUser
 	 */
-	public final java.lang.String getConfirmPassword(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getIsLocalUser(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (java.lang.String) getMendixObject().getValue(context, MemberNames.ConfirmPassword.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.IsLocalUser.toString());
 	}
 
 	/**
-	 * Set value of ConfirmPassword
-	 * @param confirmpassword
+	 * Set value of IsLocalUser
+	 * @param islocaluser
 	 */
-	public final void setConfirmPassword(java.lang.String confirmpassword)
+	public final void setIsLocalUser(java.lang.Boolean islocaluser)
 	{
-		setConfirmPassword(getContext(), confirmpassword);
+		setIsLocalUser(getContext(), islocaluser);
 	}
 
 	/**
-	 * Set value of ConfirmPassword
+	 * Set value of IsLocalUser
 	 * @param context
-	 * @param confirmpassword
+	 * @param islocaluser
 	 */
-	public final void setConfirmPassword(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String confirmpassword)
+	public final void setIsLocalUser(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean islocaluser)
 	{
-		getMendixObject().setValue(context, MemberNames.ConfirmPassword.toString(), confirmpassword);
+		getMendixObject().setValue(context, MemberNames.IsLocalUser.toString(), islocaluser);
 	}
 
 	@java.lang.Override
