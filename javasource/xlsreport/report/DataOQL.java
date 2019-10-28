@@ -639,8 +639,7 @@ public class DataOQL
 				{
 					obj = mainObject;
 				}
-				String attribute = obj.getAlias() + "."
-						+ sorting.getAttribute();
+				String attribute = obj.getAlias() + ".\"" + sorting.getAttribute() + "\"";
 				switch (sorting.getSortingDirection())
 				{
 					case Asc:
