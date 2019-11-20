@@ -6,8 +6,8 @@ package xlsreport.proxies;
 
 public enum DateTimeConstraint
 {
-	Before(new java.lang.String[][] { new java.lang.String[] { "en_US", "Before" }, new java.lang.String[] { "nl_NL", "Voor" } }),
-	After(new java.lang.String[][] { new java.lang.String[] { "en_US", "After" }, new java.lang.String[] { "nl_NL", "Later" } });
+	Before(new java.lang.String[][] { new java.lang.String[] { "en_US", "Before" } }),
+	After(new java.lang.String[][] { new java.lang.String[] { "en_US", "After" } });
 
 	private java.util.Map<java.lang.String, java.lang.String> captions;
 

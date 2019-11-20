@@ -6,9 +6,9 @@ package xlsreport.proxies;
 
 public enum StaticType
 {
-	StaticText(new java.lang.String[][] { new java.lang.String[] { "en_US", "Static Text" }, new java.lang.String[] { "nl_NL", "Statische tekst" } }),
-	ObjectMember(new java.lang.String[][] { new java.lang.String[] { "en_US", "Object data" }, new java.lang.String[] { "nl_NL", "Object data" } }),
-	Aggregate(new java.lang.String[][] { new java.lang.String[] { "en_US", "Aggregate function" }, new java.lang.String[] { "nl_NL", "Aggregeer functie" } });
+	StaticText(new java.lang.String[][] { new java.lang.String[] { "en_US", "Static Text" } }),
+	ObjectMember(new java.lang.String[][] { new java.lang.String[] { "en_US", "Object data" } }),
+	Aggregate(new java.lang.String[][] { new java.lang.String[] { "en_US", "Aggregate function" } });
 
 	private java.util.Map<java.lang.String, java.lang.String> captions;
 

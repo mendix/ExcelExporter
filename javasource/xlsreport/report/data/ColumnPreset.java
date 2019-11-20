@@ -25,6 +25,7 @@ public class ColumnPreset
 	private AggregateFunction resultAggrFunction;
 	private DescriptiveStatistics statistics;
 	private int valuesCounter;
+	private String microflowName;
 	
 	/**
 	 * Constructor for XLS columns to contains styling
@@ -34,13 +35,14 @@ public class ColumnPreset
 	 * @param firstPath The first object where the XPath will start to an attribute 
 	 * @param styleGuid The GUID of the MxCellStyle object
 	 */
-	public ColumnPreset(String name, boolean nameAsHeader, int columnNr, MxXPath firstPath, long styleGuid)
+	public ColumnPreset(String name, boolean nameAsHeader, int columnNr, MxXPath firstPath, long styleGuid, String microflowName)
 	{
 		this.name = name;
 		this.nameAsHeader = nameAsHeader;
 		this.columnNr = columnNr;
 		this.firstPath = firstPath;
 		this.styleGuid = styleGuid;
+		this.microflowName = microflowName;
 	}	
 
 	/**
@@ -49,12 +51,13 @@ public class ColumnPreset
 	 * @param columnNr The position of the column, start from 0
 	 * @param firstPath The first object where the XPath will start to an attribute 
 	 */
-	public ColumnPreset(String name, int columnNr, MxXPath firstPath)
+	public ColumnPreset(String name, int columnNr, MxXPath firstPath, String microflowName)
 	{
 		this.name = name;
 		this.columnNr = columnNr;
 		this.firstPath = firstPath;
 		this.nameAsHeader = true;
+		this.microflowName = microflowName;
 	}
 	
 	public void addDataAggregation(AggregateFunction aggrFunction)
@@ -172,5 +175,7 @@ public class ColumnPreset
 	public void setDateTimeFormat(boolean dateTimeFormat)
 	{
 		this.dateTimeFormat = dateTimeFormat;
-	}	
+	}
+
+	public String getMicroflowName(){ return microflowName;};
 }

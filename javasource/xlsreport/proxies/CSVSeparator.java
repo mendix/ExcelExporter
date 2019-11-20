@@ -6,9 +6,9 @@ package xlsreport.proxies;
 
 public enum CSVSeparator
 {
-	Comma(new java.lang.String[][] { new java.lang.String[] { "en_US", "Comma" }, new java.lang.String[] { "nl_NL", "Komma" } }),
-	Semicolon(new java.lang.String[][] { new java.lang.String[] { "en_US", "Semicolon" }, new java.lang.String[] { "nl_NL", "Puntkomma" } }),
-	Tab(new java.lang.String[][] { new java.lang.String[] { "en_US", "Tab" }, new java.lang.String[] { "nl_NL", "Tab" } });
+	Comma(new java.lang.String[][] { new java.lang.String[] { "en_US", "Comma" } }),
+	Semicolon(new java.lang.String[][] { new java.lang.String[] { "en_US", "Semicolon" } }),
+	Tab(new java.lang.String[][] { new java.lang.String[] { "en_US", "Tab" } });
 
 	private java.util.Map<java.lang.String, java.lang.String> captions;
 

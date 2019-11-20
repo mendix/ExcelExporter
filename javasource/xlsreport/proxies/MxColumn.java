@@ -23,8 +23,10 @@ public class MxColumn extends xlsreport.proxies.MxData
 		DataAggregateFunction("DataAggregateFunction"),
 		ResultAggregate("ResultAggregate"),
 		ResultAggregateFunction("ResultAggregateFunction"),
+		ParseMicroflow("ParseMicroflow"),
 		Name("Name"),
 		Status("Status"),
+		MxColumn_Microflows("XLSReport.MxColumn_Microflows"),
 		MxData_MxSheet("XLSReport.MxData_MxSheet"),
 		MxData_MxCellStyle("XLSReport.MxData_MxCellStyle"),
 		MxXPath_MxData("XLSReport.MxXPath_MxData");
@@ -353,6 +355,85 @@ public class MxColumn extends xlsreport.proxies.MxData
 			getMendixObject().setValue(context, MemberNames.ResultAggregateFunction.toString(), resultaggregatefunction.toString());
 		else
 			getMendixObject().setValue(context, MemberNames.ResultAggregateFunction.toString(), null);
+	}
+
+	/**
+	 * @return value of ParseMicroflow
+	 */
+	public final java.lang.Boolean getParseMicroflow()
+	{
+		return getParseMicroflow(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of ParseMicroflow
+	 */
+	public final java.lang.Boolean getParseMicroflow(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.ParseMicroflow.toString());
+	}
+
+	/**
+	 * Set value of ParseMicroflow
+	 * @param parsemicroflow
+	 */
+	public final void setParseMicroflow(java.lang.Boolean parsemicroflow)
+	{
+		setParseMicroflow(getContext(), parsemicroflow);
+	}
+
+	/**
+	 * Set value of ParseMicroflow
+	 * @param context
+	 * @param parsemicroflow
+	 */
+	public final void setParseMicroflow(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean parsemicroflow)
+	{
+		getMendixObject().setValue(context, MemberNames.ParseMicroflow.toString(), parsemicroflow);
+	}
+
+	/**
+	 * @return value of MxColumn_Microflows
+	 */
+	public final mxmodelreflection.proxies.Microflows getMxColumn_Microflows() throws com.mendix.core.CoreException
+	{
+		return getMxColumn_Microflows(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of MxColumn_Microflows
+	 */
+	public final mxmodelreflection.proxies.Microflows getMxColumn_Microflows(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
+	{
+		mxmodelreflection.proxies.Microflows result = null;
+		com.mendix.systemwideinterfaces.core.IMendixIdentifier identifier = getMendixObject().getValue(context, MemberNames.MxColumn_Microflows.toString());
+		if (identifier != null)
+			result = mxmodelreflection.proxies.Microflows.load(context, identifier);
+		return result;
+	}
+
+	/**
+	 * Set value of MxColumn_Microflows
+	 * @param mxcolumn_microflows
+	 */
+	public final void setMxColumn_Microflows(mxmodelreflection.proxies.Microflows mxcolumn_microflows)
+	{
+		setMxColumn_Microflows(getContext(), mxcolumn_microflows);
+	}
+
+	/**
+	 * Set value of MxColumn_Microflows
+	 * @param context
+	 * @param mxcolumn_microflows
+	 */
+	public final void setMxColumn_Microflows(com.mendix.systemwideinterfaces.core.IContext context, mxmodelreflection.proxies.Microflows mxcolumn_microflows)
+	{
+		if (mxcolumn_microflows == null)
+			getMendixObject().setValue(context, MemberNames.MxColumn_Microflows.toString(), null);
+		else
+			getMendixObject().setValue(context, MemberNames.MxColumn_Microflows.toString(), mxcolumn_microflows.getMendixObject().getId());
 	}
 
 	@java.lang.Override
