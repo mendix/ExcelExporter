@@ -6,9 +6,9 @@ package xlsreport.proxies;
 
 public enum TextVerticalAlignment
 {
-	Top(new java.lang.String[][] { new java.lang.String[] { "en_US", "Top" }, new java.lang.String[] { "nl_NL", "Boven" } }),
-	Middle(new java.lang.String[][] { new java.lang.String[] { "en_US", "Middle" }, new java.lang.String[] { "nl_NL", "Midden" } }),
-	Bottom(new java.lang.String[][] { new java.lang.String[] { "en_US", "Bottom" }, new java.lang.String[] { "nl_NL", "Onder" } });
+	Top(new java.lang.String[][] { new java.lang.String[] { "en_US", "Top" } }),
+	Middle(new java.lang.String[][] { new java.lang.String[] { "en_US", "Middle" } }),
+	Bottom(new java.lang.String[][] { new java.lang.String[] { "en_US", "Bottom" } });
 
 	private java.util.Map<java.lang.String, java.lang.String> captions;
 

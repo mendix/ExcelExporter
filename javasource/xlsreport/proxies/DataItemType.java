@@ -6,8 +6,8 @@ package xlsreport.proxies;
 
 public enum DataItemType
 {
-	StaticType(new java.lang.String[][] { new java.lang.String[] { "en_US", "StaticType" }, new java.lang.String[] { "nl_NL", "Statische type" } }),
-	DynamicType(new java.lang.String[][] { new java.lang.String[] { "en_US", "DynamicType" }, new java.lang.String[] { "nl_NL", "Dupliceer" } });
+	StaticType(new java.lang.String[][] { new java.lang.String[] { "en_US", "StaticType" } }),
+	DynamicType(new java.lang.String[][] { new java.lang.String[] { "en_US", "DynamicType" } });
 
 	private java.util.Map<java.lang.String, java.lang.String> captions;
 

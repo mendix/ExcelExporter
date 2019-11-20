@@ -6,7 +6,7 @@ package odm.proxies;
 
 public enum OrderStatus
 {
-	NewOrder(new java.lang.String[][] { new java.lang.String[] { "en_US", "NewOrder" }, new java.lang.String[] { "nl_NL", "Nieuwe order" } }),
+	NewOrder(new java.lang.String[][] { new java.lang.String[] { "en_US", "New Order" }, new java.lang.String[] { "nl_NL", "Nieuwe order" } }),
 	Invoiced(new java.lang.String[][] { new java.lang.String[] { "en_US", "Invoiced" }, new java.lang.String[] { "nl_NL", "Gefactureerd" } });
 
 	private java.util.Map<java.lang.String, java.lang.String> captions;

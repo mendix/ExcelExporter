@@ -6,11 +6,11 @@ package xlsreport.proxies;
 
 public enum AggregateFunction
 {
-	Sum(new java.lang.String[][] { new java.lang.String[] { "en_US", "Sum" }, new java.lang.String[] { "nl_NL", "Optellen" } }),
-	Max(new java.lang.String[][] { new java.lang.String[] { "en_US", "Max" }, new java.lang.String[] { "nl_NL", "Max" } }),
-	Min(new java.lang.String[][] { new java.lang.String[] { "en_US", "Min" }, new java.lang.String[] { "nl_NL", "Min" } }),
-	Count(new java.lang.String[][] { new java.lang.String[] { "en_US", "Count" }, new java.lang.String[] { "nl_NL", "Aantal" } }),
-	Average(new java.lang.String[][] { new java.lang.String[] { "en_US", "Average" }, new java.lang.String[] { "nl_NL", "Gemiddelde" } });
+	Sum(new java.lang.String[][] { new java.lang.String[] { "en_US", "Sum" } }),
+	Max(new java.lang.String[][] { new java.lang.String[] { "en_US", "Max" } }),
+	Min(new java.lang.String[][] { new java.lang.String[] { "en_US", "Min" } }),
+	Count(new java.lang.String[][] { new java.lang.String[] { "en_US", "Count" } }),
+	Average(new java.lang.String[][] { new java.lang.String[] { "en_US", "Average" } });
 
 	private java.util.Map<java.lang.String, java.lang.String> captions;
 

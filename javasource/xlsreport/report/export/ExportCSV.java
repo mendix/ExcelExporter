@@ -67,6 +67,13 @@ public class ExportCSV  extends Export
 			for(int e = 0; e < table[i].length; e++)
 			{
 				Object value = table[i][e];
+				//check if there is a microflow parser
+				ColumnPreset columnPreset = mxColumnList.get(e);
+				if (columnPreset.getMicroflowName() != null && value != null){
+					//replace the value of data with the new microflow parsed value
+					value = new microflowParser().microflowParser(context, columnPreset.getMicroflowName(), value.toString());
+
+				}
 				if(value instanceof Date)
 				{
 					value = this.dateFormat.format((Date) value);

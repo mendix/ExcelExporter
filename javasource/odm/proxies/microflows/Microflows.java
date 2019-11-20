@@ -91,6 +91,19 @@ public class Microflows
 			throw new MendixRuntimeException(e);
 		}
 	}
+	public static java.lang.String parseMicroflow(IContext context, java.lang.String _value)
+	{
+		try
+		{
+			Map<java.lang.String, Object> params = new HashMap<java.lang.String, Object>();
+			params.put("Value", _value);
+			return (java.lang.String)Core.execute(context, "ODM.ParseMicroflow", params);
+		}
+		catch (CoreException e)
+		{
+			throw new MendixRuntimeException(e);
+		}
+	}
 	public static java.lang.String vA_ProductName(IContext context, odm.proxies.Product _product)
 	{
 		try

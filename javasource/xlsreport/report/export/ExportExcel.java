@@ -26,6 +26,7 @@ import xlsreport.proxies.MxTemplate;
 import xlsreport.report.Aggregator;
 import xlsreport.report.Styling;
 import xlsreport.report.data.ColumnPreset;
+import xlsreport.report.export.microflowParser;
 
 import com.mendix.core.Core;
 import com.mendix.core.CoreException;
@@ -130,6 +131,12 @@ public class ExportExcel extends Export
 					// Get the basis data
 					Object data = table[i][e];
 					ColumnPreset columnPreset = ColumnPresetList.get(e);
+					//check if there is a microflow parser
+                    if (columnPreset.getMicroflowName() != null && data != null){
+                        //replace the value of data with the new microflow parsed value
+                       data = new microflowParser().microflowParser(context, columnPreset.getMicroflowName(), data.toString());
+
+                    }
 					if(columnPreset.isResultAggregation())
 					{
 						double value = ((Number)data).doubleValue();

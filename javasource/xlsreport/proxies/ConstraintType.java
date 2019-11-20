@@ -6,16 +6,16 @@ package xlsreport.proxies;
 
 public enum ConstraintType
 {
-	Contains(new java.lang.String[][] { new java.lang.String[] { "en_US", "Contains" }, new java.lang.String[] { "nl_NL", "Bevat" } }),
-	StartWith(new java.lang.String[][] { new java.lang.String[] { "en_US", "Start with" }, new java.lang.String[] { "nl_NL", "Start met" } }),
-	Greater(new java.lang.String[][] { new java.lang.String[] { "en_US", "Greater" }, new java.lang.String[] { "nl_NL", "Groter dan" } }),
-	GreaterEqual(new java.lang.String[][] { new java.lang.String[] { "en_US", "Greater and equal" }, new java.lang.String[] { "nl_NL", "Groter en gelijk aan" } }),
-	Equal(new java.lang.String[][] { new java.lang.String[] { "en_US", "Equal" }, new java.lang.String[] { "nl_NL", "Gelijk aan" } }),
-	NotEqual(new java.lang.String[][] { new java.lang.String[] { "en_US", "NotEqual" }, new java.lang.String[] { "nl_NL", "Niet gelijk aan" } }),
-	SmallerEqual(new java.lang.String[][] { new java.lang.String[] { "en_US", "Smaller and equal" }, new java.lang.String[] { "nl_NL", "Kleiner en gelijk aan" } }),
-	Smaller(new java.lang.String[][] { new java.lang.String[] { "en_US", "Smaller" }, new java.lang.String[] { "nl_NL", "Kleiner dan" } }),
-	_empty(new java.lang.String[][] { new java.lang.String[] { "en_US", "Empty" }, new java.lang.String[] { "nl_NL", "Leeg" } }),
-	NotEmpty(new java.lang.String[][] { new java.lang.String[] { "en_US", "Not empty" }, new java.lang.String[] { "nl_NL", "Niet leeg" } });
+	Contains(new java.lang.String[][] { new java.lang.String[] { "en_US", "Contains" } }),
+	StartWith(new java.lang.String[][] { new java.lang.String[] { "en_US", "Start with" } }),
+	Greater(new java.lang.String[][] { new java.lang.String[] { "en_US", "Greater" } }),
+	GreaterEqual(new java.lang.String[][] { new java.lang.String[] { "en_US", "Greater and equal" } }),
+	Equal(new java.lang.String[][] { new java.lang.String[] { "en_US", "Equal" } }),
+	NotEqual(new java.lang.String[][] { new java.lang.String[] { "en_US", "NotEqual" } }),
+	SmallerEqual(new java.lang.String[][] { new java.lang.String[] { "en_US", "Smaller and equal" } }),
+	Smaller(new java.lang.String[][] { new java.lang.String[] { "en_US", "Smaller" } }),
+	_empty(new java.lang.String[][] { new java.lang.String[] { "en_US", "Empty" } }),
+	NotEmpty(new java.lang.String[][] { new java.lang.String[] { "en_US", "Not empty" } });
 
 	private java.util.Map<java.lang.String, java.lang.String> captions;
 

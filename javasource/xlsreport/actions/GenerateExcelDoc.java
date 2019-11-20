@@ -90,8 +90,14 @@ public class GenerateExcelDoc extends CustomJavaAction<IMendixObject>
 					case CSV:
 						for (IMendixObject obj : columns) {
 							MxColumn mxColumn = MxColumn.initialize(this.getContext(), obj);
+							String mfName;
+							if (mxColumn.getMxColumn_Microflows() != null){
+								mfName = mxColumn.getMxColumn_Microflows().getCompleteName();
+							} else {
+								mfName = null;
+							}
 							if (checkValidColumn(mxColumn)) {
-								ColumnPreset preset = new ColumnPreset(mxColumn.getName(), mxColumn.getColumnNumber(), mxColumn.getMxXPath_MxData());
+								ColumnPreset preset = new ColumnPreset(mxColumn.getName(), mxColumn.getColumnNumber(), mxColumn.getMxXPath_MxData(), mfName);
 								if (mxColumn.getDataAggregate()) {
 									preset.addDataAggregation(mxColumn.getDataAggregateFunction());
 								}
@@ -112,7 +118,13 @@ public class GenerateExcelDoc extends CustomJavaAction<IMendixObject>
 								} else {
 									styleGuid = defaultStyle;
 								}
-								ColumnPreset preset = new ColumnPreset(mxColumn.getName(), mxColumn.getNameAsHeader(), mxColumn.getColumnNumber(), mxColumn.getMxXPath_MxData(), styleGuid);
+								String mfName;
+								if (mxColumn.getMxColumn_Microflows() != null){
+									mfName = mxColumn.getMxColumn_Microflows().getCompleteName();
+								} else {
+									mfName = null;
+								}
+								ColumnPreset preset = new ColumnPreset(mxColumn.getName(), mxColumn.getNameAsHeader(), mxColumn.getColumnNumber(), mxColumn.getMxXPath_MxData(), styleGuid,  mfName);
 								if (mxColumn.getResultAggregate()) {
 									preset.addResultAggregation(mxColumn.getResultAggregateFunction());
 								}

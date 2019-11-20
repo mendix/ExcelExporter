@@ -6,9 +6,9 @@ package xlsreport.proxies;
 
 public enum TextAlignment
 {
-	Left(new java.lang.String[][] { new java.lang.String[] { "en_US", "Left" }, new java.lang.String[] { "nl_NL", "Links" } }),
-	Center(new java.lang.String[][] { new java.lang.String[] { "en_US", "Center" }, new java.lang.String[] { "nl_NL", "Gecentreerd" } }),
-	Right(new java.lang.String[][] { new java.lang.String[] { "en_US", "Right" }, new java.lang.String[] { "nl_NL", "Rechts" } });
+	Left(new java.lang.String[][] { new java.lang.String[] { "en_US", "Left" } }),
+	Center(new java.lang.String[][] { new java.lang.String[] { "en_US", "Center" } }),
+	Right(new java.lang.String[][] { new java.lang.String[] { "en_US", "Right" } });
 
 	private java.util.Map<java.lang.String, java.lang.String> captions;
 

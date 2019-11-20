@@ -6,8 +6,8 @@ package xlsreport.proxies;
 
 public enum MicroInputType
 {
-	Attribute(new java.lang.String[][] { new java.lang.String[] { "en_US", "Attribute" }, new java.lang.String[] { "nl_NL", "Attribuut" } }),
-	Reference(new java.lang.String[][] { new java.lang.String[] { "en_US", "Reference" }, new java.lang.String[] { "nl_NL", "Referentie" } });
+	Attribute(new java.lang.String[][] { new java.lang.String[] { "en_US", "Attribute" } }),
+	Reference(new java.lang.String[][] { new java.lang.String[] { "en_US", "Reference" } });
 
 	private java.util.Map<java.lang.String, java.lang.String> captions;
 
