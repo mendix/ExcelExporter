@@ -6,10 +6,10 @@ package xlsreport.proxies;
 
 public enum JOINType
 {
-	LEFT(new java.lang.String[][] { new java.lang.String[] { "en_US", "LEFT JOIN" }, new java.lang.String[] { "nl_NL", "LEFT JOIN" } }),
-	INNER(new java.lang.String[][] { new java.lang.String[] { "en_US", "INNER JOIN" }, new java.lang.String[] { "nl_NL", "INNER JOIN" } }),
-	RIGHT(new java.lang.String[][] { new java.lang.String[] { "en_US", "RIGHT JOIN" }, new java.lang.String[] { "nl_NL", "RIGHT JOIN" } }),
-	FULL(new java.lang.String[][] { new java.lang.String[] { "en_US", "FULL JOIN" }, new java.lang.String[] { "nl_NL", "FULL JOIN" } });
+	LEFT(new java.lang.String[][] { new java.lang.String[] { "en_US", "LEFT JOIN" } }),
+	INNER(new java.lang.String[][] { new java.lang.String[] { "en_US", "INNER JOIN" } }),
+	RIGHT(new java.lang.String[][] { new java.lang.String[] { "en_US", "RIGHT JOIN" } }),
+	FULL(new java.lang.String[][] { new java.lang.String[] { "en_US", "FULL JOIN" } });
 
 	private java.util.Map<java.lang.String, java.lang.String> captions;
 

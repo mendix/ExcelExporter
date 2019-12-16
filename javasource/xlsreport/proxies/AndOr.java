@@ -6,8 +6,8 @@ package xlsreport.proxies;
 
 public enum AndOr
 {
-	AND(new java.lang.String[][] { new java.lang.String[] { "en_US", "And" }, new java.lang.String[] { "nl_NL", "En" } }),
-	OR(new java.lang.String[][] { new java.lang.String[] { "en_US", "Or" }, new java.lang.String[] { "nl_NL", "Of" } });
+	AND(new java.lang.String[][] { new java.lang.String[] { "en_US", "And" } }),
+	OR(new java.lang.String[][] { new java.lang.String[] { "en_US", "Or" } });
 
 	private java.util.Map<java.lang.String, java.lang.String> captions;
 

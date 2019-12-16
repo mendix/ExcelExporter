@@ -6,21 +6,21 @@ package xlsreport.proxies;
 
 public enum MxColor
 {
-	Blank(new java.lang.String[][] { new java.lang.String[] { "en_US", "None" }, new java.lang.String[] { "nl_NL", "Geen" } }),
-	Black(new java.lang.String[][] { new java.lang.String[] { "en_US", "Black" }, new java.lang.String[] { "nl_NL", "Zwart" } }),
-	White(new java.lang.String[][] { new java.lang.String[] { "en_US", "White" }, new java.lang.String[] { "nl_NL", "Wit" } }),
-	Pink(new java.lang.String[][] { new java.lang.String[] { "en_US", "Pink" }, new java.lang.String[] { "nl_NL", "Rose" } }),
-	Red(new java.lang.String[][] { new java.lang.String[] { "en_US", "Red" }, new java.lang.String[] { "nl_NL", "Rood" } }),
-	Orange(new java.lang.String[][] { new java.lang.String[] { "en_US", "Orange" }, new java.lang.String[] { "nl_NL", "Oranje" } }),
-	Yellow(new java.lang.String[][] { new java.lang.String[] { "en_US", "Yellow" }, new java.lang.String[] { "nl_NL", "Geel" } }),
-	Green(new java.lang.String[][] { new java.lang.String[] { "en_US", "Green" }, new java.lang.String[] { "nl_NL", "Groen" } }),
-	Light_Blue(new java.lang.String[][] { new java.lang.String[] { "en_US", "Light Blue" }, new java.lang.String[] { "nl_NL", "Licht blauw" } }),
-	Blue(new java.lang.String[][] { new java.lang.String[] { "en_US", "Blue" }, new java.lang.String[] { "nl_NL", "Blauw" } }),
-	Brown(new java.lang.String[][] { new java.lang.String[] { "en_US", "Brown" }, new java.lang.String[] { "nl_NL", "Bruin" } }),
-	Gray_1(new java.lang.String[][] { new java.lang.String[] { "en_US", "Gray 25%" }, new java.lang.String[] { "nl_NL", "Grijs 25%" } }),
-	Gray_2(new java.lang.String[][] { new java.lang.String[] { "en_US", "Gray 40%" }, new java.lang.String[] { "nl_NL", "Grijs 40%" } }),
-	Gray_3(new java.lang.String[][] { new java.lang.String[] { "en_US", "Gray 50%" }, new java.lang.String[] { "nl_NL", "Grijs 50%" } }),
-	Gray_4(new java.lang.String[][] { new java.lang.String[] { "en_US", "Gray 80%" }, new java.lang.String[] { "nl_NL", "Grijs 80%" } });
+	Blank(new java.lang.String[][] { new java.lang.String[] { "en_US", "None" } }),
+	Black(new java.lang.String[][] { new java.lang.String[] { "en_US", "Black" } }),
+	White(new java.lang.String[][] { new java.lang.String[] { "en_US", "White" } }),
+	Pink(new java.lang.String[][] { new java.lang.String[] { "en_US", "Pink" } }),
+	Red(new java.lang.String[][] { new java.lang.String[] { "en_US", "Red" } }),
+	Orange(new java.lang.String[][] { new java.lang.String[] { "en_US", "Orange" } }),
+	Yellow(new java.lang.String[][] { new java.lang.String[] { "en_US", "Yellow" } }),
+	Green(new java.lang.String[][] { new java.lang.String[] { "en_US", "Green" } }),
+	Light_Blue(new java.lang.String[][] { new java.lang.String[] { "en_US", "Light Blue" } }),
+	Blue(new java.lang.String[][] { new java.lang.String[] { "en_US", "Blue" } }),
+	Brown(new java.lang.String[][] { new java.lang.String[] { "en_US", "Brown" } }),
+	Gray_1(new java.lang.String[][] { new java.lang.String[] { "en_US", "Gray 25%" } }),
+	Gray_2(new java.lang.String[][] { new java.lang.String[] { "en_US", "Gray 40%" } }),
+	Gray_3(new java.lang.String[][] { new java.lang.String[] { "en_US", "Gray 50%" } }),
+	Gray_4(new java.lang.String[][] { new java.lang.String[] { "en_US", "Gray 80%" } });
 
 	private java.util.Map<java.lang.String, java.lang.String> captions;
 
