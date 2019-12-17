@@ -23,7 +23,6 @@ public class TestPattern
 		DisplayPattern("DisplayPattern"),
 		AttributeTypeEnum("AttributeTypeEnum"),
 		BooleanAttribute("BooleanAttribute"),
-		FloatAttribute("FloatAttribute"),
 		DecimalAttribute("DecimalAttribute"),
 		DateTimeAttribute("DateTimeAttribute"),
 		IntegerAttribute("IntegerAttribute"),
@@ -230,42 +229,6 @@ public class TestPattern
 	public final void setBooleanAttribute(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean booleanattribute)
 	{
 		getMendixObject().setValue(context, MemberNames.BooleanAttribute.toString(), booleanattribute);
-	}
-
-	/**
-	 * @return value of FloatAttribute
-	 */
-	public final java.math.BigDecimal getFloatAttribute()
-	{
-		return getFloatAttribute(getContext());
-	}
-
-	/**
-	 * @param context
-	 * @return value of FloatAttribute
-	 */
-	public final java.math.BigDecimal getFloatAttribute(com.mendix.systemwideinterfaces.core.IContext context)
-	{
-		return (java.math.BigDecimal) getMendixObject().getValue(context, MemberNames.FloatAttribute.toString());
-	}
-
-	/**
-	 * Set value of FloatAttribute
-	 * @param floatattribute
-	 */
-	public final void setFloatAttribute(java.math.BigDecimal floatattribute)
-	{
-		setFloatAttribute(getContext(), floatattribute);
-	}
-
-	/**
-	 * Set value of FloatAttribute
-	 * @param context
-	 * @param floatattribute
-	 */
-	public final void setFloatAttribute(com.mendix.systemwideinterfaces.core.IContext context, java.math.BigDecimal floatattribute)
-	{
-		getMendixObject().setValue(context, MemberNames.FloatAttribute.toString(), floatattribute);
 	}
 
 	/**

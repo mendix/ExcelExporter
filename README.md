@@ -6,5 +6,5 @@ Add styling to your Excel to create proper headers and styling formats to create
 
 This version is compatible with:
 - Excel Importer v8.1.1
-- MxModelReflection v5.6.2
+- MxModelReflection v6.1.1
 - Atlas UI Resources v1.2.2
