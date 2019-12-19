@@ -19,7 +19,8 @@ import excelimporter.reader.readers.replication.ExcelReplicationSettings;
 
 public class ExcelXLSXDataReader extends ExcelXLSXReader {
 
-	public static void readData( String fullPathExcelFile, int sheetNr, int startRowNr, ExcelReader xlsReader ) throws IOException, OpenXML4JException, SAXException, MendixReplicationException {
+	public static long readData(String fullPathExcelFile, int sheetNr, int startRowNr, ExcelReader xlsReader)
+			throws IOException, OpenXML4JException, SAXException, MendixReplicationException {
 		OPCPackage opcPackage = null;
 		InputStream sheet = null;
 		ExcelRowProcessor excelRowProcessor = null;
@@ -34,29 +35,36 @@ public class ExcelXLSXDataReader extends ExcelXLSXReader {
 			XMLReader parser = XMLReaderFactory.createXMLReader();
 			ExcelXLSXReader.setXMLReaderProperties(parser);
 			ExcelReader.logNode.trace("Loaded SAX Parser: " + parser);
-			SheetHandler handler = new SheetHandler(xlsReader, stringsTable, stylesTable, startRowNr, excelRowProcessor, sheetNr);
+			SheetHandler handler = new SheetHandler(xlsReader, stringsTable, stylesTable, startRowNr, excelRowProcessor,
+					sheetNr);
 			parser.setContentHandler(handler);
 
 			sheet = reader.getSheet("rId" + (sheetNr + 1)); // API is 1-based; parameter is zero-based.
 			InputSource sheetSource = new InputSource(sheet);
 			parser.parse(sheetSource);
-		}
-		finally {
+		} finally {
 			try {
 				if (excelRowProcessor != null) {
 					excelRowProcessor.finish();
+					if (excelRowProcessor.getRowCounter() == 0)
+						ExcelReader.logNode
+								.warn("Excel Importer could not import any rows. Please check if the template is configured correctly. If the file was not created with Microsoft Excel for desktop, try opening the file with Excel and saving it with the same name before importing.");
+					else
+						ExcelReader.logNode.info(
+								"Excel Importer successfully imported " + excelRowProcessor.getRowCounter() + " rows");
+					return excelRowProcessor.getRowCounter();
 				}
-			} catch (MendixReplicationException mre) { /* Finish Quietly */}
+			} catch (MendixReplicationException e) {
+			} // Quitely finishing
 			try {
-				if (sheet != null) {
+				if (sheet != null)
 					sheet.close();
-				}
-			} catch (Exception e) { /* Close Quietly */ }
-			
-			if (opcPackage != null) {
+			} catch (IOException ioe) {
+			} // Quitely closing
+			if (opcPackage != null)
 				opcPackage.revert();
-			}
 		}
+		return 0l;
 	}
 
 	private static class SheetHandler extends ExcelSheetHandler {
@@ -67,9 +75,8 @@ public class ExcelXLSXDataReader extends ExcelXLSXReader {
 		private ExcelRowProcessor excelRowProcessor;
 		private ExcelReplicationSettings settings;
 
-
-		private SheetHandler( ExcelReader xlsReader, ReadOnlySharedStringsTable stringsTable, StylesTable stylesTable, int startRowNr,
-				ExcelRowProcessor excelRowProcessor, int sheetNr ) throws MendixReplicationException {
+		private SheetHandler(ExcelReader xlsReader, ReadOnlySharedStringsTable stringsTable, StylesTable stylesTable,
+				int startRowNr, ExcelRowProcessor excelRowProcessor, int sheetNr) throws MendixReplicationException {
 			super(stringsTable, stylesTable, sheetNr, startRowNr);
 			this.excelRowProcessor = excelRowProcessor;
 
@@ -77,61 +84,58 @@ public class ExcelXLSXDataReader extends ExcelXLSXReader {
 		}
 
 		@Override
-		public void startElement( String uri, String localName, String name, Attributes attributes ) throws SAXException {
-			if ( evaluateTextTag(localName, this.handleCol) ) {
-			}
-			else if ( evaluateColumn(localName, attributes) ) {
-				if ( this.getCurrentColumnNr() < this.columnsUsed.length )
+		public void startElement(String uri, String localName, String name, Attributes attributes) throws SAXException {
+			if (evaluateTextTag(localName, this.handleCol)) {
+			} else if (evaluateColumn(localName, attributes)) {
+				if (this.getCurrentColumnNr() < this.columnsUsed.length)
 					this.handleCol = this.columnsUsed[this.getCurrentColumnNr()];
 				else
 					this.handleCol = false;
 
-				if ( this.handleCol ) {
+				if (this.handleCol) {
 					evaluateCellStyle(attributes);
 				}
-			}
-			else if ( evaluateFormula(name) ) {
-			}
-			else if ( evaluateRow(localName, attributes) ) {
-			}
-			else if ( localName.equals("dimension") ) { // only encountered once
+			} else if (evaluateFormula(name)) {
+			} else if (evaluateRow(localName, attributes)) {
+			} else if (localName.equals("dimension")) { // only encountered once
 				int colTo = evaluateDimension(attributes);
 
 				this.columnsUsed = new boolean[colTo + 1];
-				for( int i = 0; i < this.columnsUsed.length; i++ ) {
+				for (int i = 0; i < this.columnsUsed.length; i++) {
 					this.columnsUsed[i] = this.settings.aliasIsMapped(String.valueOf(i));
 				}
 			}
 		}
 
 		@Override
-		public void endElement( String uri, String localName, String name ) throws SAXException {
-			// If there is something wrong with the Excel XML then we don't try to fix it here.
-			if ( this.shouldHandleRow() ) {
+		public void endElement(String uri, String localName, String name) throws SAXException {
+			// If there is something wrong with the Excel XML then we don't try to fix it
+			// here.
+			if (this.shouldHandleRow()) {
 				closeTextProcessing(localName, this.handleCol);
 
-				if ( localName.equals("row") ) {
+				if (localName.equals("row")) {
 					boolean processRow = false;
 					// Check that at least one value is present, we want to skip blank lines
-					for( Object value : this.getValues() ) {
-						if ( null != value && value.toString().trim().length() != 0 ) {
+					for (Object value : this.getValues()) {
+						if (null != value && value.toString().trim().length() != 0) {
 							processRow = true;
 							break;
 						}
 					}
 
-					if ( processRow ) {
+					if (processRow) {
 						try {
-							this.excelRowProcessor.processValues(this.getValues(), this.getCurrentRow() - 1, this.getCurrentSheet());
-						}
-						catch( MendixReplicationException e ) {
-							throw new SAXException("Unable to store Excel row. Error found in row of cell nr: " + this.getCurrentColumnStr(), e);
+							this.excelRowProcessor.processValues(this.getValues(), this.getCurrentRow() - 1,
+									this.getCurrentSheet());
+						} catch (MendixReplicationException e) {
+							throw new SAXException("Unable to store Excel row. Error found in row of cell nr: "
+									+ this.getCurrentColumnStr(), e);
 						}
 					}
 				}
 			}
 		}
-
 
 	}
 }

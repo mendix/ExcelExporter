@@ -58,15 +58,10 @@ public class ExcelXLSXHeaderReader extends ExcelXLSXReader implements ExcelHeada
 			parser.parse(sheetSource);
 		}
 		finally {
-			try {
-				if (sheet != null) {
-					sheet.close();
-				} 
-			} catch (Exception e) { /* Close Quietly */ }
-				
-			if (opcPackage != null) {
+			if ( sheet != null )
+				sheet.close();
+			if ( opcPackage != null )
 				opcPackage.revert();
-			}
 		}
 	}
 

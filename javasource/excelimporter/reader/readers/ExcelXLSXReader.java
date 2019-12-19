@@ -356,10 +356,6 @@ public abstract class ExcelXLSXReader {
 			return this.colString;
 		}
 	}
-
-	protected enum ExcelType {
-		STRING, SHARED_STRING, NUMBER, BOOLEAN, ERROR, FORMULA
-	}
 	
 	/**
 	 * Sets sensible defaults for the XML parser used to read excel XLSX files.
@@ -370,5 +366,9 @@ public abstract class ExcelXLSXReader {
 		parser.setFeature("http://xml.org/sax/features/external-general-entities", isExternalEntitiesEnabled);
 		parser.setFeature("http://xml.org/sax/features/external-parameter-entities", isExternalEntitiesEnabled);
 		parser.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", isExternalEntitiesEnabled);
+	}
+
+	protected enum ExcelType {
+		STRING, SHARED_STRING, NUMBER, BOOLEAN, ERROR, FORMULA
 	}
 }
