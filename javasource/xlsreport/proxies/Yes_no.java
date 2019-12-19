@@ -6,8 +6,8 @@ package xlsreport.proxies;
 
 public enum Yes_no
 {
-	Yes(new java.lang.String[][] { new java.lang.String[] { "en_US", "Yes" }, new java.lang.String[] { "nl_NL", "Ja" } }),
-	No(new java.lang.String[][] { new java.lang.String[] { "en_US", "No" }, new java.lang.String[] { "nl_NL", "Nee" } });
+	Yes(new java.lang.String[][] { new java.lang.String[] { "en_US", "Yes" } }),
+	No(new java.lang.String[][] { new java.lang.String[] { "en_US", "No" } });
 
 	private java.util.Map<java.lang.String, java.lang.String> captions;
 

@@ -24,7 +24,7 @@ public class ExcelXLSReaderHeaderFirstPassListener implements HSSFListener {
 	int firstcol;
 	int lastcol;
 
-	// sstmap: list of unique strings occuring
+	// sstmap: list of unique strings occurring
 	// at first pass these will be marked with an empty dummy string when processing
 	// the LabelSSTRecord fields that are relevant to us
 	// at second pass this dummy string will be replaced by the actual string from the sst map

@@ -6,8 +6,8 @@ package xlsreport.proxies;
 
 public enum SortingDirection
 {
-	Asc(new java.lang.String[][] { new java.lang.String[] { "en_US", "Ascending" }, new java.lang.String[] { "nl_NL", "Volgorde oplopend" } }),
-	Desc(new java.lang.String[][] { new java.lang.String[] { "en_US", "Descending" }, new java.lang.String[] { "nl_NL", "Volgorde aflopend" } });
+	Asc(new java.lang.String[][] { new java.lang.String[] { "en_US", "Ascending" } }),
+	Desc(new java.lang.String[][] { new java.lang.String[] { "en_US", "Descending" } });
 
 	private java.util.Map<java.lang.String, java.lang.String> captions;
 

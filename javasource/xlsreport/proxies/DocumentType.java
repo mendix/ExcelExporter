@@ -6,9 +6,9 @@ package xlsreport.proxies;
 
 public enum DocumentType
 {
-	XLS(new java.lang.String[][] { new java.lang.String[] { "en_US", "Excel 97 - 2003" }, new java.lang.String[] { "nl_NL", "Excel 97 - 2003 werkmap" } }),
-	XLSX(new java.lang.String[][] { new java.lang.String[] { "en_US", "Excel 2007 and higher" }, new java.lang.String[] { "nl_NL", "Excel 2007 werkmap (niet ondersteund)" } }),
-	CSV(new java.lang.String[][] { new java.lang.String[] { "en_US", "CSV file" }, new java.lang.String[] { "nl_NL", "CSV bestand (niet ondersteund)" } });
+	XLS(new java.lang.String[][] { new java.lang.String[] { "en_US", "Excel 97 - 2003" } }),
+	XLSX(new java.lang.String[][] { new java.lang.String[] { "en_US", "Excel 2007 and higher" } }),
+	CSV(new java.lang.String[][] { new java.lang.String[] { "en_US", "CSV file" } });
 
 	private java.util.Map<java.lang.String, java.lang.String> captions;
 

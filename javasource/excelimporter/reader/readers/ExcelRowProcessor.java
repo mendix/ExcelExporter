@@ -168,6 +168,8 @@ public class ExcelRowProcessor {
 	public void finish() throws MendixReplicationException {
 		this.info.finished();
 	}
-
-
+	
+	public long getRowCounter() {
+		return this.rowCounter;
+	}
 }

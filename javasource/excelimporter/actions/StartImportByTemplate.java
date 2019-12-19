@@ -22,7 +22,7 @@ import com.mendix.webui.CustomJavaAction;
  * 
  * The return value is irrelevant and will be always true
  */
-public class StartImportByTemplate extends CustomJavaAction<java.lang.Boolean>
+public class StartImportByTemplate extends CustomJavaAction<java.lang.Long>
 {
 	private IMendixObject __TemplateObject;
 	private excelimporter.proxies.Template TemplateObject;
@@ -39,7 +39,7 @@ public class StartImportByTemplate extends CustomJavaAction<java.lang.Boolean>
 	}
 
 	@java.lang.Override
-	public java.lang.Boolean executeAction() throws Exception
+	public java.lang.Long executeAction() throws Exception
 	{
 		this.TemplateObject = __TemplateObject == null ? null : excelimporter.proxies.Template.initialize(getContext(), __TemplateObject);
 
@@ -51,8 +51,7 @@ public class StartImportByTemplate extends CustomJavaAction<java.lang.Boolean>
 		if( this.ImportExcelDoc == null )
 			throw new CoreException( "No excel document" );
 
-		ExcelImporter.startImport(this.getContext(), this.TemplateObject.getMendixObject(), this.ImportExcelDoc.getMendixObject(), this.ImportObjectParameter );
-		return true;
+		return ExcelImporter.startImport(this.getContext(), this.TemplateObject.getMendixObject(), this.ImportExcelDoc.getMendixObject(), this.ImportObjectParameter );
 		// END USER CODE
 	}
 

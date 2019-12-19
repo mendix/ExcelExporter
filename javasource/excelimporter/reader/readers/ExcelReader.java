@@ -18,10 +18,16 @@ import mxmodelreflection.proxies.PrimitiveTypes;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.hssf.eventusermodel.HSSFEventFactory;
 import org.apache.poi.hssf.eventusermodel.HSSFListener;
 import org.apache.poi.hssf.eventusermodel.HSSFRequest;
+import org.apache.poi.hssf.record.crypto.Biff8EncryptionKey;
+import org.apache.poi.openxml4j.exceptions.NotOfficeXmlFileException;
+import org.apache.poi.openxml4j.exceptions.OLE2NotOfficeXmlFileException;
+import org.apache.poi.poifs.filesystem.NotOLE2FileException;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.apache.poi.util.RecordFormatException;
 
 import replication.AssociationConfig;
 import replication.ObjectConfig;
@@ -66,7 +72,8 @@ public class ExcelReader {
 	private ExcelReplicationSettings settings;
 	private String descr;
 	private Map<String, Set<DocProperties>> docProperties = new HashMap<String, Set<DocProperties>>();
-
+	private long rowcounts = 0l;
+	
 	private TimeMeasurement timeMeasurement;
 	public static ILogNode logNode = Core.getLogger("ExcelXLSReader");
 
@@ -115,74 +122,39 @@ public class ExcelReader {
 				if( iCanHasRow < 0 )
 					throw new CoreException("The header rownumber must be larger than 1");
 
-				
-				HashMap<Integer, String> sstmap = null;
-				
 				// Headers - 1st pass
-				{
-					
-		
-						
-					switch(extension) {
-						case XLS: {
-							try(InputStream content = Core.getFileDocumentContent(context, templateDocument)) {
-								if(content == null) {
-									throw new CoreException("No content found in templatedocument");
-								}
-							
-								try (InputStream workbook = new POIFSFileSystem(content).createDocumentInputStream("Workbook")) {
-								
-									ExcelXLSReaderHeaderFirstPassListener firstPass = new ExcelXLSReaderHeaderFirstPassListener(iCanHasSheet, iCanHasRow);
-									
-									HSSFRequest req = new HSSFRequest();
-									req.addListenerForAllRecords(firstPass);
-									HSSFEventFactory factory = new HSSFEventFactory();
-									factory.processEvents(req, workbook);
-									
-									sstmap = firstPass.getSSTMap();
-								}
-							}
-							break;
-						}
-						case XLSX: {
-							// nothing
-							break;
-						}
-						case UNKNOWN:
-							throw new CoreException("File extension is not an Excel extension ('.xls' or '.xlsx').");
-					}
-				}
-				
+				HashMap<Integer, String> sstmap = headersFirstPass(context, templateDocument, extension, iCanHasSheet, iCanHasRow);
 				
 				ExcelHeadable header = null;
 				// Headers - 2nd pass
 				{
-					switch(extension) {
-						case XLS: {
-							try(InputStream content = Core.getFileDocumentContent(context, templateDocument);
-								InputStream workbook = new POIFSFileSystem(content).createDocumentInputStream("Workbook");) {
-								if( sstmap == null ) {
-									throw new CoreException("No headers could be found on sheet: " + iCanHasSheet + " on row nr: " + iCanHasRow );
-								}
-								// second pass
-								header = new ExcelXLSReaderHeaderSecondPassListener(iCanHasSheet, iCanHasRow, sstmap);
-								HSSFRequest req = new HSSFRequest();
-								req.addListenerForAllRecords((HSSFListener)header);
-								HSSFEventFactory factory = new HSSFEventFactory();
-								factory.processEvents(req, workbook);
+					switch (extension) {
+					case XLS: {
+						try (InputStream content = Core.getFileDocumentContent(context, templateDocument);
+								POIFSFileSystem poifs = new POIFSFileSystem(content);
+								InputStream workbook = poifs.createDocumentInputStream("Workbook");) {
+
+							if (sstmap == null) {
+								throw new CoreException("No headers could be found on sheet: " + iCanHasSheet
+										+ " on row nr: " + iCanHasRow);
 							}
-							
-							break;
+							// second pass
+							header = new ExcelXLSReaderHeaderSecondPassListener(iCanHasSheet, iCanHasRow, sstmap);
+							HSSFRequest req = new HSSFRequest();
+							req.addListenerForAllRecords((HSSFListener) header);
+							HSSFEventFactory factory = new HSSFEventFactory();
+							factory.processEvents(req, workbook);
 						}
-						case XLSX: {
-							excelFile = getExcelFile(context, templateDocument);
-							header = new ExcelXLSXHeaderReader(excelFile.getAbsolutePath(), iCanHasSheet, iCanHasRow + 1); // we need a 1-based rownumber in this API
-							break;
-						}
-						case UNKNOWN:
-							throw new CoreException("File extension is not an Excel extension ('.xls' or '.xlsx').");
+						break;
 					}
-					
+					case XLSX: {
+						excelFile = getExcelFile(context, templateDocument);
+						header = new ExcelXLSXHeaderReader(excelFile.getAbsolutePath(), iCanHasSheet, iCanHasRow + 1); // we need a 1-based rownumber in this API
+						break;
+					}
+					case UNKNOWN:
+						throw new CoreException("File extension is not an Excel extension ('.xls' or '.xlsx').");
+					}
 				}
 
 				return header.getColumns();
@@ -207,7 +179,40 @@ public class ExcelReader {
 		throw new CoreException("Template or context not set!");
 	}
 
-	public void importData(IContext context, IMendixObject fileDocument, IMendixObject template, IMendixObject parentObject) throws CoreException {
+	private HashMap<Integer, String> headersFirstPass(IContext context, IMendixObject templateDocument,
+			ExcelExtension extension, int iCanHasSheet, int iCanHasRow) throws CoreException, IOException {
+		HashMap<Integer, String> sstmap = null;
+
+		try (InputStream content = Core.getFileDocumentContent(context, templateDocument);) {
+			if (content == null)
+				throw new CoreException("No content found in templatedocument");
+			switch (extension) {
+			case XLS: {
+				try (POIFSFileSystem poifs = new POIFSFileSystem(content);
+				InputStream workbook = poifs.createDocumentInputStream("Workbook");) {
+					ExcelXLSReaderHeaderFirstPassListener firstPass = new ExcelXLSReaderHeaderFirstPassListener(iCanHasSheet, iCanHasRow);
+	
+					HSSFRequest req = new HSSFRequest();
+					req.addListenerForAllRecords(firstPass);
+					HSSFEventFactory factory = new HSSFEventFactory();
+					factory.processEvents(req, workbook);
+	
+					sstmap = firstPass.getSSTMap();
+				}
+				break;
+			}
+			case XLSX: {
+				// nothing
+				break;
+			}
+			case UNKNOWN:
+				throw new CoreException("File extension is not an Excel extension ('.xls' or '.xlsx').");
+			}
+		}
+		return sstmap;
+	}
+
+	public long importData(IContext context, IMendixObject fileDocument, IMendixObject template, IMendixObject parentObject) throws CoreException, ExcelImporterException {
 		this.timeMeasurement.startPerformanceTest("Importing data");
 	
 		this.timeMeasurement.startPerformanceTest("Preparing all import settings");
@@ -403,8 +408,9 @@ public class ExcelReader {
 				case XLS: {
 					ExcelXLSReaderDataFirstPassListener firstPass = new ExcelXLSReaderDataFirstPassListener(iCanHasSheet, startRow, this);
 					{
-						try (InputStream content = Core.getFileDocumentContent(this.settings.getContext(), fileDocument); 
-							InputStream workbook = new POIFSFileSystem(content).createDocumentInputStream("Workbook")) {
+						try (InputStream content = Core.getFileDocumentContent(this.settings.getContext(), fileDocument);
+								POIFSFileSystem poifs = new POIFSFileSystem(content);
+								InputStream workbook = getInputStreamFromPOIFS(poifs);) {
 							HSSFRequest req = new HSSFRequest();
 							req.addListenerForAllRecords(firstPass);
 							HSSFEventFactory factory = new HSSFEventFactory();
@@ -416,15 +422,17 @@ public class ExcelReader {
 					// Data - 2nd pass
 					ExcelXLSReaderDataSecondPassListener secondPass = new ExcelXLSReaderDataSecondPassListener(iCanHasSheet, startRow, sstmap, this, firstPass.getNrOfColumns());
 					{
-						try (InputStream content = Core.getFileDocumentContent(this.settings.getContext(), fileDocument); 
-							InputStream workbook = new POIFSFileSystem(content).createDocumentInputStream("Workbook")) {
+						try (InputStream content = Core.getFileDocumentContent(this.settings.getContext(), fileDocument);
+								POIFSFileSystem poifs = new POIFSFileSystem(content);
+								InputStream workbook = getInputStreamFromPOIFS(poifs);) {
 							HSSFRequest req = new HSSFRequest();
 							req.addListenerForAllRecords(secondPass);
 							HSSFEventFactory factory = new HSSFEventFactory();
 							factory.processEvents(req, workbook);
 						}
 					}
-
+					this.rowcounts = secondPass.getRowCounter();
+					
 					break;
 				}
 				case XLSX: {
@@ -440,17 +448,33 @@ public class ExcelReader {
 
 					// xlsx rows are 1-based
 					excelFile = getExcelFile(this.settings.getContext(), fileDocument);
-					ExcelXLSXDataReader.readData(excelFile.getAbsolutePath(), iCanHasSheet, startRow + 1, this);
+					this.rowcounts = ExcelXLSXDataReader.readData(excelFile.getAbsolutePath(), iCanHasSheet, startRow + 1, this);
 					break;
 				}
 				case UNKNOWN:
 					throw new CoreException("File extension is not an Excel extension ('.xls' or '.xlsx').");
 			}
 
-			logNode.info( "Successfully finished importing " + this.descr + ((System.nanoTime() - importStartTime)/1000000) + " ms");
+			logNode.info( "Successfully finished importing " + this.descr + " in " + ((System.nanoTime() - importStartTime)/1000000) + " ms");
 		}
-		catch(Exception e) {
-			logNode.info( "Error while importing " + this.descr + ((System.nanoTime() - importStartTime)/1000000) + " ms");
+		catch (OLE2NotOfficeXmlFileException e) {
+			logNode.info( "Error while importing " + this.descr + " " + ((System.nanoTime() - importStartTime)/1000000) + " ms, because: " + e.getMessage());
+			throw new ExcelImporterException("Document could not be imported because this file is an XLS and not an XLSX file. Please make sure the file is valid and has the correct extension.");
+		}
+		catch (NotOfficeXmlFileException | NotOLE2FileException e) {
+			logNode.info( "Error while importing " + this.descr + " " + ((System.nanoTime() - importStartTime)/1000000) + " ms, because: " + e.getMessage());
+			throw new ExcelImporterException("Document could not be imported because this file is not XLS or XLSX. Please make sure the file is valid and has the correct extension.");
+		}
+		catch (RecordFormatException e) {
+			logNode.info( "Error while importing " + this.descr + " " + ((System.nanoTime() - importStartTime)/1000000) + " ms, because: " + e.getMessage());
+			throw new ExcelImporterException("Document could not be imported because one of its cell values is invalid or cannot be read.");
+		}
+		catch (EncryptedDocumentException e) {
+			logNode.info( "Error while importing " + this.descr + " " + ((System.nanoTime() - importStartTime)/1000000) + " ms, because: " + e.getMessage());
+			throw new ExcelImporterException("Document could not be imported because it is encrypted.");
+		}
+		catch (Exception e) {
+			logNode.info( "Error while importing " + this.descr + " " + ((System.nanoTime() - importStartTime)/1000000) + " ms, because: " + e.getMessage());
 			throw new CoreException("Document could not be imported, because: " + e.getMessage(), e);
 		}
 		finally {
@@ -463,21 +487,33 @@ public class ExcelReader {
 			
 			this.timeMeasurement.endPerformanceTest("Importing data");
 		}
+		return rowcounts;
 	}
 	
+	private InputStream getInputStreamFromPOIFS(POIFSFileSystem poifs) throws CoreException, IOException {
+		Set<String> entryNames = poifs.getRoot().getEntryNames();
+		InputStream inStream = null;
+		
+		if (entryNames.contains("Workbook"))
+			inStream = poifs.createDocumentInputStream("Workbook");
+		else if (entryNames.contains("EncryptedPackage")) {
+			try { // We try the default password as it might just be a write-protected file, as documented in https://poi.apache.org/encryption.html
+				Biff8EncryptionKey.setCurrentUserPassword("VelvetSweatshop");
+				inStream = poifs.createDocumentInputStream("EncryptedPackage");
+				Biff8EncryptionKey.setCurrentUserPassword(null);
+			} catch (IOException e) {
+				throw new CoreException("Unable to open encrypted Excel files.", e);
+			}
+		}
+		
+		return inStream;
+	}
+
 	private static File getExcelFile(IContext context, IMendixObject file) throws IOException {
-		File f = new File( Core.getConfiguration().getTempPath().getAbsolutePath() + "/Mendix_ExcelImporter_" + file.getId().toLong(), "");
-		InputStream inputstream = null;
-		OutputStream outputstream = null;
-		try {
-			inputstream = Core.getFileDocumentContent(context, file);
-			outputstream = new FileOutputStream(f);
-			IOUtils.copy(inputstream, outputstream); 
-		} finally {
-			if (inputstream != null)
-				inputstream.close();
-			if (outputstream != null)
-				outputstream.close();
+		File f = new File(Core.getConfiguration().getTempPath().getAbsolutePath() + "/Mendix_ExcelImporter_" + file.getId().toLong(), "");
+		try (InputStream inputstream = Core.getFileDocumentContent(context, file);
+				OutputStream outputstream = new FileOutputStream(f);) {
+			IOUtils.copy(inputstream, outputstream);
 		}
 		return f;
 	}
