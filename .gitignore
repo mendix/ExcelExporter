@@ -7,3 +7,7 @@
 *.iml
 .idea
 *.lock
+OUTPUT_DIR
+target
+.settings
+.metals
