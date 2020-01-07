@@ -299,6 +299,12 @@ public class DataOQL
 					case SmallerEqual:
 						this.WHERE.append(" <= ").append(compare);
 						break;
+					case NotEmpty:
+						this.WHERE.append(" != NULL");
+						break;
+					case _empty:
+						this.WHERE.append(" = NULL");
+						break;
 					default:
 						break;
 				}
