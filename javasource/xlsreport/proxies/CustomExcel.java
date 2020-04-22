@@ -4,9 +4,6 @@
 
 package xlsreport.proxies;
 
-/**
- * 
- */
 public class CustomExcel extends system.proxies.FileDocument
 {
 	/**

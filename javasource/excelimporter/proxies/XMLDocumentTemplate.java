@@ -4,9 +4,6 @@
 
 package excelimporter.proxies;
 
-/**
- * 
- */
 public class XMLDocumentTemplate extends system.proxies.FileDocument
 {
 	/**

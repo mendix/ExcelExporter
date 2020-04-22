@@ -4,9 +4,6 @@
 
 package odm.proxies;
 
-/**
- * 
- */
 public class OrderLine
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject orderLineMendixObject;
@@ -129,7 +126,7 @@ public class OrderLine
 	/**
 	 * @return value of Amount
 	 */
-	public final Integer getAmount()
+	public final java.lang.Integer getAmount()
 	{
 		return getAmount(getContext());
 	}
@@ -138,16 +135,16 @@ public class OrderLine
 	 * @param context
 	 * @return value of Amount
 	 */
-	public final Integer getAmount(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getAmount(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.Amount.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.Amount.toString());
 	}
 
 	/**
 	 * Set value of Amount
 	 * @param amount
 	 */
-	public final void setAmount(Integer amount)
+	public final void setAmount(java.lang.Integer amount)
 	{
 		setAmount(getContext(), amount);
 	}
@@ -157,7 +154,7 @@ public class OrderLine
 	 * @param context
 	 * @param amount
 	 */
-	public final void setAmount(com.mendix.systemwideinterfaces.core.IContext context, Integer amount)
+	public final void setAmount(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer amount)
 	{
 		getMendixObject().setValue(context, MemberNames.Amount.toString(), amount);
 	}
@@ -165,7 +162,7 @@ public class OrderLine
 	/**
 	 * @return value of Price
 	 */
-	public final Double getPrice()
+	public final java.lang.Double getPrice()
 	{
 		return getPrice(getContext());
 	}
@@ -174,16 +171,16 @@ public class OrderLine
 	 * @param context
 	 * @return value of Price
 	 */
-	public final Double getPrice(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Double getPrice(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Double) getMendixObject().getValue(context, MemberNames.Price.toString());
+		return (java.lang.Double) getMendixObject().getValue(context, MemberNames.Price.toString());
 	}
 
 	/**
 	 * Set value of Price
 	 * @param price
 	 */
-	public final void setPrice(Double price)
+	public final void setPrice(java.lang.Double price)
 	{
 		setPrice(getContext(), price);
 	}
@@ -193,7 +190,7 @@ public class OrderLine
 	 * @param context
 	 * @param price
 	 */
-	public final void setPrice(com.mendix.systemwideinterfaces.core.IContext context, Double price)
+	public final void setPrice(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Double price)
 	{
 		getMendixObject().setValue(context, MemberNames.Price.toString(), price);
 	}
@@ -201,7 +198,7 @@ public class OrderLine
 	/**
 	 * @return value of PriceExclVAT
 	 */
-	public final Double getPriceExclVAT()
+	public final java.lang.Double getPriceExclVAT()
 	{
 		return getPriceExclVAT(getContext());
 	}
@@ -210,16 +207,16 @@ public class OrderLine
 	 * @param context
 	 * @return value of PriceExclVAT
 	 */
-	public final Double getPriceExclVAT(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Double getPriceExclVAT(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Double) getMendixObject().getValue(context, MemberNames.PriceExclVAT.toString());
+		return (java.lang.Double) getMendixObject().getValue(context, MemberNames.PriceExclVAT.toString());
 	}
 
 	/**
 	 * Set value of PriceExclVAT
 	 * @param priceexclvat
 	 */
-	public final void setPriceExclVAT(Double priceexclvat)
+	public final void setPriceExclVAT(java.lang.Double priceexclvat)
 	{
 		setPriceExclVAT(getContext(), priceexclvat);
 	}
@@ -229,7 +226,7 @@ public class OrderLine
 	 * @param context
 	 * @param priceexclvat
 	 */
-	public final void setPriceExclVAT(com.mendix.systemwideinterfaces.core.IContext context, Double priceexclvat)
+	public final void setPriceExclVAT(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Double priceexclvat)
 	{
 		getMendixObject().setValue(context, MemberNames.PriceExclVAT.toString(), priceexclvat);
 	}
@@ -237,7 +234,7 @@ public class OrderLine
 	/**
 	 * @return value of PriceInclVAT
 	 */
-	public final Double getPriceInclVAT()
+	public final java.lang.Double getPriceInclVAT()
 	{
 		return getPriceInclVAT(getContext());
 	}
@@ -246,16 +243,16 @@ public class OrderLine
 	 * @param context
 	 * @return value of PriceInclVAT
 	 */
-	public final Double getPriceInclVAT(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Double getPriceInclVAT(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Double) getMendixObject().getValue(context, MemberNames.PriceInclVAT.toString());
+		return (java.lang.Double) getMendixObject().getValue(context, MemberNames.PriceInclVAT.toString());
 	}
 
 	/**
 	 * Set value of PriceInclVAT
 	 * @param priceinclvat
 	 */
-	public final void setPriceInclVAT(Double priceinclvat)
+	public final void setPriceInclVAT(java.lang.Double priceinclvat)
 	{
 		setPriceInclVAT(getContext(), priceinclvat);
 	}
@@ -265,7 +262,7 @@ public class OrderLine
 	 * @param context
 	 * @param priceinclvat
 	 */
-	public final void setPriceInclVAT(com.mendix.systemwideinterfaces.core.IContext context, Double priceinclvat)
+	public final void setPriceInclVAT(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Double priceinclvat)
 	{
 		getMendixObject().setValue(context, MemberNames.PriceInclVAT.toString(), priceinclvat);
 	}
@@ -273,7 +270,7 @@ public class OrderLine
 	/**
 	 * @return value of DiscountPercentage
 	 */
-	public final Integer getDiscountPercentage()
+	public final java.lang.Integer getDiscountPercentage()
 	{
 		return getDiscountPercentage(getContext());
 	}
@@ -282,16 +279,16 @@ public class OrderLine
 	 * @param context
 	 * @return value of DiscountPercentage
 	 */
-	public final Integer getDiscountPercentage(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getDiscountPercentage(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.DiscountPercentage.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.DiscountPercentage.toString());
 	}
 
 	/**
 	 * Set value of DiscountPercentage
 	 * @param discountpercentage
 	 */
-	public final void setDiscountPercentage(Integer discountpercentage)
+	public final void setDiscountPercentage(java.lang.Integer discountpercentage)
 	{
 		setDiscountPercentage(getContext(), discountpercentage);
 	}
@@ -301,7 +298,7 @@ public class OrderLine
 	 * @param context
 	 * @param discountpercentage
 	 */
-	public final void setDiscountPercentage(com.mendix.systemwideinterfaces.core.IContext context, Integer discountpercentage)
+	public final void setDiscountPercentage(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer discountpercentage)
 	{
 		getMendixObject().setValue(context, MemberNames.DiscountPercentage.toString(), discountpercentage);
 	}
@@ -309,7 +306,7 @@ public class OrderLine
 	/**
 	 * @return value of TotalExclVAT
 	 */
-	public final Double getTotalExclVAT()
+	public final java.lang.Double getTotalExclVAT()
 	{
 		return getTotalExclVAT(getContext());
 	}
@@ -318,16 +315,16 @@ public class OrderLine
 	 * @param context
 	 * @return value of TotalExclVAT
 	 */
-	public final Double getTotalExclVAT(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Double getTotalExclVAT(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Double) getMendixObject().getValue(context, MemberNames.TotalExclVAT.toString());
+		return (java.lang.Double) getMendixObject().getValue(context, MemberNames.TotalExclVAT.toString());
 	}
 
 	/**
 	 * Set value of TotalExclVAT
 	 * @param totalexclvat
 	 */
-	public final void setTotalExclVAT(Double totalexclvat)
+	public final void setTotalExclVAT(java.lang.Double totalexclvat)
 	{
 		setTotalExclVAT(getContext(), totalexclvat);
 	}
@@ -337,7 +334,7 @@ public class OrderLine
 	 * @param context
 	 * @param totalexclvat
 	 */
-	public final void setTotalExclVAT(com.mendix.systemwideinterfaces.core.IContext context, Double totalexclvat)
+	public final void setTotalExclVAT(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Double totalexclvat)
 	{
 		getMendixObject().setValue(context, MemberNames.TotalExclVAT.toString(), totalexclvat);
 	}
@@ -345,7 +342,7 @@ public class OrderLine
 	/**
 	 * @return value of TotalInclVAT
 	 */
-	public final Double getTotalInclVAT()
+	public final java.lang.Double getTotalInclVAT()
 	{
 		return getTotalInclVAT(getContext());
 	}
@@ -354,16 +351,16 @@ public class OrderLine
 	 * @param context
 	 * @return value of TotalInclVAT
 	 */
-	public final Double getTotalInclVAT(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Double getTotalInclVAT(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Double) getMendixObject().getValue(context, MemberNames.TotalInclVAT.toString());
+		return (java.lang.Double) getMendixObject().getValue(context, MemberNames.TotalInclVAT.toString());
 	}
 
 	/**
 	 * Set value of TotalInclVAT
 	 * @param totalinclvat
 	 */
-	public final void setTotalInclVAT(Double totalinclvat)
+	public final void setTotalInclVAT(java.lang.Double totalinclvat)
 	{
 		setTotalInclVAT(getContext(), totalinclvat);
 	}
@@ -373,7 +370,7 @@ public class OrderLine
 	 * @param context
 	 * @param totalinclvat
 	 */
-	public final void setTotalInclVAT(com.mendix.systemwideinterfaces.core.IContext context, Double totalinclvat)
+	public final void setTotalInclVAT(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Double totalinclvat)
 	{
 		getMendixObject().setValue(context, MemberNames.TotalInclVAT.toString(), totalinclvat);
 	}

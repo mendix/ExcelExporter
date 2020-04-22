@@ -4,9 +4,6 @@
 
 package xlsreport.proxies;
 
-/**
- * 
- */
 public class MxColumn extends xlsreport.proxies.MxData
 {
 	/**
@@ -93,7 +90,7 @@ public class MxColumn extends xlsreport.proxies.MxData
 	/**
 	 * @return value of ColumnNumber
 	 */
-	public final Integer getColumnNumber()
+	public final java.lang.Integer getColumnNumber()
 	{
 		return getColumnNumber(getContext());
 	}
@@ -102,16 +99,16 @@ public class MxColumn extends xlsreport.proxies.MxData
 	 * @param context
 	 * @return value of ColumnNumber
 	 */
-	public final Integer getColumnNumber(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getColumnNumber(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.ColumnNumber.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.ColumnNumber.toString());
 	}
 
 	/**
 	 * Set value of ColumnNumber
 	 * @param columnnumber
 	 */
-	public final void setColumnNumber(Integer columnnumber)
+	public final void setColumnNumber(java.lang.Integer columnnumber)
 	{
 		setColumnNumber(getContext(), columnnumber);
 	}
@@ -121,7 +118,7 @@ public class MxColumn extends xlsreport.proxies.MxData
 	 * @param context
 	 * @param columnnumber
 	 */
-	public final void setColumnNumber(com.mendix.systemwideinterfaces.core.IContext context, Integer columnnumber)
+	public final void setColumnNumber(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer columnnumber)
 	{
 		getMendixObject().setValue(context, MemberNames.ColumnNumber.toString(), columnnumber);
 	}
@@ -129,7 +126,7 @@ public class MxColumn extends xlsreport.proxies.MxData
 	/**
 	 * @return value of NameAsHeader
 	 */
-	public final Boolean getNameAsHeader()
+	public final java.lang.Boolean getNameAsHeader()
 	{
 		return getNameAsHeader(getContext());
 	}
@@ -138,16 +135,16 @@ public class MxColumn extends xlsreport.proxies.MxData
 	 * @param context
 	 * @return value of NameAsHeader
 	 */
-	public final Boolean getNameAsHeader(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getNameAsHeader(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.NameAsHeader.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.NameAsHeader.toString());
 	}
 
 	/**
 	 * Set value of NameAsHeader
 	 * @param nameasheader
 	 */
-	public final void setNameAsHeader(Boolean nameasheader)
+	public final void setNameAsHeader(java.lang.Boolean nameasheader)
 	{
 		setNameAsHeader(getContext(), nameasheader);
 	}
@@ -157,7 +154,7 @@ public class MxColumn extends xlsreport.proxies.MxData
 	 * @param context
 	 * @param nameasheader
 	 */
-	public final void setNameAsHeader(com.mendix.systemwideinterfaces.core.IContext context, Boolean nameasheader)
+	public final void setNameAsHeader(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean nameasheader)
 	{
 		getMendixObject().setValue(context, MemberNames.NameAsHeader.toString(), nameasheader);
 	}
@@ -165,7 +162,7 @@ public class MxColumn extends xlsreport.proxies.MxData
 	/**
 	 * @return value of ObjectAttribute
 	 */
-	public final String getObjectAttribute()
+	public final java.lang.String getObjectAttribute()
 	{
 		return getObjectAttribute(getContext());
 	}
@@ -174,16 +171,16 @@ public class MxColumn extends xlsreport.proxies.MxData
 	 * @param context
 	 * @return value of ObjectAttribute
 	 */
-	public final String getObjectAttribute(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getObjectAttribute(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.ObjectAttribute.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.ObjectAttribute.toString());
 	}
 
 	/**
 	 * Set value of ObjectAttribute
 	 * @param objectattribute
 	 */
-	public final void setObjectAttribute(String objectattribute)
+	public final void setObjectAttribute(java.lang.String objectattribute)
 	{
 		setObjectAttribute(getContext(), objectattribute);
 	}
@@ -193,7 +190,7 @@ public class MxColumn extends xlsreport.proxies.MxData
 	 * @param context
 	 * @param objectattribute
 	 */
-	public final void setObjectAttribute(com.mendix.systemwideinterfaces.core.IContext context, String objectattribute)
+	public final void setObjectAttribute(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String objectattribute)
 	{
 		getMendixObject().setValue(context, MemberNames.ObjectAttribute.toString(), objectattribute);
 	}
@@ -201,7 +198,7 @@ public class MxColumn extends xlsreport.proxies.MxData
 	/**
 	 * @return value of DataAggregate
 	 */
-	public final Boolean getDataAggregate()
+	public final java.lang.Boolean getDataAggregate()
 	{
 		return getDataAggregate(getContext());
 	}
@@ -210,16 +207,16 @@ public class MxColumn extends xlsreport.proxies.MxData
 	 * @param context
 	 * @return value of DataAggregate
 	 */
-	public final Boolean getDataAggregate(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getDataAggregate(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.DataAggregate.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.DataAggregate.toString());
 	}
 
 	/**
 	 * Set value of DataAggregate
 	 * @param dataaggregate
 	 */
-	public final void setDataAggregate(Boolean dataaggregate)
+	public final void setDataAggregate(java.lang.Boolean dataaggregate)
 	{
 		setDataAggregate(getContext(), dataaggregate);
 	}
@@ -229,7 +226,7 @@ public class MxColumn extends xlsreport.proxies.MxData
 	 * @param context
 	 * @param dataaggregate
 	 */
-	public final void setDataAggregate(com.mendix.systemwideinterfaces.core.IContext context, Boolean dataaggregate)
+	public final void setDataAggregate(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean dataaggregate)
 	{
 		getMendixObject().setValue(context, MemberNames.DataAggregate.toString(), dataaggregate);
 	}
@@ -281,7 +278,7 @@ public class MxColumn extends xlsreport.proxies.MxData
 	/**
 	 * @return value of ResultAggregate
 	 */
-	public final Boolean getResultAggregate()
+	public final java.lang.Boolean getResultAggregate()
 	{
 		return getResultAggregate(getContext());
 	}
@@ -290,16 +287,16 @@ public class MxColumn extends xlsreport.proxies.MxData
 	 * @param context
 	 * @return value of ResultAggregate
 	 */
-	public final Boolean getResultAggregate(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getResultAggregate(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.ResultAggregate.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.ResultAggregate.toString());
 	}
 
 	/**
 	 * Set value of ResultAggregate
 	 * @param resultaggregate
 	 */
-	public final void setResultAggregate(Boolean resultaggregate)
+	public final void setResultAggregate(java.lang.Boolean resultaggregate)
 	{
 		setResultAggregate(getContext(), resultaggregate);
 	}
@@ -309,7 +306,7 @@ public class MxColumn extends xlsreport.proxies.MxData
 	 * @param context
 	 * @param resultaggregate
 	 */
-	public final void setResultAggregate(com.mendix.systemwideinterfaces.core.IContext context, Boolean resultaggregate)
+	public final void setResultAggregate(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean resultaggregate)
 	{
 		getMendixObject().setValue(context, MemberNames.ResultAggregate.toString(), resultaggregate);
 	}

@@ -4,9 +4,6 @@
 
 package xlsreport.proxies;
 
-/**
- * 
- */
 public class MxCellStyle
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject mxCellStyleMendixObject;
@@ -137,7 +134,7 @@ public class MxCellStyle
 	/**
 	 * @return value of Name
 	 */
-	public final String getName()
+	public final java.lang.String getName()
 	{
 		return getName(getContext());
 	}
@@ -146,16 +143,16 @@ public class MxCellStyle
 	 * @param context
 	 * @return value of Name
 	 */
-	public final String getName(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getName(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Name.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Name.toString());
 	}
 
 	/**
 	 * Set value of Name
 	 * @param name
 	 */
-	public final void setName(String name)
+	public final void setName(java.lang.String name)
 	{
 		setName(getContext(), name);
 	}
@@ -165,7 +162,7 @@ public class MxCellStyle
 	 * @param context
 	 * @param name
 	 */
-	public final void setName(com.mendix.systemwideinterfaces.core.IContext context, String name)
+	public final void setName(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String name)
 	{
 		getMendixObject().setValue(context, MemberNames.Name.toString(), name);
 	}
@@ -173,7 +170,7 @@ public class MxCellStyle
 	/**
 	 * @return value of TextBold
 	 */
-	public final Boolean getTextBold()
+	public final java.lang.Boolean getTextBold()
 	{
 		return getTextBold(getContext());
 	}
@@ -182,16 +179,16 @@ public class MxCellStyle
 	 * @param context
 	 * @return value of TextBold
 	 */
-	public final Boolean getTextBold(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getTextBold(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.TextBold.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.TextBold.toString());
 	}
 
 	/**
 	 * Set value of TextBold
 	 * @param textbold
 	 */
-	public final void setTextBold(Boolean textbold)
+	public final void setTextBold(java.lang.Boolean textbold)
 	{
 		setTextBold(getContext(), textbold);
 	}
@@ -201,7 +198,7 @@ public class MxCellStyle
 	 * @param context
 	 * @param textbold
 	 */
-	public final void setTextBold(com.mendix.systemwideinterfaces.core.IContext context, Boolean textbold)
+	public final void setTextBold(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean textbold)
 	{
 		getMendixObject().setValue(context, MemberNames.TextBold.toString(), textbold);
 	}
@@ -209,7 +206,7 @@ public class MxCellStyle
 	/**
 	 * @return value of TextItalic
 	 */
-	public final Boolean getTextItalic()
+	public final java.lang.Boolean getTextItalic()
 	{
 		return getTextItalic(getContext());
 	}
@@ -218,16 +215,16 @@ public class MxCellStyle
 	 * @param context
 	 * @return value of TextItalic
 	 */
-	public final Boolean getTextItalic(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getTextItalic(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.TextItalic.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.TextItalic.toString());
 	}
 
 	/**
 	 * Set value of TextItalic
 	 * @param textitalic
 	 */
-	public final void setTextItalic(Boolean textitalic)
+	public final void setTextItalic(java.lang.Boolean textitalic)
 	{
 		setTextItalic(getContext(), textitalic);
 	}
@@ -237,7 +234,7 @@ public class MxCellStyle
 	 * @param context
 	 * @param textitalic
 	 */
-	public final void setTextItalic(com.mendix.systemwideinterfaces.core.IContext context, Boolean textitalic)
+	public final void setTextItalic(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean textitalic)
 	{
 		getMendixObject().setValue(context, MemberNames.TextItalic.toString(), textitalic);
 	}
@@ -245,7 +242,7 @@ public class MxCellStyle
 	/**
 	 * @return value of TextUnderline
 	 */
-	public final Boolean getTextUnderline()
+	public final java.lang.Boolean getTextUnderline()
 	{
 		return getTextUnderline(getContext());
 	}
@@ -254,16 +251,16 @@ public class MxCellStyle
 	 * @param context
 	 * @return value of TextUnderline
 	 */
-	public final Boolean getTextUnderline(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getTextUnderline(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.TextUnderline.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.TextUnderline.toString());
 	}
 
 	/**
 	 * Set value of TextUnderline
 	 * @param textunderline
 	 */
-	public final void setTextUnderline(Boolean textunderline)
+	public final void setTextUnderline(java.lang.Boolean textunderline)
 	{
 		setTextUnderline(getContext(), textunderline);
 	}
@@ -273,7 +270,7 @@ public class MxCellStyle
 	 * @param context
 	 * @param textunderline
 	 */
-	public final void setTextUnderline(com.mendix.systemwideinterfaces.core.IContext context, Boolean textunderline)
+	public final void setTextUnderline(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean textunderline)
 	{
 		getMendixObject().setValue(context, MemberNames.TextUnderline.toString(), textunderline);
 	}
@@ -413,7 +410,7 @@ public class MxCellStyle
 	/**
 	 * @return value of TextHeight
 	 */
-	public final Integer getTextHeight()
+	public final java.lang.Integer getTextHeight()
 	{
 		return getTextHeight(getContext());
 	}
@@ -422,16 +419,16 @@ public class MxCellStyle
 	 * @param context
 	 * @return value of TextHeight
 	 */
-	public final Integer getTextHeight(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getTextHeight(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.TextHeight.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.TextHeight.toString());
 	}
 
 	/**
 	 * Set value of TextHeight
 	 * @param textheight
 	 */
-	public final void setTextHeight(Integer textheight)
+	public final void setTextHeight(java.lang.Integer textheight)
 	{
 		setTextHeight(getContext(), textheight);
 	}
@@ -441,7 +438,7 @@ public class MxCellStyle
 	 * @param context
 	 * @param textheight
 	 */
-	public final void setTextHeight(com.mendix.systemwideinterfaces.core.IContext context, Integer textheight)
+	public final void setTextHeight(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer textheight)
 	{
 		getMendixObject().setValue(context, MemberNames.TextHeight.toString(), textheight);
 	}
@@ -493,7 +490,7 @@ public class MxCellStyle
 	/**
 	 * @return value of TextRotation
 	 */
-	public final Integer getTextRotation()
+	public final java.lang.Integer getTextRotation()
 	{
 		return getTextRotation(getContext());
 	}
@@ -502,16 +499,16 @@ public class MxCellStyle
 	 * @param context
 	 * @return value of TextRotation
 	 */
-	public final Integer getTextRotation(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getTextRotation(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.TextRotation.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.TextRotation.toString());
 	}
 
 	/**
 	 * Set value of TextRotation
 	 * @param textrotation
 	 */
-	public final void setTextRotation(Integer textrotation)
+	public final void setTextRotation(java.lang.Integer textrotation)
 	{
 		setTextRotation(getContext(), textrotation);
 	}
@@ -521,7 +518,7 @@ public class MxCellStyle
 	 * @param context
 	 * @param textrotation
 	 */
-	public final void setTextRotation(com.mendix.systemwideinterfaces.core.IContext context, Integer textrotation)
+	public final void setTextRotation(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer textrotation)
 	{
 		getMendixObject().setValue(context, MemberNames.TextRotation.toString(), textrotation);
 	}
@@ -529,7 +526,7 @@ public class MxCellStyle
 	/**
 	 * @return value of WrapText
 	 */
-	public final Boolean getWrapText()
+	public final java.lang.Boolean getWrapText()
 	{
 		return getWrapText(getContext());
 	}
@@ -538,16 +535,16 @@ public class MxCellStyle
 	 * @param context
 	 * @return value of WrapText
 	 */
-	public final Boolean getWrapText(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getWrapText(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.WrapText.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.WrapText.toString());
 	}
 
 	/**
 	 * Set value of WrapText
 	 * @param wraptext
 	 */
-	public final void setWrapText(Boolean wraptext)
+	public final void setWrapText(java.lang.Boolean wraptext)
 	{
 		setWrapText(getContext(), wraptext);
 	}
@@ -557,7 +554,7 @@ public class MxCellStyle
 	 * @param context
 	 * @param wraptext
 	 */
-	public final void setWrapText(com.mendix.systemwideinterfaces.core.IContext context, Boolean wraptext)
+	public final void setWrapText(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean wraptext)
 	{
 		getMendixObject().setValue(context, MemberNames.WrapText.toString(), wraptext);
 	}
@@ -565,7 +562,7 @@ public class MxCellStyle
 	/**
 	 * @return value of BorderTop
 	 */
-	public final Integer getBorderTop()
+	public final java.lang.Integer getBorderTop()
 	{
 		return getBorderTop(getContext());
 	}
@@ -574,16 +571,16 @@ public class MxCellStyle
 	 * @param context
 	 * @return value of BorderTop
 	 */
-	public final Integer getBorderTop(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getBorderTop(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.BorderTop.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.BorderTop.toString());
 	}
 
 	/**
 	 * Set value of BorderTop
 	 * @param bordertop
 	 */
-	public final void setBorderTop(Integer bordertop)
+	public final void setBorderTop(java.lang.Integer bordertop)
 	{
 		setBorderTop(getContext(), bordertop);
 	}
@@ -593,7 +590,7 @@ public class MxCellStyle
 	 * @param context
 	 * @param bordertop
 	 */
-	public final void setBorderTop(com.mendix.systemwideinterfaces.core.IContext context, Integer bordertop)
+	public final void setBorderTop(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer bordertop)
 	{
 		getMendixObject().setValue(context, MemberNames.BorderTop.toString(), bordertop);
 	}
@@ -601,7 +598,7 @@ public class MxCellStyle
 	/**
 	 * @return value of BorderBottom
 	 */
-	public final Integer getBorderBottom()
+	public final java.lang.Integer getBorderBottom()
 	{
 		return getBorderBottom(getContext());
 	}
@@ -610,16 +607,16 @@ public class MxCellStyle
 	 * @param context
 	 * @return value of BorderBottom
 	 */
-	public final Integer getBorderBottom(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getBorderBottom(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.BorderBottom.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.BorderBottom.toString());
 	}
 
 	/**
 	 * Set value of BorderBottom
 	 * @param borderbottom
 	 */
-	public final void setBorderBottom(Integer borderbottom)
+	public final void setBorderBottom(java.lang.Integer borderbottom)
 	{
 		setBorderBottom(getContext(), borderbottom);
 	}
@@ -629,7 +626,7 @@ public class MxCellStyle
 	 * @param context
 	 * @param borderbottom
 	 */
-	public final void setBorderBottom(com.mendix.systemwideinterfaces.core.IContext context, Integer borderbottom)
+	public final void setBorderBottom(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer borderbottom)
 	{
 		getMendixObject().setValue(context, MemberNames.BorderBottom.toString(), borderbottom);
 	}
@@ -637,7 +634,7 @@ public class MxCellStyle
 	/**
 	 * @return value of BorderLeft
 	 */
-	public final Integer getBorderLeft()
+	public final java.lang.Integer getBorderLeft()
 	{
 		return getBorderLeft(getContext());
 	}
@@ -646,16 +643,16 @@ public class MxCellStyle
 	 * @param context
 	 * @return value of BorderLeft
 	 */
-	public final Integer getBorderLeft(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getBorderLeft(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.BorderLeft.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.BorderLeft.toString());
 	}
 
 	/**
 	 * Set value of BorderLeft
 	 * @param borderleft
 	 */
-	public final void setBorderLeft(Integer borderleft)
+	public final void setBorderLeft(java.lang.Integer borderleft)
 	{
 		setBorderLeft(getContext(), borderleft);
 	}
@@ -665,7 +662,7 @@ public class MxCellStyle
 	 * @param context
 	 * @param borderleft
 	 */
-	public final void setBorderLeft(com.mendix.systemwideinterfaces.core.IContext context, Integer borderleft)
+	public final void setBorderLeft(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer borderleft)
 	{
 		getMendixObject().setValue(context, MemberNames.BorderLeft.toString(), borderleft);
 	}
@@ -673,7 +670,7 @@ public class MxCellStyle
 	/**
 	 * @return value of BorderRight
 	 */
-	public final Integer getBorderRight()
+	public final java.lang.Integer getBorderRight()
 	{
 		return getBorderRight(getContext());
 	}
@@ -682,16 +679,16 @@ public class MxCellStyle
 	 * @param context
 	 * @return value of BorderRight
 	 */
-	public final Integer getBorderRight(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getBorderRight(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.BorderRight.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.BorderRight.toString());
 	}
 
 	/**
 	 * Set value of BorderRight
 	 * @param borderright
 	 */
-	public final void setBorderRight(Integer borderright)
+	public final void setBorderRight(java.lang.Integer borderright)
 	{
 		setBorderRight(getContext(), borderright);
 	}
@@ -701,7 +698,7 @@ public class MxCellStyle
 	 * @param context
 	 * @param borderright
 	 */
-	public final void setBorderRight(com.mendix.systemwideinterfaces.core.IContext context, Integer borderright)
+	public final void setBorderRight(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer borderright)
 	{
 		getMendixObject().setValue(context, MemberNames.BorderRight.toString(), borderright);
 	}

@@ -4,9 +4,6 @@
 
 package xlsreport.proxies;
 
-/**
- * 
- */
 public class MxXPath
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject mxXPathMendixObject;
@@ -174,7 +171,7 @@ public class MxXPath
 	/**
 	 * @return value of SubVisible
 	 */
-	public final Boolean getSubVisible()
+	public final java.lang.Boolean getSubVisible()
 	{
 		return getSubVisible(getContext());
 	}
@@ -183,16 +180,16 @@ public class MxXPath
 	 * @param context
 	 * @return value of SubVisible
 	 */
-	public final Boolean getSubVisible(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getSubVisible(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.SubVisible.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.SubVisible.toString());
 	}
 
 	/**
 	 * Set value of SubVisible
 	 * @param subvisible
 	 */
-	public final void setSubVisible(Boolean subvisible)
+	public final void setSubVisible(java.lang.Boolean subvisible)
 	{
 		setSubVisible(getContext(), subvisible);
 	}
@@ -202,7 +199,7 @@ public class MxXPath
 	 * @param context
 	 * @param subvisible
 	 */
-	public final void setSubVisible(com.mendix.systemwideinterfaces.core.IContext context, Boolean subvisible)
+	public final void setSubVisible(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean subvisible)
 	{
 		getMendixObject().setValue(context, MemberNames.SubVisible.toString(), subvisible);
 	}

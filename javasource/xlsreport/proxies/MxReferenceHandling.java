@@ -4,9 +4,6 @@
 
 package xlsreport.proxies;
 
-/**
- * 
- */
 public class MxReferenceHandling
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject mxReferenceHandlingMendixObject;
@@ -123,7 +120,7 @@ public class MxReferenceHandling
 	/**
 	 * @return value of Reference
 	 */
-	public final String getReference()
+	public final java.lang.String getReference()
 	{
 		return getReference(getContext());
 	}
@@ -132,16 +129,16 @@ public class MxReferenceHandling
 	 * @param context
 	 * @return value of Reference
 	 */
-	public final String getReference(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getReference(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Reference.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Reference.toString());
 	}
 
 	/**
 	 * Set value of Reference
 	 * @param reference
 	 */
-	public final void setReference(String reference)
+	public final void setReference(java.lang.String reference)
 	{
 		setReference(getContext(), reference);
 	}
@@ -151,7 +148,7 @@ public class MxReferenceHandling
 	 * @param context
 	 * @param reference
 	 */
-	public final void setReference(com.mendix.systemwideinterfaces.core.IContext context, String reference)
+	public final void setReference(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String reference)
 	{
 		getMendixObject().setValue(context, MemberNames.Reference.toString(), reference);
 	}

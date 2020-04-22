@@ -4,9 +4,6 @@
 
 package odm.proxies;
 
-/**
- * 
- */
 public class Order
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject orderMendixObject;
@@ -130,7 +127,7 @@ public class Order
 	/**
 	 * @return value of OrderNr
 	 */
-	public final Long getOrderNr()
+	public final java.lang.Long getOrderNr()
 	{
 		return getOrderNr(getContext());
 	}
@@ -139,16 +136,16 @@ public class Order
 	 * @param context
 	 * @return value of OrderNr
 	 */
-	public final Long getOrderNr(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Long getOrderNr(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Long) getMendixObject().getValue(context, MemberNames.OrderNr.toString());
+		return (java.lang.Long) getMendixObject().getValue(context, MemberNames.OrderNr.toString());
 	}
 
 	/**
 	 * Set value of OrderNr
 	 * @param ordernr
 	 */
-	public final void setOrderNr(Long ordernr)
+	public final void setOrderNr(java.lang.Long ordernr)
 	{
 		setOrderNr(getContext(), ordernr);
 	}
@@ -158,7 +155,7 @@ public class Order
 	 * @param context
 	 * @param ordernr
 	 */
-	public final void setOrderNr(com.mendix.systemwideinterfaces.core.IContext context, Long ordernr)
+	public final void setOrderNr(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Long ordernr)
 	{
 		getMendixObject().setValue(context, MemberNames.OrderNr.toString(), ordernr);
 	}
@@ -166,7 +163,7 @@ public class Order
 	/**
 	 * @return value of Name
 	 */
-	public final String getName()
+	public final java.lang.String getName()
 	{
 		return getName(getContext());
 	}
@@ -175,16 +172,16 @@ public class Order
 	 * @param context
 	 * @return value of Name
 	 */
-	public final String getName(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getName(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Name.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Name.toString());
 	}
 
 	/**
 	 * Set value of Name
 	 * @param name
 	 */
-	public final void setName(String name)
+	public final void setName(java.lang.String name)
 	{
 		setName(getContext(), name);
 	}
@@ -194,7 +191,7 @@ public class Order
 	 * @param context
 	 * @param name
 	 */
-	public final void setName(com.mendix.systemwideinterfaces.core.IContext context, String name)
+	public final void setName(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String name)
 	{
 		getMendixObject().setValue(context, MemberNames.Name.toString(), name);
 	}
@@ -202,7 +199,7 @@ public class Order
 	/**
 	 * @return value of Address
 	 */
-	public final String getAddress()
+	public final java.lang.String getAddress()
 	{
 		return getAddress(getContext());
 	}
@@ -211,16 +208,16 @@ public class Order
 	 * @param context
 	 * @return value of Address
 	 */
-	public final String getAddress(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getAddress(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Address.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Address.toString());
 	}
 
 	/**
 	 * Set value of Address
 	 * @param address
 	 */
-	public final void setAddress(String address)
+	public final void setAddress(java.lang.String address)
 	{
 		setAddress(getContext(), address);
 	}
@@ -230,7 +227,7 @@ public class Order
 	 * @param context
 	 * @param address
 	 */
-	public final void setAddress(com.mendix.systemwideinterfaces.core.IContext context, String address)
+	public final void setAddress(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String address)
 	{
 		getMendixObject().setValue(context, MemberNames.Address.toString(), address);
 	}
@@ -238,7 +235,7 @@ public class Order
 	/**
 	 * @return value of City
 	 */
-	public final String getCity()
+	public final java.lang.String getCity()
 	{
 		return getCity(getContext());
 	}
@@ -247,16 +244,16 @@ public class Order
 	 * @param context
 	 * @return value of City
 	 */
-	public final String getCity(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getCity(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.City.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.City.toString());
 	}
 
 	/**
 	 * Set value of City
 	 * @param city
 	 */
-	public final void setCity(String city)
+	public final void setCity(java.lang.String city)
 	{
 		setCity(getContext(), city);
 	}
@@ -266,7 +263,7 @@ public class Order
 	 * @param context
 	 * @param city
 	 */
-	public final void setCity(com.mendix.systemwideinterfaces.core.IContext context, String city)
+	public final void setCity(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String city)
 	{
 		getMendixObject().setValue(context, MemberNames.City.toString(), city);
 	}
@@ -318,7 +315,7 @@ public class Order
 	/**
 	 * @return value of VAT
 	 */
-	public final Double getVAT()
+	public final java.lang.Double getVAT()
 	{
 		return getVAT(getContext());
 	}
@@ -327,16 +324,16 @@ public class Order
 	 * @param context
 	 * @return value of VAT
 	 */
-	public final Double getVAT(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Double getVAT(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Double) getMendixObject().getValue(context, MemberNames.VAT.toString());
+		return (java.lang.Double) getMendixObject().getValue(context, MemberNames.VAT.toString());
 	}
 
 	/**
 	 * Set value of VAT
 	 * @param vat
 	 */
-	public final void setVAT(Double vat)
+	public final void setVAT(java.lang.Double vat)
 	{
 		setVAT(getContext(), vat);
 	}
@@ -346,7 +343,7 @@ public class Order
 	 * @param context
 	 * @param vat
 	 */
-	public final void setVAT(com.mendix.systemwideinterfaces.core.IContext context, Double vat)
+	public final void setVAT(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Double vat)
 	{
 		getMendixObject().setValue(context, MemberNames.VAT.toString(), vat);
 	}
@@ -354,7 +351,7 @@ public class Order
 	/**
 	 * @return value of TotalExclVAT
 	 */
-	public final Double getTotalExclVAT()
+	public final java.lang.Double getTotalExclVAT()
 	{
 		return getTotalExclVAT(getContext());
 	}
@@ -363,16 +360,16 @@ public class Order
 	 * @param context
 	 * @return value of TotalExclVAT
 	 */
-	public final Double getTotalExclVAT(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Double getTotalExclVAT(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Double) getMendixObject().getValue(context, MemberNames.TotalExclVAT.toString());
+		return (java.lang.Double) getMendixObject().getValue(context, MemberNames.TotalExclVAT.toString());
 	}
 
 	/**
 	 * Set value of TotalExclVAT
 	 * @param totalexclvat
 	 */
-	public final void setTotalExclVAT(Double totalexclvat)
+	public final void setTotalExclVAT(java.lang.Double totalexclvat)
 	{
 		setTotalExclVAT(getContext(), totalexclvat);
 	}
@@ -382,7 +379,7 @@ public class Order
 	 * @param context
 	 * @param totalexclvat
 	 */
-	public final void setTotalExclVAT(com.mendix.systemwideinterfaces.core.IContext context, Double totalexclvat)
+	public final void setTotalExclVAT(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Double totalexclvat)
 	{
 		getMendixObject().setValue(context, MemberNames.TotalExclVAT.toString(), totalexclvat);
 	}
@@ -390,7 +387,7 @@ public class Order
 	/**
 	 * @return value of TotalInclVAT
 	 */
-	public final Double getTotalInclVAT()
+	public final java.lang.Double getTotalInclVAT()
 	{
 		return getTotalInclVAT(getContext());
 	}
@@ -399,16 +396,16 @@ public class Order
 	 * @param context
 	 * @return value of TotalInclVAT
 	 */
-	public final Double getTotalInclVAT(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Double getTotalInclVAT(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Double) getMendixObject().getValue(context, MemberNames.TotalInclVAT.toString());
+		return (java.lang.Double) getMendixObject().getValue(context, MemberNames.TotalInclVAT.toString());
 	}
 
 	/**
 	 * Set value of TotalInclVAT
 	 * @param totalinclvat
 	 */
-	public final void setTotalInclVAT(Double totalinclvat)
+	public final void setTotalInclVAT(java.lang.Double totalinclvat)
 	{
 		setTotalInclVAT(getContext(), totalinclvat);
 	}
@@ -418,7 +415,7 @@ public class Order
 	 * @param context
 	 * @param totalinclvat
 	 */
-	public final void setTotalInclVAT(com.mendix.systemwideinterfaces.core.IContext context, Double totalinclvat)
+	public final void setTotalInclVAT(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Double totalinclvat)
 	{
 		getMendixObject().setValue(context, MemberNames.TotalInclVAT.toString(), totalinclvat);
 	}
@@ -462,7 +459,7 @@ public class Order
 	/**
 	 * @return value of Year
 	 */
-	public final Long getYear()
+	public final java.lang.Long getYear()
 	{
 		return getYear(getContext());
 	}
@@ -471,16 +468,16 @@ public class Order
 	 * @param context
 	 * @return value of Year
 	 */
-	public final Long getYear(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Long getYear(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Long) getMendixObject().getValue(context, MemberNames.Year.toString());
+		return (java.lang.Long) getMendixObject().getValue(context, MemberNames.Year.toString());
 	}
 
 	/**
 	 * Set value of Year
 	 * @param year
 	 */
-	public final void setYear(Long year)
+	public final void setYear(java.lang.Long year)
 	{
 		setYear(getContext(), year);
 	}
@@ -490,7 +487,7 @@ public class Order
 	 * @param context
 	 * @param year
 	 */
-	public final void setYear(com.mendix.systemwideinterfaces.core.IContext context, Long year)
+	public final void setYear(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Long year)
 	{
 		getMendixObject().setValue(context, MemberNames.Year.toString(), year);
 	}

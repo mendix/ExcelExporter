@@ -4,9 +4,6 @@
 
 package xlsreport.proxies;
 
-/**
- * 
- */
 public class MxData
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject mxDataMendixObject;
@@ -131,7 +128,7 @@ public class MxData
 	/**
 	 * @return value of Name
 	 */
-	public final String getName()
+	public final java.lang.String getName()
 	{
 		return getName(getContext());
 	}
@@ -140,16 +137,16 @@ public class MxData
 	 * @param context
 	 * @return value of Name
 	 */
-	public final String getName(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getName(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Name.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Name.toString());
 	}
 
 	/**
 	 * Set value of Name
 	 * @param name
 	 */
-	public final void setName(String name)
+	public final void setName(java.lang.String name)
 	{
 		setName(getContext(), name);
 	}
@@ -159,7 +156,7 @@ public class MxData
 	 * @param context
 	 * @param name
 	 */
-	public final void setName(com.mendix.systemwideinterfaces.core.IContext context, String name)
+	public final void setName(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String name)
 	{
 		getMendixObject().setValue(context, MemberNames.Name.toString(), name);
 	}

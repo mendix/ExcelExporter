@@ -4,9 +4,6 @@
 
 package mxmodelreflection.proxies;
 
-/**
- * 
- */
 public class MxObjectEnum extends mxmodelreflection.proxies.MxObjectMember
 {
 	/**

@@ -26,6 +26,7 @@ import com.mendix.logging.ILogNode;
 import com.mendix.logging.LogSubscriber;
 import com.mendix.m2ee.api.IMxRuntimeRequest;
 import com.mendix.systemwideinterfaces.MendixException;
+import com.mendix.systemwideinterfaces.MendixRuntimeException;
 import com.mendix.systemwideinterfaces.IWebserviceResponse;
 import com.mendix.systemwideinterfaces.connectionbus.data.IDataTable;
 import com.mendix.systemwideinterfaces.connectionbus.requests.IMetaAssociationSchema;
@@ -58,17 +59,21 @@ public final class Core
 		component = localComponent;
 		integration = i;
 	}
-	
+
+	/**
+	 * @deprecated Will be removed in next major release.
+	 */
+	@Deprecated
 	public static LocalComponent getComponent()
 	{
 		return component;
 	}
-	
+
 	public static boolean isInDevelopment()
 	{
 	  return component.configuration().isInDevelopment();
 	}
-	
+
 	/**
 	 * Returns the id of this server instance.
 	 * @return the server id in UUID format.
@@ -77,7 +82,7 @@ public final class Core
 	{
 		return component.core().getXASId();
 	}
-	
+
 	/**
 	 * Returns the names of all modeled microflows.
 	 * @return all microflow names (format "ModuleName.MicroflowName").
@@ -86,7 +91,7 @@ public final class Core
 	{
 		return component.core().getMicroflowNames();
 	}
-	
+
 	/**
 	 * Returns all input parameter data types the specified action by name.
 	 * @param actionName the name of a microflow or java action (format "ModuleName.ActionName").
@@ -96,17 +101,17 @@ public final class Core
 	{
 		return component.core().getInputParameters(actionName);
 	}
-	
+
 	/**
 	 * Returns the return type of the specified action.
 	 * @param actionName the name of a microflow or java action (format "ModuleName.ActionName").
-	 * @return the return data type of the specified action. 
+	 * @return the return data type of the specified action.
 	 */
 	public static IDataType getReturnType(String actionName)
 	{
 		return component.core().getReturnType(actionName);
 	}
-	
+
 	/**
 	 * Evaluate the given (microflow)expression.
 	 * @param context the context
@@ -118,27 +123,27 @@ public final class Core
 	{
 		return component.core().evaluateExpression(context, variables, expression);
 	}
-	
+
 	/**
 	 * Execute an action asynchronously, result is given and/or exceptions are raised when calling Future.get().
-	 * When calling Future.get() the result of the action will return immediately if the execution is done, 
-	 * otherwise the call is blocking. Exceptions raised while executing the action will not be thrown until 
+	 * When calling Future.get() the result of the action will return immediately if the execution is done,
+	 * otherwise the call is blocking. Exceptions raised while executing the action will not be thrown until
 	 * Future.get() is called.
 	 * @param <T> action type, subclass of CoreAction.
-	 * @param <R> result type of the action, can be any object. 
+	 * @param <R> result type of the action, can be any object.
 	 * @param action the action to execute.
-	 * @return the Future object. 
-	 * 
+	 * @return the Future object.
+	 *
 	 */
 	public static <T extends CoreAction<R>,R> Future<R> execute(T action)
 	{
 		return component.core().execute(action);
 	}
-	
+
 	/**
 	 * Execute an action synchronously.
 	 * @param <T> action type, subclass of CoreAction.
-	 * @param <R> result type of action, can be any object. 
+	 * @param <R> result type of action, can be any object.
 	 * @param action the action to execute.
 	 * @return return value of the specified action.
 	 */
@@ -146,7 +151,7 @@ public final class Core
 	{
 		return component.core().executeSync(action);
 	}
-	
+
 	/**
 	 * Execute the specified action (synchronously).
 	 * @param context the context for this action.
@@ -159,14 +164,14 @@ public final class Core
 	{
 		return (R)component.core().execute(context, actionName, params);
 	}
-	
+
 	/**
 	 * Execute the specified action (asynchronously). Use only to call other Java actions (not microflows)!
 	 * When calling microflows use {@link #executeAsync(IContext, String, boolean, Map<String, Object>)}
 	 * with a named parameter map instead.
 	 * Result is given and/or exceptions are raised when calling Future.get().
-	 * When calling Future.get() the result of the action will return immediately if the execution is done, 
-	 * otherwise the call is blocking. Exceptions raised while executing the action will not be thrown until 
+	 * When calling Future.get() the result of the action will return immediately if the execution is done,
+	 * otherwise the call is blocking. Exceptions raised while executing the action will not be thrown until
 	 * Future.get() is called.
 	 * @param context the context for this action.
 	 * @param actionName the name of a microflow or java action (format "ModuleName.ActionName").
@@ -207,7 +212,7 @@ public final class Core
 	{
 		return (R)component.core().execute(context, actionName, params);
 	}
-	
+
 	/**
 	 * Execute the specified action (synchronously).
 	 * @param context the context for this action.
@@ -220,7 +225,7 @@ public final class Core
 	{
 		return (R)component.core().execute(context, actionName, executeInTransaction, params);
 	}
-	
+
 	/**
 	 * Execute the specified action (asynchronously).
 	 * @param <R> result type of the action, can be any object.
@@ -231,7 +236,7 @@ public final class Core
 	{
 		component.core().executeVoid(action);
 	}
-	
+
 	/**
 	 * Schedule an action on a certain date.
 	 * @param actionName the name of a microflow or java action (format "ModuleName.ActionName")
@@ -242,7 +247,7 @@ public final class Core
 	{
 		return component.core().schedule(actionName, date);
 	}
-	
+
 	/**
 	 * Schedule an action on a certain delay from now.
 	 * @param action the action to execute.
@@ -254,10 +259,10 @@ public final class Core
 	{
 		return component.core().schedule(action, delay, timeUnit);
 	}
-	
+
 	/**
 	 * Schedule a periodic action that runs for the first time after the given initial delay (first run),
-	 * and subsequently with the given period; that is executions will commence after initialDelay then 
+	 * and subsequently with the given period; that is executions will commence after initialDelay then
 	 * initialDelay+period, then initialDelay + 2 * period, and so on.
 	 * No result will be returned.
 	 * @param actionName the name of a microflow or java action (format "ModuleName.ActionName").
@@ -271,10 +276,10 @@ public final class Core
 	{
 		component.core().scheduleAtFixedRate(actionName, firstRun, period, timeUnit, name, description);
 	}
-	
+
 	/**
 	 * Schedule a periodic action that runs for the first time after the given initial delay,
-	 * and subsequently with the given period; that is executions will commence after initialDelay then 
+	 * and subsequently with the given period; that is executions will commence after initialDelay then
 	 * initialDelay+period, then initialDelay + 2 * period, and so on.
 	 * No result will be returned.
 	 * @param action the action to execute.
@@ -286,10 +291,10 @@ public final class Core
 	{
 		component.core().scheduleAtFixedRate(action, initialDelay, period, timeUnit);
 	}
-	
+
 	/**
 	 * Schedule a periodic action that run for the first time on the given date/time,
-	 * and subsequently with the given period; that is executions will commence on firstRun then 
+	 * and subsequently with the given period; that is executions will commence on firstRun then
 	 * initialDelay+period, then initialDelay + 2 * period, and so on.<br>
 	 * No result will be returned.
 	 * @param action the action to execute
@@ -301,21 +306,21 @@ public final class Core
 	{
 		component.core().scheduleAtFixedRate(action, firstRun, period, timeUnit);
 	}
-	
+
 	/**
-	 * Schedule a periodic action that runs for the first time after the given initial delay, 
+	 * Schedule a periodic action that runs for the first time after the given initial delay,
 	 * and subsequently with the given delay between the termination of one execution and the commencement of the next.
 	 * No result will be returned.
 	 * @param action the action to execute.
 	 * @param initialDelay the delay after which the action will be executed the first time.
-	 * @param delay the delay between the end of the execution of the action and the start of the next time the action will be executed. 
+	 * @param delay the delay between the end of the execution of the action and the start of the next time the action will be executed.
 	 * @param timeUnit the timeUnit in which the initialDelay and the delay is specified.
 	 */
 	public static <R> void scheduleWithFixedDelay(CoreAction<R> action, long initialDelay, long delay, TimeUnit timeUnit)
 	{
 		component.core().scheduleWithFixedDelay(action, initialDelay, delay, timeUnit);
 	}
-	
+
 	/**
 	 * Remove scheduled future.
 	 * @param scheduledFuture the RunnableScheduledFuture to remove.
@@ -325,7 +330,7 @@ public final class Core
 	{
 		return component.core().removeScheduledFuture(scheduledFuture);
 	}
-	
+
 	/**
 	 * Reschedule an action with a new delay.
 	 * @param scheduledFuture the scheduledFuture (old action) to remove from the queue.
@@ -338,7 +343,7 @@ public final class Core
 	{
 		return component.core().reschedule(scheduledFuture, action, newDelay, timeUnit);
 	}
-	
+
 	/**
 	 * Registers the given ActionListener to the ActionManager.
 	 * @param al the ActionListener to add.
@@ -347,7 +352,7 @@ public final class Core
 	{
 		component.core().addListener(al);
 	}
-	
+
 	/**
 	 * Commits the given object (asynchronously). This will store the object in the database and remove it from the server cache.
 	 * This action is not executed in a transaction.
@@ -359,59 +364,76 @@ public final class Core
 	{
 		return component.core().commitAsync(context, objects);
 	}
-	
+
 	/**
 	 * Commits the given object. This will store the object in the database and remove it from the server cache.
 	 * This action is executed in a transaction.
+	 *
 	 * @param context the context.
-	 * @param object the IMendixObject to commit.
-	 * @return returns committed object if commit was successful, otherwise null.
+	 * @param object  the IMendixObject to commit.
+	 * @return committed object
+	 * @throws CoreRuntimeException if commit fails
 	 */
 	public static IMendixObject commit(IContext context, IMendixObject object) throws CoreException
 	{
 		return component.core().commit(context, object);
 	}
-	
+
 	/**
 	 * Commits the given objects. This will store the objects in the database and remove them from the server cache.
-	 * Before events defined for these objects are executed before any object will be committed and after events will be
-	 * executed after all objects have been committed.
-	 * This action is executed in a transaction. 
+	 * Before events defined for these objects are executed before any object will be
+	 * committed and after events will be executed after all objects have been committed. This action is executed in a transaction.
+	 *
 	 * @param context the context.
-	 * @param objectsToCommit the objects to commit.
-	 * @return returns committed objects if commits was successful, otherwise an empty list.
+	 * @param objects the objects to commit.
+	 * @return committed objects
+	 * @throws CoreRuntimeException if commit fails
 	 */
 	public static List<IMendixObject> commit(IContext context, List<IMendixObject> objects)
 	{
 		return component.core().commit(context, objects);
 	}
-	
+
 	/**
-	 * Commits the given object without events. This will store the object in the database and remove it from the server cache.
-	 * This action is executed in a transaction.
+	 * <p>Commits the given object without events. This will store the object in the database and
+	 * remove it from the server cache.</p>
+	 *
+	 * <p>This action is executed in a transaction.</p>
+	 *
+	 * <p>Validations <em>except</em> unique validation are not executed. It is possible to save an entity
+	 * which would not pass validations using this method.</p>
+	 *
 	 * @param context the context.
-	 * @param object the IMendixObject to commit.
-	 * @return returns committed object if commit was successful, otherwise null.
+	 * @param object  the IMendixObject to commit.
+	 * @return committed object
+	 * @throws CoreRuntimeException if commit fails
 	 */
 	public static IMendixObject commitWithoutEvents(IContext context, IMendixObject object)
 	{
 		return component.core().commitWithoutEvents(context, object);
 	}
-	
+
 	/**
-	 * Commit the given objects without events. This will store the objects in the database and remove it from the server cache.
-	 * This action is executed in a transaction.
+	 * <p>Commits the given objects without events. This will store the objects in the database and
+	 * remove it from the server cache.</p>
+	 *
+	 * <p>This action is executed in a transaction.</p>
+	 *
+	 * <p>Validations <em>except</em> unique validation are not executed. It is possible to save entities
+	 * which would not pass validations using this method.</p>
+	 *
 	 * @param context the context.
 	 * @param objects the objects to commit.
-	 * @return returns true if commit was successful, otherwise false.
+	 * @return commited objects
+	 * @throws CoreRuntimeException if commit fails
 	 */
 	public static List<IMendixObject> commitWithoutEvents(IContext context, List<IMendixObject> objects)
 	{
 		return component.core().commitWithoutEvents(context, objects);
 	}
-		
+
 	/**
-	 * Creates a new IMendixObject with the given object type (asynchronously). The object will NOT be stored in the 
+	 * Creates a new IMendixObject with the given object type (asynchronously). The object will NOT be stored in the
 	 * database. This action is not executed in a transaction.
 	 * @param context the context.
 	 * @param objectType type of object to create (e.g. "System.User").
@@ -421,21 +443,21 @@ public final class Core
 	{
 		return component.core().instantiateAsync(context, objectType);
 	}
-		
+
 	/**
-	 * Creates a new IMendixObject with the given object type (synchronously). The object will NOT be stored in the 
+	 * Creates a new IMendixObject with the given object type (synchronously). The object will NOT be stored in the
 	 * database. This action is executed in a transaction.
 	 * @param context the context.
-	 * @param objectType type of object to create (e.g. "System.User"). 
+	 * @param objectType type of object to create (e.g. "System.User").
 	 * @return returns the newly created object.
 	 */
 	public static IMendixObject instantiate(IContext context, String objectType)
 	{
 		return component.core().instantiate(context, objectType);
 	}
-	
+
 	/**
-	 * Changes the given object in cache (synchronously). When the object is not cache yet, 
+	 * Changes the given object in cache (synchronously). When the object is not cache yet,
 	 * the object will be retrieved from the database and put in the cache.
 	 * This action is executed in a transaction.
 	 * @param context the context.
@@ -447,7 +469,7 @@ public final class Core
 	{
 		return component.core().change(context, object, changes);
 	}
-	
+
 	/**
 	 * Changes the object (asynchronously). Object will be stored in cache.
 	 * This action is not executed in a transaction.
@@ -460,7 +482,7 @@ public final class Core
 	{
 		return component.core().changeAsync(context, obj, changes);
 	}
-	
+
 	/**
 	 * Rollback changes of the object with the given id (asynchronously).
 	 * When the object's state is NORMAL: Removes the object from the cache, all performed changes without commit will be lost.
@@ -474,7 +496,7 @@ public final class Core
 	{
 		return component.core().rollbackAsync(context, object);
 	}
-	
+
 	/**
 	 * Rollback changes of the object with the given id (synchronously).
 	 * When the object's state is NORMAL: Removes the object from the cache, all performed changes without commit will be lost.
@@ -488,7 +510,7 @@ public final class Core
 	{
 		return component.core().rollback(context, object);
 	}
-	
+
 	/**
 	 * Deletes the given objects from the database and server cache (synchronously).
 	 * This action is executed in a transaction.
@@ -500,19 +522,19 @@ public final class Core
 	{
 		return component.core().delete(context, objects);
 	}
-	
+
 	/**
 	 * Deletes the given objects from the database and server cache (synchronously).
 	 * This action is executed in a transaction.
 	 * @param context the context.
 	 * @param objectList the objects to delete.
-	 * @return returns whether the delete succeeded. 
+	 * @return returns whether the delete succeeded.
 	 */
 	public static boolean delete(IContext context, List<IMendixObject> objectList)
 	{
 		return component.core().delete(context, objectList);
 	}
-	
+
 	/**
 	 * Deletes the given objects from the database and server cache (synchronously) without events
 	 * This action is executed in a transaction.
@@ -524,7 +546,7 @@ public final class Core
 	{
 		return component.core().deleteWithoutEvents(context, objects, useDeleteBehavior);
 	}
-	
+
 	/**
 	 * Deletes the given object from the database and server cache (asynchronously).
 	 * This action is not executed in a transaction.
@@ -537,7 +559,7 @@ public final class Core
 	{
 		return component.core().deleteAsync(context, object, useDeleteBehavior);
 	}
-	
+
 	/**
 	 * Deletes the given object from the database and server cache (asynchronously).
 	 * This action is not executed in a transaction.
@@ -550,7 +572,7 @@ public final class Core
 	{
 		return component.core().deleteAsync(context, objects, useDeleteBehavior);
 	}
-	
+
 	/**
 	 * Retrieves objects with the given ids (asynchronously). First, objects are attempted to be retrieved from cache.
 	 * When an object cannot be retrieve from the cache it will be retrieved from the database.
@@ -563,11 +585,11 @@ public final class Core
 	{
 		return component.core().retrieveIdListAsync(context, ids);
 	}
-	
+
 	/**
 	 * Retrieves objects with the given ids (synchronously). First, objects are attempted to be retrieved from cache.
 	 * When an object cannot be retrieve from the cache it will be retrieved from the database.
-	 * When (amount > 0) || (offset > 0) || (sort.size() > 0), all objects will be retrieve from the database. 
+	 * When (amount > 0) || (offset > 0) || (sort.size() > 0), all objects will be retrieve from the database.
 	 * @param context the context.
 	 * @param ids ids of the objects to retrieve.
 	 * @param amount the maximum number of objects to retrieve from the database.
@@ -579,7 +601,7 @@ public final class Core
 	{
 		return component.core().retrieveIdList(context, ids, amount, offset, sort);
 	}
-	
+
 	/**
 	 * Retrieves objects with the given ids (synchronously). First, objects are attempted to be retrieved from cache.
 	 * When an object cannot be retrieved from the cache it will be retrieved from the database.
@@ -592,7 +614,7 @@ public final class Core
 	{
 		return component.core().retrieveIdList(context, ids);
 	}
-	
+
 	/**
 	 * Retrieves object with the given id (asynchronously). First, the object is attempted to be retrieved from the cache.
 	 * When the object cannot be retrieve from the cache it will be retrieved from the database.
@@ -604,7 +626,7 @@ public final class Core
 	{
 		return component.core().retrieveIdAsync(context, id);
 	}
-	
+
 	/**
 	 * Retrieves object with the given id (synchronously). First, the object is attempted to be retrieved from the cache.
 	 * When the object cannot be retrieve from the cache it will be retrieved from the database.
@@ -616,10 +638,10 @@ public final class Core
 	{
 		return component.core().retrieveId(context, id);
 	}
-	
+
 	/**
 	 * Retrieves objects using the given object and path.
-	 * 
+	 *
 	 * @param context the context.
 	 * @param mxObject the start point of the path.
 	 * @param path the path (association) to the objects to retrieve.
@@ -629,10 +651,10 @@ public final class Core
 	{
 		return component.core().retrieveByPath(context, mxObject, path);
 	}
-	
+
 	/**
 	 * Retrieves objects using the given object and path.
-	 * 
+	 *
 	 * @param context the context.
 	 * @param mxObject the start point of the path.
 	 * @param path the path (association) to the objects to retrieve.
@@ -643,12 +665,12 @@ public final class Core
 	{
 		return component.core().retrieveByPath(context, mxObject, path, isSelfAssociationChild);
 	}
-	
+
 	/**
 	 * Retrieves object list based on the given XPath query (asynchronously).
 	 * @param context the context.
 	 * @param xpathQuery the XPath query to execute.
-	 * @param amount maximum number of objects to retrieve. 
+	 * @param amount maximum number of objects to retrieve. If amount is 0, all objects will be retrieved.
 	 * @param offset index of first object to retrieve.
 	 * @param sort sorting of returned objects when retrieved from the database (e.g. <"Name", "ASC">, <"Age", "DESC">).
 	 * @param depth	indicates the level until which each reference (IMendixIdentifier) is also retrieved as an IMendixObject.
@@ -658,12 +680,12 @@ public final class Core
 	{
 		return component.core().retrieveXPathQueryAsync(context, xpathQuery, amount, offset, sort, depth);
 	}
-	
+
 	/**
 	 * Retrieves object list based on the given XPath query (synchronously).
 	 * @param context the context.
 	 * @param xpathQuery the XPath query to execute.
-	 * @param amount maximum number of objects to retrieve. 
+	 * @param amount maximum number of objects to retrieve. If amount is 0, all objects will be retrieved.
 	 * @param offset index of first object to retrieve.
 	 * @param sort sorting of returned objects when retrieved from the database (e.g. <"Name", "ASC">, <"Age", "DESC">).
 	 * @param depth	indicates the level until which each reference (IMendixIdentifier) is also retrieved as an IMendixObject.
@@ -673,12 +695,12 @@ public final class Core
 	{
 		return component.core().retrieveXPathQuery(context, xpathQuery, amount, offset, sort, depth);
 	}
-	
+
 	/**
 	 * Retrieves raw data (IDataTables) based on the given XPath query (synchronously).
 	 * @param context the context.
 	 * @param xpathQuery the XPath query to execute.
-	 * @param amount maximum number of objects to retrieve. 
+	 * @param amount maximum number of objects to retrieve. If amount is 0, all objects will be retrieved.
 	 * @param offset index of first object to retrieve.
 	 * @param sort sorting of returned objects when retrieved from the database (e.g. <"Name", "ASC">, <"Age", "DESC">).
 	 * @param depth	indicates the level until which each reference (IMendixIdentifier) is also retrieved as an IMendixObject.
@@ -688,7 +710,7 @@ public final class Core
 	{
 		return component.core().retrieveXPathQueryRaw(context, xpathQuery, amount, offset, sort, depth);
 	}
-	
+
 	/**
 	 * Retrieves raw data (IDataTables) based on the XPath query and given schema (synchronously).
 	 * @param context the context.
@@ -701,20 +723,20 @@ public final class Core
 	{
 		return component.core().retrieveXPathSchemaRaw(context, xpathQuery, shouldRetrieveCount, retrievalSchema);
 	}
-	
+
 	/**
 	 * Retrieves objects based on the XPath query and given schema (synchronously).
 	 * @param context the context.
 	 * @param xpathQuery the XPath query to execute.
 	 * @param retrievalSchema the schema to apply.
-	 * @param shouldRetrieveCount indicates whether the total number object corresponding to the given schema should be included in the result. 
+	 * @param shouldRetrieveCount indicates whether the total number object corresponding to the given schema should be included in the result.
 	 * @return the list of retrieved objects.
 	 */
 	public static List<IMendixObject> retrieveXPathSchema(IContext context, String xpathQuery, IRetrievalSchema retrievalSchema, boolean shouldRetrieveCount) throws CoreException
 	{
 		return component.core().retrieveXPathSchema(context, xpathQuery, retrievalSchema, shouldRetrieveCount, false);
 	}
-	
+
 	/**
 	 * Retrieves objects based on the XPath query and given schema (synchronously).
 	 * @param context the context.
@@ -728,12 +750,12 @@ public final class Core
 	{
 		return component.core().retrieveXPathSchema(context, xpathQuery, retrievalSchema, shouldRetrieveCount, disableSecurity);
 	}
-	
+
 	/**
 	 * Retrieves object list based on the given XPath query (synchronously).
 	 * @param context the context.
 	 * @param xpathQuery the XPath query to execute.
-	 * @param amount maximum number of objects to retrieve. 
+	 * @param amount maximum number of objects to retrieve. If amount is 0, all objects will be retrieved.
 	 * @param offset index of first object to retrieve.
 	 * @param sort sorting of returned objects when retrieved from the database (e.g. <"Name", "ASC">, <"Age", "DESC">).
 	 * @return the list of retrieved objects.
@@ -742,7 +764,7 @@ public final class Core
 	{
 		return Core.retrieveXPathQuery(context, xpathQuery, amount, offset, sort, 0);
 	}
-	
+
 	/**
 	 * Retrieves object list based on the given XPath query (synchronously).
 	 * @param context the context.
@@ -754,7 +776,7 @@ public final class Core
 	{
 		return Core.retrieveXPathQuery(context, xpathQuery, -1, -1, new LinkedHashMap<String,String>(), depth);
 	}
-	
+
 	/**
 	 * Retrieves object list based on the given XPath query (synchronously).
 	 * @param context the context.
@@ -765,12 +787,12 @@ public final class Core
 	{
 		return Core.retrieveXPathQuery(context, xpathQuery, -1, -1, new LinkedHashMap<String,String>(), 0);
 	}
-	
+
 	/**
 	 * Retrieves object list based on the given XPath query (synchronously).
 	 * @param context the context.
 	 * @param xpathFormat the XPath query to execute with %s for each param to escape.
-	 * @param amount maximum number of objects to retrieve. 
+	 * @param amount maximum number of objects to retrieve. If amount is 0, all objects will be retrieved.
 	 * @param offset index of first object to retrieve.
 	 * @param sort sorting of returned objects when retrieved from the database (e.g. <"Name", "ASC">, <"Age", "DESC">).
 	 * @param depth depth of the retrieval (0 is all attributes and association guids, 1 is also all attributes of 1-deep associations and 2-deep associaton guids etc.).
@@ -781,7 +803,7 @@ public final class Core
 	{
 		return component.core().retrieveXPathQueryEscaped(context, xpathFormat, amount, offset, sort, depth, params);
 	}
-	
+
 	/**
 	 * Retrieves object list based on the given XPath query (synchronously).
 	 * @param context the context.
@@ -795,7 +817,7 @@ public final class Core
 	{
 		return Core.retrieveXPathSchemaEscaped(context, xpathFormat, retrievalSchema, shouldRetrieveCount, false, params);
 	}
-	
+
 	/**
 	 * Retrieves object list based on the given XPath query (synchronously).
 	 * @param context the context.
@@ -810,7 +832,7 @@ public final class Core
 	{
 		return component.core().retrieveXPathSchemaEscaped(context, xpathFormat, retrievalSchema, shouldRetrieveCount, disableSecurity, params);
 	}
-	
+
 	/**
 	 * Retrieves object list based on the given XPath query (synchronously).
 	 * @param context the context.
@@ -822,7 +844,7 @@ public final class Core
 	{
 		return Core.retrieveXPathQueryEscaped(context, xpathFormat, -1, -1, new LinkedHashMap<String,String>(), 0, params);
 	}
-			
+
 	/**
 	 * Create a new IRetrievalSchema.
 	 * @return an IRetrievalSchema.
@@ -831,11 +853,11 @@ public final class Core
 	{
 		return component.core().createRetrievalSchema();
 	}
-	
+
 	/**
 	 * Create a new IMetaAssociationSchema to specify which associations must be retrieved.
 	 * An IMetaAssociationSchema can be added to a request by the method IRetrievalSchema.addMetaAssociationSchema(..).
-	 * 
+	 *
 	 * @param metaAssociationName the name of the meta association of this schema
 	 * @param retrievalSchema the retrieval schema of the associated meta object
 	 * @return an IMetaAssociationSchema
@@ -843,25 +865,25 @@ public final class Core
 	public static IMetaAssociationSchema createMetaAssociationSchema(String metaAssociationName, IRetrievalSchema retrievalSchema) {
 		return component.core().createMetaAssociationSchema(metaAssociationName, retrievalSchema);
 	}
-	
+
 	/**
 	 * Create a new IXPathTextGetRequest. This class can be used to define an XPath retrieval query. The query must be set in textual form.
 	 * @return an IXPathTextGetRequest.
 	 */
-	public static IXPathTextGetRequest createXPathTextGetRequest() 
+	public static IXPathTextGetRequest createXPathTextGetRequest()
 	{
 		return component.core().createXPathTextGetRequest();
 	}
-	
+
 	/**
 	 * Create a new IOQLTextGetRequest. This class can be used to define a textual OQL retrieval query.
 	 * @return an IOQLTextGetRequest.
 	 */
-	public static IOQLTextGetRequest createOQLTextGetRequest() 
+	public static IOQLTextGetRequest createOQLTextGetRequest()
 	{
 		return component.core().createOQLTextGetRequest();
 	}
-	
+
 	/**
 	 * Retrieve raw data (IDataTable) using an OQL query (asynchronously).
 	 * @param context the context.
@@ -872,7 +894,7 @@ public final class Core
 	{
 		return retrieveOQLDataTableAsync(context, oqlQuery, -1, -1);
 	}
-	
+
 	/**
 	 * Retrieve raw data (IDataTable) using an IGetRequest object (asynchronously).
 	 * @param context the context.
@@ -883,55 +905,55 @@ public final class Core
 	{
 		return component.core().retrieveOQLDataTableAsync(context, request);
 	}
-	
+
 	/**
 	 * Retrieve raw data (IDataTable) using an OQL query (asynchronously).
 	 * @param context the context.
 	 * @param oqlQuery the OQL query to execute.
-	 * @param amount maximum number of objects to retrieve. 
+	 * @param amount maximum number of objects to retrieve. If amount is 0, all objects will be retrieved.
 	 * @param offset index of first object to retrieve.
 	 * @return the Future object.
 	 */
-	public static Future<IDataTable> retrieveOQLDataTableAsync(IContext context, String oqlQuery, int amount, int offset) 
+	public static Future<IDataTable> retrieveOQLDataTableAsync(IContext context, String oqlQuery, int amount, int offset)
 	{
 		return component.core().retrieveOQLDataTableAsync(context, oqlQuery, amount, offset);
 	}
-	
+
 	/**
 	 * Retrieve raw data (IDataTable) using an IGetRequest object (synchronously).
 	 * @param context the context.
 	 * @param request the request object.
 	 * @return the data table containing the raw data.
 	 */
-	public static IDataTable retrieveOQLDataTable(IContext context, IGetRequest request) throws CoreException 
+	public static IDataTable retrieveOQLDataTable(IContext context, IGetRequest request) throws CoreException
 	{
 		return component.core().retrieveOQLDataTable(context, request);
 	}
-	
+
 	/**
 	 * Retrieve raw data (IDataTable) using an IGetRequest object (synchronously).
 	 * @param context the context.
 	 * @param oqlQuery the OQL query to execute.
 	 * @return the data table containing the raw data.
 	 */
-	public static IDataTable retrieveOQLDataTable(IContext context, String oqlQuery) throws CoreException 
+	public static IDataTable retrieveOQLDataTable(IContext context, String oqlQuery) throws CoreException
 	{
 		return retrieveOQLDataTable(context, oqlQuery, -1, -1);
 	}
-	
+
 	/**
 	 * Retrieve raw data (IDataTable) using an OQL query (asynchronously).
 	 * @param context the context.
 	 * @param oqlQuery the OQL query to execute.
-	 * @param amount maximum number of objects to retrieve. 
+	 * @param amount maximum number of objects to retrieve. If amount is 0, all objects will be retrieved.
 	 * @param offset index of first object to retrieve.
 	 * @return the data table containing the raw data.
 	 */
-	public static IDataTable retrieveOQLDataTable(IContext context, String oqlQuery, int amount, int offset) throws CoreException 
+	public static IDataTable retrieveOQLDataTable(IContext context, String oqlQuery, int amount, int offset) throws CoreException
 	{
 		return component.core().retrieveOQLDataTable(context, oqlQuery, amount, offset);
 	}
-	
+
 	/**
 	 * Retrieves long aggregate value based on the given query (root element of the query should be an aggregate function) (asynchronously).
 	 * @param context the context.
@@ -942,7 +964,7 @@ public final class Core
 	{
 		return component.core().retrieveXPathQueryAggregateAsync(context, xpathQuery);
 	}
-	
+
 	/**
 	 * Retrieves long aggregate value based on the given query (root element of the query should be an aggregate function) (synchronously).
 	 * @param context the context.
@@ -953,7 +975,7 @@ public final class Core
 	{
 		return component.core().retrieveXPathQueryAggregate(context, xpathQuery);
 	}
-	
+
 	/**
 	 * Retrieves long aggregate value based on the given query and schema (root element of the query should be an aggregate function) (asynchronously).
 	 * @param context the context.
@@ -965,7 +987,7 @@ public final class Core
 	{
 		return component.core().retrieveXPathQueryAggregateSchema(context, xpathQuery, retrievalSchema);
 	}
-	
+
 	/**
 	 * Retrieves long aggregate value based on the given query and schema (root element of the query should be an aggregate function) (asynchronously).
 	 * @param context the context.
@@ -978,7 +1000,7 @@ public final class Core
 	{
 		return component.core().retrieveXPathQueryAggregateSchema(context, xpathQuery, retrievalSchema, disableSecurity);
 	}
-	
+
 	/**
 	 * Retrieves long value based on the given query (query should have an aggregate function as root element)
 	 * @param context
@@ -989,7 +1011,7 @@ public final class Core
 	{
 		return component.core().retrieveXPathQueryAggregateAsyncDouble(context, xpathQuery);
 	}
-	
+
 	/**
 	 * Retrieves double aggregate value based on the given query (root element of the query should be an aggregate function) (synchronously).
 	 * @param context the context.
@@ -1000,7 +1022,7 @@ public final class Core
 	{
 		return component.core().retrieveXPathQueryAggregateDouble(context, xpathQuery);
 	}
-	
+
 	/**
 	 * Returns contents of a file document as an input stream.
 	 * @param context the context.
@@ -1011,7 +1033,7 @@ public final class Core
 	{
 		return component.core().getFileDocumentContent(context, fileDocument);
 	}
-	
+
 	/**
 	 * Physically stores a file using the given input stream and commits the file document.
 	 * @param context the context.
@@ -1034,7 +1056,7 @@ public final class Core
 	{
 		component.core().storeFileDocumentContent(context, fileDocument, inputStream);
 	}
-	
+
 	/**
 	 * Physically stores an image using the given input stream and commits the image document.
 	 * @param context the context.
@@ -1043,11 +1065,11 @@ public final class Core
 	 * @param thumbnailWidth the width of the thumbnail to create for this image.
 	 * @param thumbnailHeight the width of the thumbnail to create for this image.
 	 */
-	public static void storeImageDocumentContent(IContext context, IMendixObject imageDocument, InputStream inputStream, int thumbnailWidth, int thumbnailHeight) 
+	public static void storeImageDocumentContent(IContext context, IMendixObject imageDocument, InputStream inputStream, int thumbnailWidth, int thumbnailHeight)
 	{
 		component.core().storeImageDocumentContent(context, imageDocument, inputStream, thumbnailWidth, thumbnailHeight);
 	}
-	
+
 	/**
 	 * Retrieve contents of the given image document.
 	 * @param context the context.
@@ -1059,7 +1081,7 @@ public final class Core
 	{
 		return component.core().getImage(context, imageDocument, retrieveThumbnail);
 	}
-	
+
 	/**
 	 * Checks whether a type is a subclass of or equal to a potential super class.
 	 * @param superClass the name of the super class
@@ -1070,7 +1092,7 @@ public final class Core
 	{
 		return component.core().isSubClassOf(superClass, type);
 	}
-	
+
 	/**
 	 * Checks whether a type is a subclass of or equal to a potential super class.
 	 * @param superObject the super object.
@@ -1081,19 +1103,19 @@ public final class Core
 	{
 		return component.core().isSubClassOf(superObject, type);
 	}
-	
+
 	/**
 	 * Checks whether a type is a subclass of or equal to a potential super class.
 	 * @param superClass the name of the super class
 	 * @param typeHash the hash of the name of the type to check
 	 * @return returns true if type is a subclass of superClass or if type equals superClass
-	 * @throws CoreException 
+	 * @throws CoreException
 	 */
 	public static boolean isSubClassOf(String superClass, short typeHash)
 	{
 		return component.core().isSubClassOf(superClass, typeHash);
 	}
-	
+
 	/**
 	 * Get all IMendixObject types.
 	 * @return returns a list with all IMendixObjects (one object for each existing type)
@@ -1102,13 +1124,13 @@ public final class Core
 	{
 		return component.core().getAllMendixObjects();
 	}
-	
+
 	/**
-	 * Get all subtypes for an object type (including subtypes of subtypes, etc.). 
+	 * Get all subtypes for an object type (including subtypes of subtypes, etc.).
 	 * @param objectType the object type.
 	 * @return list of subtypes, in no particular order.
 	 */
-	public static List<String> getSubtypesOf(String objectType) 
+	public static List<String> getSubtypesOf(String objectType)
 	{
 		return component.core().getSubtypesOf(objectType);
 	}
@@ -1122,7 +1144,7 @@ public final class Core
 	{
 		return component.core().getMetaObject(metaObjectName);
 	}
-	
+
 	/**
 	 * Get the IMetaPrimtive based on a qualified attribute name (e.g. "System.User.Name").
 	 * @param qualifiedAttributeName the qualified attribute name.
@@ -1132,31 +1154,31 @@ public final class Core
 	{
 		return component.core().getMetaPrimitive(qualifiedAttributeName);
 	}
-	
+
 	/**
 	 * Get all IMetaObjects.
 	 * @return returns all IMetaObjects.
 	 */
-	public static Iterable<IMetaObject> getMetaObjects() 
+	public static Iterable<IMetaObject> getMetaObjects()
 	{
 		return component.core().getMetaObjects();
 	}
-	
+
 	/**
 	 * Get all IMetaAssociations.
 	 * @return returns all IMetaAssociations.
 	 */
-	public static Iterable<IMetaAssociation> getMetaAssociations() 
+	public static Iterable<IMetaAssociation> getMetaAssociations()
 	{
 		return component.core().getMetaAssociations();
 	}
-	
+
 	/**
 	 * Get the IMetaAssociation corresponding to the given association name.
 	 * @param association the association name (e.g. "System.UserRoles").
 	 * @return returns the IMetaAssociation for the given association name.
 	 */
-	public static IMetaAssociation getMetaAssociation(String association) 
+	public static IMetaAssociation getMetaAssociation(String association)
 	{
 		return component.core().getMetaAssociation(association);
 	}
@@ -1168,7 +1190,7 @@ public final class Core
 	public static String getDatabaseTableName(IMetaObject iMetaObject) {
 		return component.core().getDatabaseTableName(iMetaObject);
 	}
-	
+
 	/**
 	 * @param iMetaAssociation the meta association to get the database table name for
 	 * @return the name of the database table
@@ -1176,7 +1198,7 @@ public final class Core
 	public static String getDatabaseTableName(IMetaAssociation iMetaAssociation) {
 		return component.core().getDatabaseTableName(iMetaAssociation);
 	}
-	
+
 	/**
 	 * @param iMetaPrimitive the meta primitive to get the database column name for
 	 * @return the name of the database column
@@ -1184,7 +1206,7 @@ public final class Core
 	public static String getDatabaseColumnName(IMetaPrimitive iMetaPrimitive) {
 		return component.core().getDatabaseColumnName(iMetaPrimitive);
 	}
-	
+
 	/**
 	 * @param iMetaAssociation the meta association to get the database child column name for
 	 * @return the name of the database child column name
@@ -1192,7 +1214,7 @@ public final class Core
 	public static String getDatabaseChildColumnName(IMetaAssociation iMetaAssociation) {
 		return component.core().getDatabaseChildColumnName(iMetaAssociation);
 	}
-	
+
 	/**
 	 * @param iMetaAssociation the meta association to get the database parent column name for
 	 * @return the name of the database parent column name
@@ -1200,17 +1222,17 @@ public final class Core
 	public static String getDatabaseParentColumnName(IMetaAssociation iMetaAssociation) {
 		return component.core().getDatabaseParentColumnName(iMetaAssociation);
 	}
-	
+
 	/**
 	 * Returns the context of the system session (this is always a sudo context).
 	 * The system session has no associated user or user roles.
-	 * @return returns the system session context. 
+	 * @return returns the system session context.
 	 */
 	public static IContext createSystemContext()
 	{
 		return component.core().createSystemContext();
 	}
-	
+
 	/**
 	 * Creates a IMendixIdentifier for the given guid.
 	 * @param guid the guid.
@@ -1220,7 +1242,7 @@ public final class Core
 	{
 		return component.core().createMendixIdentifier(guid);
 	}
-	
+
 	/**
 	 * Creates a new IMendixIdentifier for the given guid.
 	 * @param guid the guid.
@@ -1230,7 +1252,7 @@ public final class Core
 	{
 		return component.core().createMendixIdentifier(guid);
 	}
-	
+
 	/**
 	 * Authenticate the given user with the given password.
 	 * @param context
@@ -1240,9 +1262,9 @@ public final class Core
 	 */
 	public static boolean authenticate(IContext context, IUser user, String password) throws CoreException
 	{
-		return component.core().authenticate(context, user, password);		
+		return component.core().authenticate(context, user, password);
 	}
-	
+
 	/**
 	 * Generic login method (can be used in modules in combination with LoginAction replacement).
 	 * @param params the params.
@@ -1252,7 +1274,7 @@ public final class Core
 	{
 		return component.core().login(params);
 	}
-	
+
 	/**
 	 * Login user with the given user name and password.
 	 * @param userName the user name.
@@ -1263,7 +1285,7 @@ public final class Core
 	{
 		return component.core().login(userName, password);
 	}
-	
+
 	/**
 	 * Login user with the given parameters.
 	 * @param userName the user name.
@@ -1280,7 +1302,7 @@ public final class Core
 	{
 		return component.core().login(userName, password, request);
 	}
-	
+
 	/**
 	 * Logout the given session. When the session is persistent it will be removed from the database.
 	 * If the session is not persistent it will removed from the session cache.
@@ -1290,7 +1312,7 @@ public final class Core
 	{
 		component.core().logout(session);
 	}
-	
+
 	/**
 	 * Returns a user using the given user name.
 	 * @param context the context.
@@ -1301,7 +1323,7 @@ public final class Core
 	{
 		return component.core().getUser(context, userName);
 	}
-	
+
 	/**
 	 * Initialize a new session for the given user.
 	 * @param user the user for which the session should be initialized.
@@ -1312,7 +1334,7 @@ public final class Core
 	{
 		return component.core().initializeSession(user, currentSessionId);
 	}
-	
+
 	/**
 	 * Initialize a new session for a guest user
 	 * @return the created session
@@ -1324,94 +1346,65 @@ public final class Core
 	}
 
 	/**
-	 * Import an xml stream, map this stream to domain objects and store those object in the Mendix database.
+	 * Import an XML stream, map this stream to domain model objects and store those objects in the Mendix database.
 	 * @param context the context.
-	 * @param xmlStream the xml stream to map and store.
-	 * @param importMappingName name of the mapping from xml to domain objects (as defined in the Mendix Modeler, e.g. "Orders.MyMapping").
+	 * @param xmlStream the XML stream to map and store.
+	 * @param importMappingName name of the mapping document, containing the mapping from XML to domain model objects (as defined in the Mendix Modeler, e.g. "Orders.MyMapping").
 	 * @param mappingParameter parameter object used during the mapping (optional)
-	 * @param shouldValidate whether the xml should be validated.
+	 * @param shouldValidate whether the XML should be validated.
+	 * @deprecated Please use importStream instead.
 	 */
+	@Deprecated
 	public static void importXmlStream(IContext context, InputStream xmlStream, String importMappingName, IMendixObject mappingParameter, boolean shouldValidate)
 	{
-		integration.importXmlStream(context, xmlStream, importMappingName, mappingParameter, shouldValidate);
+		integration.importStream(context, xmlStream, importMappingName, mappingParameter, -1, shouldValidate);
 	}
 
 	/**
-	 * Import an xml stream, map this stream to domain objects and store those object in the Mendix database.
+	 * Import an XML stream, map this stream to domain model objects and store those objects in the Mendix database.
 	 * @param context the context.
-	 * @param xmlStream the xml stream to map and store.
-	 * @param importMappingName name of the mapping from xml to domain objects (as defined in the Mendix Modeler, e.g. "Orders.MyMapping").
+	 * @param xmlStream the XML stream to map and store.
+	 * @param importMappingName name of the mapping document, containing the mapping from XML to domain model objects (as defined in the Mendix Modeler, e.g. "Orders.MyMapping").
 	 * @param mappingParameter parameter object used during the mapping (optional)
-	 * @param storeResultInVariable whether to store the result of the xml mapping in variable which will be returned by this method.
-	 * @param hasListReturnValue indicates whether the return value of the xml mapping is of type List.
-	 * @param shouldValidate whether the xml should be validated.
+	 * @param storeResultInVariable whether to store the result of the XML mapping in variable which will be returned by this method.
+	 * @param hasListReturnValue indicates whether the return value of the XML mapping is of type List.
+	 * @param shouldValidate whether the XML should be validated.
+	 * @deprecated Please use importStream instead.
 	 */
+	@Deprecated
 	public static Object importXmlStream(IContext context, InputStream xmlStream, String importMappingName, IMendixObject mappingParameter,
 			boolean storeResultInVariable, boolean hasListReturnValue, boolean shouldValidate)
 	{
 		return integration.importXmlStream(context, xmlStream, importMappingName, mappingParameter, storeResultInVariable, -1, hasListReturnValue, shouldValidate);
 	}
-	
+
 	/**
-	 * Call a webservice
-	 * Post method headers:
-	 *  - Content-Type: text/xml
-	 *  - Host: location host (e.g. www.w3schools.com)
-	 *  - SoapAction: soapAction (e.g. http://tempuri.com/FahrenheitToCelsius)
-	 * @param location the webservice location url
-	 * @param soapAction the webservice soap action
-	 * @param soapRequestMessage
-	 * <pre>
-	 * {@code
-	 * <?xml version="1.0" encoding="utf-8"?>
-	 *	<soap:envelope 
-	 *			xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-	 *			xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
-	 *			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	 *	>
-	 *		<soap:header>
-	 *			<authentication>
-	 *				<username> username </username>
-	 *				<password> password </password>
-	 *			</authentication>
-	 *		</soap:header>
-     *		<soap:body>
-     *   		<operationName xmlns:=targetNamespace>
-     *       		<x>5</x>
-     *       		<y>5.0</y>
-     *   		</operationName>
-     *		</soap:body>
-	 * </soap:envelope>
-	 * }
-	 * </pre>
-	 * @return a soap envelope response stream, e.g.:
-	 * <pre>
-	 * {@code
-	 * <?xml version="1.0" encoding="utf-8"?>
-	 * <soap:Envelope 
-	 * 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	 * 		xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-	 * 		xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-	 * >
-  	 * 		<soap:Body>
-     * 			<OperationResponse xmlns=namespace>
-     * 				<Result>string</Result>
-     * 			</OperationResponse>
-     * 		</soap:Body>
-	 *	</soap:Envelope>
-	 *}
-	 *</pre>
-	 * @throws WebserviceException
-	 * @throws IOException
-	 * @deprecated Don't use this, it will be removed in the future. If you want to build your own custom web
-	 * service calls, you can fully implement this yourself.
+	 * Import an XML or JSON stream, map this stream to domain model objects and store those objects in the Mendix database.
+	 * @param context the context.
+	 * @param stream the stream to map and store.
+	 * @param importMappingName name of the mapping document, containing the mapping from XML or JSON to domain model objects (as defined in the Mendix Modeler, e.g. "Orders.MyMapping").
+	 * @param mappingParameter parameter object used during the mapping (optional).
+	 * @param shouldValidate whether the input should be validated. Validation can only be applied to XML.
+	 * @throws MendixRuntimeException this exception is thrown when an error occurs.
 	 */
-	@Deprecated   
-	public static IWebserviceResponse callWebservice(String location, String soapAction, String soapRequestMessage) 
+	public static List<IMendixObject> importStream(IContext context, InputStream stream, String importMappingName, IMendixObject mappingParameter, boolean shouldValidate)
 	{
-		return integration.callWebservice(location, soapAction, soapRequestMessage);
+		return integration.importStream(context, stream, importMappingName, mappingParameter, -1, shouldValidate);
 	}
-	
+
+	/**
+	 * Export domain object as XML or JSON stream.
+	 * @param context the context.
+	 * @param exportMappingName name of the mapping document, containing the mapping from domain model objects to XML or JSON (as defined in the Mendix Modeler, e.g. "Orders.MyMapping").
+	 * @param objectToExport object to export using the mapping.
+	 * @param shouldValidate whether the output should be validated. Validation can only be applied to XML.
+	 * @throws MendixRuntimeException this exception is thrown when an error occurs.
+	 */
+	public static InputStream exportStream(IContext context, String exportMappingName, IMendixObject objectToExport, boolean shouldValidate)
+	{
+		return integration.exportStream(context, exportMappingName, objectToExport, shouldValidate);
+	}
+
 	/**
 	 * Call a webservice
 	 * Post method headers:
@@ -1422,11 +1415,11 @@ public final class Core
 	 * @param soapAction the webservice soap action
 	 * @param soapRequestMessage
 	 * <pre>
-	 * {@code 
+	 * {@code
 	 * <?xml version="1.0" encoding="utf-8"?>
-	 *	<soap:envelope 
-	 *			xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-	 *			xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+	 *	<soap:envelope
+	 *			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	 *			xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
 	 *			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	 *	>
 	 *		<soap:header>
@@ -1448,9 +1441,9 @@ public final class Core
 	 * <pre>
 	 * {@code
 	 * <?xml version="1.0" encoding="utf-8"?>
-	 * <soap:Envelope 
-	 * 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	 * 		xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	 * <soap:Envelope
+	 * 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 * 		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	 * 		xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
 	 * >
   	 * 		<soap:Body>
@@ -1467,15 +1460,75 @@ public final class Core
 	 * service calls, you can fully implement this yourself.
 	 */
 	@Deprecated
-	public static IWebserviceResponse callWebservice(String location, String soapAction, InputStream soapRequestMessage) 
+	public static IWebserviceResponse callWebservice(String location, String soapAction, String soapRequestMessage)
 	{
 		return integration.callWebservice(location, soapAction, soapRequestMessage);
 	}
-	
+
+	/**
+	 * Call a webservice
+	 * Post method headers:
+	 *  - Content-Type: text/xml
+	 *  - Host: location host (e.g. www.w3schools.com)
+	 *  - SoapAction: soapAction (e.g. http://tempuri.com/FahrenheitToCelsius)
+	 * @param location the webservice location url
+	 * @param soapAction the webservice soap action
+	 * @param soapRequestMessage
+	 * <pre>
+	 * {@code
+	 * <?xml version="1.0" encoding="utf-8"?>
+	 *	<soap:envelope
+	 *			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	 *			xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+	 *			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 *	>
+	 *		<soap:header>
+	 *			<authentication>
+	 *				<username> username </username>
+	 *				<password> password </password>
+	 *			</authentication>
+	 *		</soap:header>
+     *		<soap:body>
+     *   		<operationName xmlns:=targetNamespace>
+     *       		<x>5</x>
+     *       		<y>5.0</y>
+     *   		</operationName>
+     *		</soap:body>
+	 * </soap:envelope>
+	 * }
+	 * </pre>
+	 * @return a soap envelope response stream, e.g.:
+	 * <pre>
+	 * {@code
+	 * <?xml version="1.0" encoding="utf-8"?>
+	 * <soap:Envelope
+	 * 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 * 		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	 * 		xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+	 * >
+  	 * 		<soap:Body>
+     * 			<OperationResponse xmlns=namespace>
+     * 				<Result>string</Result>
+     * 			</OperationResponse>
+     * 		</soap:Body>
+	 *	</soap:Envelope>
+	 *}
+	 *</pre>
+	 * @throws WebserviceException
+	 * @throws IOException
+	 * @deprecated Don't use this, it will be removed in the future. If you want to build your own custom web
+	 * service calls, you can fully implement this yourself.
+	 */
+	@Deprecated
+	public static IWebserviceResponse callWebservice(String location, String soapAction, InputStream soapRequestMessage)
+	{
+		return integration.callWebservice(location, soapAction, soapRequestMessage);
+	}
+
 	/**
 	 * Add a custom request handler to the Mendix Business Server. This request
 	 * handler will process MxRuntimeRequests on the given path. Responses should be
-	 * given by adding information to the MxRuntimeResponse. 
+	 * given by adding information to the MxRuntimeResponse.
 	 * @param path the path for which request should be processed.
 	 * @param requestHandler the custom request handler.
 	 */
@@ -1483,12 +1536,12 @@ public final class Core
 	{
 		component.runtime().getConnector().addRequestHandler(path, requestHandler);
 	}
-	
+
 	public static ILogNode getLogger(String name)
 	{
 		return component.core().getLogger(name);
 	}
-	
+
 	/**
 	 * Returns the current configuration.
 	 * @return the configuration.
@@ -1497,7 +1550,7 @@ public final class Core
 	{
 		return component.core().getConfiguration();
 	}
-	
+
 	/**
 	 * Resolve tokens in the given text.
 	 * Possible tokens:
@@ -1521,7 +1574,7 @@ public final class Core
 	 * - [%EndOfCurrentMonth%]
 	 * - [%BeginOfCurrentYear%]
 	 * - [%EndOfCurrentYear%]
-	 * - [%UserRole_%Name%%] (e.g. [%UserRole_Administrator%]) 
+	 * - [%UserRole_%Name%%] (e.g. [%UserRole_Administrator%])
 	 * @param text the text to resolve.
 	 * @param context the context.
 	 * @return the resolved object.
@@ -1530,10 +1583,10 @@ public final class Core
 	{
 		return component.core().resolveTokens(context, text);
 	}
-	
+
 	/////////////// ActionManager statistics //////////////////////////////
-	
-	/** 
+
+	/**
 	 * Returns the current number of active actions. This number represents only the actions
 	 * which were started asynchronously.
 	 * @return number of current active actions.
@@ -1542,7 +1595,7 @@ public final class Core
 	{
 		return component.core().getActiveActionCount();
 	}
-	
+
 	/**
 	 * Returns the number of completed actions since server startup. This number represents
 	 * only the actions which were started asynchronously.
@@ -1552,7 +1605,7 @@ public final class Core
 	{
 		return component.core().getCompletedActionCount();
 	}
-	
+
 	/**
 	 * Returns the current action pool queue size.
 	 * @return returns current queue size of action thread pool.
@@ -1561,7 +1614,7 @@ public final class Core
 	{
 		return component.core().getActionQueueSize();
 	}
-	
+
 	/**
 	 * Returns the current action pool size.
 	 * @return the current size of the action thread pool.
@@ -1570,7 +1623,7 @@ public final class Core
 	{
 		return component.core().getCurrentPoolSize();
 	}
-	
+
 	/**
 	 * Returns the largest action pool size.
 	 * @return the maximum number of threads the thread pool has ever ran.
@@ -1579,7 +1632,7 @@ public final class Core
 	{
 		return component.core().getLargestPoolSize();
 	}
-	
+
 	/**
 	 * Returns the number of actions currently scheduled for future execution.
 	 * @return the number of scheduled actions.
@@ -1588,7 +1641,7 @@ public final class Core
 	{
 		return component.core().getScheduledActionCount();
 	}
-	
+
 	/**
 	 * Returns the maximum number of concurrent users since the server was started.
 	 * @return maximum number of concurrent users.
@@ -1597,7 +1650,7 @@ public final class Core
 	{
 		return component.core().getMaximumNumberConcurrentUsers();
 	}
-	
+
 	/**
 	 * Returns current number of concurrent sessions.
 	 */
@@ -1605,7 +1658,7 @@ public final class Core
 	{
 		return component.core().getNumberConcurrentSessions();
 	}
-	
+
 	/**
 	 * @return the active sessions.
 	 */
@@ -1613,7 +1666,7 @@ public final class Core
 	{
 		return component.core().getActiveSessions();
 	}
-	
+
 	/**
 	 * @param userName the user name associated with the session to search for.
 	 * @return the session associated with the given user name if such a session exists, otherwise null.
@@ -1622,12 +1675,12 @@ public final class Core
 	{
 		return component.core().getActiveSession(userName);
 	}
-	
+
 	public static long getNamedUserCount()
 	{
 		return component.core().getNamedUserCount();
 	}
-	
+
 	/**
 	 * The current number of concurrent users.
 	 * @param anonymous whether anonymous users should be included in the count.
@@ -1637,7 +1690,7 @@ public final class Core
 	{
 		return component.core().getConcurrentUserCount(anonymous);
 	}
-	
+
 	/**
 	 * Returns the translated string for a certain key and context. The context is used
 	 * to retrieve the language of the current user.
@@ -1650,7 +1703,7 @@ public final class Core
 	{
 		return component.core().getInternationalizedString(context, key, args);
 	}
-	
+
 	/**
 	 * Returns the translated string for a certain key and language code.
 	 * @param languageCode the language code (ISO-639).
@@ -1662,7 +1715,7 @@ public final class Core
 	{
 		return component.core().getInternationalizedString(languageCode, key, args);
 	}
-	
+
 	/**
 	 * Returns the default language of the loaded project.
 	 * @return the default langauge.
@@ -1671,9 +1724,9 @@ public final class Core
 	{
 		return component.core().getDefaultLanguage();
 	}
-	
+
 	/**
-	 * Retrieve locale using the given context. 
+	 * Retrieve locale using the given context.
 	 * @param context the context.
 	 * @return the Locale.
 	 */
@@ -1681,9 +1734,9 @@ public final class Core
 	{
 		return component.core().getLocale(context);
 	}
-	
+
 	/**
-	 * Retrieve locale using the given language code (e.g. en_US). 
+	 * Retrieve locale using the given language code (e.g. en_US).
 	 * @param languageCode the languageCode (ISO-639).
 	 * @return the Locale.
 	 */
@@ -1691,7 +1744,7 @@ public final class Core
 	{
 		return component.core().getLocale(languageCode);
 	}
-		
+
 	/**
 	 * Returns the startup date time of the Mendix Business Server.
 	 * @return the date time on which the Mendix Business Server was started.
@@ -1705,7 +1758,7 @@ public final class Core
 	{
 		component.core().registerLogSubscriber(subscriber);
 	}
-		
+
 	/**
 	 * Prints the message and stacktrace of a Throwable and its cause(s).
 	 * @param trace the StringBuilder the exception is printed to.
@@ -1715,13 +1768,13 @@ public final class Core
 	{
 		component.core().buildException(trace, e);
 	}
-		
+
 	/**
 	 * Add the action specified by the given action name to action registry. This enables calling
 	 * <code>Core.execute(actionName)</code> for this action.
 	 * @param actionName the fully qualified class name of the action (e.g. com.mendix.action.MyAction).
 	 */
-	public static void addUserAction(Class<? extends UserAction<?>> userActionClass) 
+	public static void addUserAction(Class<? extends UserAction<?>> userActionClass)
 	{
 		component.core().addUserAction(userActionClass);
 	}
@@ -1742,7 +1795,7 @@ public final class Core
 	 * @return the resulting IDataType.
 	 */
 	public static IDataType createDataType(String type)
-	{		
+	{
 		return component.core().createDataType(type);
 	}
 
@@ -1757,17 +1810,17 @@ public final class Core
 		return component.core().createDataType(objectType, attributeName);
 	}
 
-	public static IProfiler getProfiler() 
+	public static IProfiler getProfiler()
 	{
 		return component.core().getProfiler();
 	}
-	
-	public static void registerProfiler(IProfiler profiler) throws MendixException 
+
+	public static void registerProfiler(IProfiler profiler) throws MendixException
 	{
 		component.core().registerProfiler(profiler);
 	}
-	
-	public static void unregisterProfiler() 
+
+	public static void unregisterProfiler()
 	{
 		component.core().unregisterProfiler();
 	}

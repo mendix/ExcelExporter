@@ -4,9 +4,6 @@
 
 package xlsreport.proxies;
 
-/**
- * 
- */
 public class MxConstraint
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject mxConstraintMendixObject;
@@ -133,7 +130,7 @@ public class MxConstraint
 	/**
 	 * @return value of Sequence
 	 */
-	public final Integer getSequence()
+	public final java.lang.Integer getSequence()
 	{
 		return getSequence(getContext());
 	}
@@ -142,16 +139,16 @@ public class MxConstraint
 	 * @param context
 	 * @return value of Sequence
 	 */
-	public final Integer getSequence(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getSequence(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.Sequence.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.Sequence.toString());
 	}
 
 	/**
 	 * Set value of Sequence
 	 * @param sequence
 	 */
-	public final void setSequence(Integer sequence)
+	public final void setSequence(java.lang.Integer sequence)
 	{
 		setSequence(getContext(), sequence);
 	}
@@ -161,7 +158,7 @@ public class MxConstraint
 	 * @param context
 	 * @param sequence
 	 */
-	public final void setSequence(com.mendix.systemwideinterfaces.core.IContext context, Integer sequence)
+	public final void setSequence(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer sequence)
 	{
 		getMendixObject().setValue(context, MemberNames.Sequence.toString(), sequence);
 	}
@@ -169,7 +166,7 @@ public class MxConstraint
 	/**
 	 * @return value of Summary
 	 */
-	public final String getSummary()
+	public final java.lang.String getSummary()
 	{
 		return getSummary(getContext());
 	}
@@ -178,16 +175,16 @@ public class MxConstraint
 	 * @param context
 	 * @return value of Summary
 	 */
-	public final String getSummary(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getSummary(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Summary.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Summary.toString());
 	}
 
 	/**
 	 * Set value of Summary
 	 * @param summary
 	 */
-	public final void setSummary(String summary)
+	public final void setSummary(java.lang.String summary)
 	{
 		setSummary(getContext(), summary);
 	}
@@ -197,7 +194,7 @@ public class MxConstraint
 	 * @param context
 	 * @param summary
 	 */
-	public final void setSummary(com.mendix.systemwideinterfaces.core.IContext context, String summary)
+	public final void setSummary(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String summary)
 	{
 		getMendixObject().setValue(context, MemberNames.Summary.toString(), summary);
 	}
@@ -205,7 +202,7 @@ public class MxConstraint
 	/**
 	 * @return value of Attribute
 	 */
-	public final String getAttribute()
+	public final java.lang.String getAttribute()
 	{
 		return getAttribute(getContext());
 	}
@@ -214,16 +211,16 @@ public class MxConstraint
 	 * @param context
 	 * @return value of Attribute
 	 */
-	public final String getAttribute(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getAttribute(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Attribute.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Attribute.toString());
 	}
 
 	/**
 	 * Set value of Attribute
 	 * @param attribute
 	 */
-	public final void setAttribute(String attribute)
+	public final void setAttribute(java.lang.String attribute)
 	{
 		setAttribute(getContext(), attribute);
 	}
@@ -233,7 +230,7 @@ public class MxConstraint
 	 * @param context
 	 * @param attribute
 	 */
-	public final void setAttribute(com.mendix.systemwideinterfaces.core.IContext context, String attribute)
+	public final void setAttribute(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String attribute)
 	{
 		getMendixObject().setValue(context, MemberNames.Attribute.toString(), attribute);
 	}
@@ -329,7 +326,7 @@ public class MxConstraint
 	/**
 	 * @return value of ConstraintText
 	 */
-	public final String getConstraintText()
+	public final java.lang.String getConstraintText()
 	{
 		return getConstraintText(getContext());
 	}
@@ -338,16 +335,16 @@ public class MxConstraint
 	 * @param context
 	 * @return value of ConstraintText
 	 */
-	public final String getConstraintText(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getConstraintText(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.ConstraintText.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.ConstraintText.toString());
 	}
 
 	/**
 	 * Set value of ConstraintText
 	 * @param constrainttext
 	 */
-	public final void setConstraintText(String constrainttext)
+	public final void setConstraintText(java.lang.String constrainttext)
 	{
 		setConstraintText(getContext(), constrainttext);
 	}
@@ -357,7 +354,7 @@ public class MxConstraint
 	 * @param context
 	 * @param constrainttext
 	 */
-	public final void setConstraintText(com.mendix.systemwideinterfaces.core.IContext context, String constrainttext)
+	public final void setConstraintText(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String constrainttext)
 	{
 		getMendixObject().setValue(context, MemberNames.ConstraintText.toString(), constrainttext);
 	}
@@ -365,7 +362,7 @@ public class MxConstraint
 	/**
 	 * @return value of ConstraintNumber
 	 */
-	public final Long getConstraintNumber()
+	public final java.lang.Long getConstraintNumber()
 	{
 		return getConstraintNumber(getContext());
 	}
@@ -374,16 +371,16 @@ public class MxConstraint
 	 * @param context
 	 * @return value of ConstraintNumber
 	 */
-	public final Long getConstraintNumber(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Long getConstraintNumber(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Long) getMendixObject().getValue(context, MemberNames.ConstraintNumber.toString());
+		return (java.lang.Long) getMendixObject().getValue(context, MemberNames.ConstraintNumber.toString());
 	}
 
 	/**
 	 * Set value of ConstraintNumber
 	 * @param constraintnumber
 	 */
-	public final void setConstraintNumber(Long constraintnumber)
+	public final void setConstraintNumber(java.lang.Long constraintnumber)
 	{
 		setConstraintNumber(getContext(), constraintnumber);
 	}
@@ -393,7 +390,7 @@ public class MxConstraint
 	 * @param context
 	 * @param constraintnumber
 	 */
-	public final void setConstraintNumber(com.mendix.systemwideinterfaces.core.IContext context, Long constraintnumber)
+	public final void setConstraintNumber(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Long constraintnumber)
 	{
 		getMendixObject().setValue(context, MemberNames.ConstraintNumber.toString(), constraintnumber);
 	}
@@ -401,7 +398,7 @@ public class MxConstraint
 	/**
 	 * @return value of ConstraintFloat
 	 */
-	public final Double getConstraintFloat()
+	public final java.lang.Double getConstraintFloat()
 	{
 		return getConstraintFloat(getContext());
 	}
@@ -410,16 +407,16 @@ public class MxConstraint
 	 * @param context
 	 * @return value of ConstraintFloat
 	 */
-	public final Double getConstraintFloat(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Double getConstraintFloat(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Double) getMendixObject().getValue(context, MemberNames.ConstraintFloat.toString());
+		return (java.lang.Double) getMendixObject().getValue(context, MemberNames.ConstraintFloat.toString());
 	}
 
 	/**
 	 * Set value of ConstraintFloat
 	 * @param constraintfloat
 	 */
-	public final void setConstraintFloat(Double constraintfloat)
+	public final void setConstraintFloat(java.lang.Double constraintfloat)
 	{
 		setConstraintFloat(getContext(), constraintfloat);
 	}
@@ -429,7 +426,7 @@ public class MxConstraint
 	 * @param context
 	 * @param constraintfloat
 	 */
-	public final void setConstraintFloat(com.mendix.systemwideinterfaces.core.IContext context, Double constraintfloat)
+	public final void setConstraintFloat(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Double constraintfloat)
 	{
 		getMendixObject().setValue(context, MemberNames.ConstraintFloat.toString(), constraintfloat);
 	}
@@ -481,7 +478,7 @@ public class MxConstraint
 	/**
 	 * @return value of ConstraintBoolean
 	 */
-	public final Boolean getConstraintBoolean()
+	public final java.lang.Boolean getConstraintBoolean()
 	{
 		return getConstraintBoolean(getContext());
 	}
@@ -490,16 +487,16 @@ public class MxConstraint
 	 * @param context
 	 * @return value of ConstraintBoolean
 	 */
-	public final Boolean getConstraintBoolean(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getConstraintBoolean(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.ConstraintBoolean.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.ConstraintBoolean.toString());
 	}
 
 	/**
 	 * Set value of ConstraintBoolean
 	 * @param constraintboolean
 	 */
-	public final void setConstraintBoolean(Boolean constraintboolean)
+	public final void setConstraintBoolean(java.lang.Boolean constraintboolean)
 	{
 		setConstraintBoolean(getContext(), constraintboolean);
 	}
@@ -509,7 +506,7 @@ public class MxConstraint
 	 * @param context
 	 * @param constraintboolean
 	 */
-	public final void setConstraintBoolean(com.mendix.systemwideinterfaces.core.IContext context, Boolean constraintboolean)
+	public final void setConstraintBoolean(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean constraintboolean)
 	{
 		getMendixObject().setValue(context, MemberNames.ConstraintBoolean.toString(), constraintboolean);
 	}

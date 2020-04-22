@@ -6,32 +6,32 @@ package xlsreport.proxies;
 
 public enum DateTimePresentation
 {
-	mdyy(new String[][] { new String[] { "en_US", "m/d/yy" } }),
-	dmmmyy(new String[][] { new String[] { "en_US", "d-mmm-yy" } }),
-	mdyyhmm(new String[][] { new String[] { "en_US", "m/d/yy h:mm" } }),
-	ddmmyyyy(new String[][] { new String[] { "en_US", "dd-mm-yyyy" } }),
-	ddmmyyyyhhmm(new String[][] { new String[] { "en_US", "dd-mm-yyyy hh:mm" } }),
-	mmddyyyy(new String[][] { new String[] { "en_US", "mm/dd/yyyy" } }),
-	mmddyyyyhhmm(new String[][] { new String[] { "en_US", "mm/dd/yyyy hh:mm" } }),
-	custom(new String[][] { new String[] { "en_US", "custom format" } });
+	mdyy(new java.lang.String[][] { new java.lang.String[] { "en_US", "m/d/yy" } }),
+	dmmmyy(new java.lang.String[][] { new java.lang.String[] { "en_US", "d-mmm-yy" } }),
+	mdyyhmm(new java.lang.String[][] { new java.lang.String[] { "en_US", "m/d/yy h:mm" } }),
+	ddmmyyyy(new java.lang.String[][] { new java.lang.String[] { "en_US", "dd-mm-yyyy" } }),
+	ddmmyyyyhhmm(new java.lang.String[][] { new java.lang.String[] { "en_US", "dd-mm-yyyy hh:mm" } }),
+	mmddyyyy(new java.lang.String[][] { new java.lang.String[] { "en_US", "mm/dd/yyyy" } }),
+	mmddyyyyhhmm(new java.lang.String[][] { new java.lang.String[] { "en_US", "mm/dd/yyyy hh:mm" } }),
+	custom(new java.lang.String[][] { new java.lang.String[] { "en_US", "custom format" } });
 
-	private java.util.Map<String,String> captions;
+	private java.util.Map<java.lang.String, java.lang.String> captions;
 
-	private DateTimePresentation(String[][] captionStrings)
+	private DateTimePresentation(java.lang.String[][] captionStrings)
 	{
-		this.captions = new java.util.HashMap<String,String>();
-		for (String[] captionString : captionStrings)
+		this.captions = new java.util.HashMap<java.lang.String, java.lang.String>();
+		for (java.lang.String[] captionString : captionStrings)
 			captions.put(captionString[0], captionString[1]);
 	}
 
-	public String getCaption(String languageCode)
+	public java.lang.String getCaption(java.lang.String languageCode)
 	{
 		if (captions.containsKey(languageCode))
 			return captions.get(languageCode);
 		return captions.get("en_US");
 	}
 
-	public String getCaption()
+	public java.lang.String getCaption()
 	{
 		return captions.get("en_US");
 	}

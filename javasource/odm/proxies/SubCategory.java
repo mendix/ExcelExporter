@@ -4,9 +4,6 @@
 
 package odm.proxies;
 
-/**
- * 
- */
 public class SubCategory
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject subCategoryMendixObject;
@@ -123,7 +120,7 @@ public class SubCategory
 	/**
 	 * @return value of Number
 	 */
-	public final Long getNumber()
+	public final java.lang.Long getNumber()
 	{
 		return getNumber(getContext());
 	}
@@ -132,16 +129,16 @@ public class SubCategory
 	 * @param context
 	 * @return value of Number
 	 */
-	public final Long getNumber(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Long getNumber(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Long) getMendixObject().getValue(context, MemberNames.Number.toString());
+		return (java.lang.Long) getMendixObject().getValue(context, MemberNames.Number.toString());
 	}
 
 	/**
 	 * Set value of Number
 	 * @param number
 	 */
-	public final void setNumber(Long number)
+	public final void setNumber(java.lang.Long number)
 	{
 		setNumber(getContext(), number);
 	}
@@ -151,7 +148,7 @@ public class SubCategory
 	 * @param context
 	 * @param number
 	 */
-	public final void setNumber(com.mendix.systemwideinterfaces.core.IContext context, Long number)
+	public final void setNumber(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Long number)
 	{
 		getMendixObject().setValue(context, MemberNames.Number.toString(), number);
 	}
@@ -159,7 +156,7 @@ public class SubCategory
 	/**
 	 * @return value of Name
 	 */
-	public final String getName()
+	public final java.lang.String getName()
 	{
 		return getName(getContext());
 	}
@@ -168,16 +165,16 @@ public class SubCategory
 	 * @param context
 	 * @return value of Name
 	 */
-	public final String getName(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getName(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Name.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Name.toString());
 	}
 
 	/**
 	 * Set value of Name
 	 * @param name
 	 */
-	public final void setName(String name)
+	public final void setName(java.lang.String name)
 	{
 		setName(getContext(), name);
 	}
@@ -187,7 +184,7 @@ public class SubCategory
 	 * @param context
 	 * @param name
 	 */
-	public final void setName(com.mendix.systemwideinterfaces.core.IContext context, String name)
+	public final void setName(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String name)
 	{
 		getMendixObject().setValue(context, MemberNames.Name.toString(), name);
 	}

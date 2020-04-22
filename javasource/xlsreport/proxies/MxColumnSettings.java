@@ -4,9 +4,6 @@
 
 package xlsreport.proxies;
 
-/**
- * 
- */
 public class MxColumnSettings
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject mxColumnSettingsMendixObject;
@@ -124,7 +121,7 @@ public class MxColumnSettings
 	/**
 	 * @return value of ColumnIndex
 	 */
-	public final Integer getColumnIndex()
+	public final java.lang.Integer getColumnIndex()
 	{
 		return getColumnIndex(getContext());
 	}
@@ -133,16 +130,16 @@ public class MxColumnSettings
 	 * @param context
 	 * @return value of ColumnIndex
 	 */
-	public final Integer getColumnIndex(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getColumnIndex(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.ColumnIndex.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.ColumnIndex.toString());
 	}
 
 	/**
 	 * Set value of ColumnIndex
 	 * @param columnindex
 	 */
-	public final void setColumnIndex(Integer columnindex)
+	public final void setColumnIndex(java.lang.Integer columnindex)
 	{
 		setColumnIndex(getContext(), columnindex);
 	}
@@ -152,7 +149,7 @@ public class MxColumnSettings
 	 * @param context
 	 * @param columnindex
 	 */
-	public final void setColumnIndex(com.mendix.systemwideinterfaces.core.IContext context, Integer columnindex)
+	public final void setColumnIndex(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer columnindex)
 	{
 		getMendixObject().setValue(context, MemberNames.ColumnIndex.toString(), columnindex);
 	}
@@ -160,7 +157,7 @@ public class MxColumnSettings
 	/**
 	 * @return value of AutoSize
 	 */
-	public final Boolean getAutoSize()
+	public final java.lang.Boolean getAutoSize()
 	{
 		return getAutoSize(getContext());
 	}
@@ -169,16 +166,16 @@ public class MxColumnSettings
 	 * @param context
 	 * @return value of AutoSize
 	 */
-	public final Boolean getAutoSize(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getAutoSize(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.AutoSize.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.AutoSize.toString());
 	}
 
 	/**
 	 * Set value of AutoSize
 	 * @param autosize
 	 */
-	public final void setAutoSize(Boolean autosize)
+	public final void setAutoSize(java.lang.Boolean autosize)
 	{
 		setAutoSize(getContext(), autosize);
 	}
@@ -188,7 +185,7 @@ public class MxColumnSettings
 	 * @param context
 	 * @param autosize
 	 */
-	public final void setAutoSize(com.mendix.systemwideinterfaces.core.IContext context, Boolean autosize)
+	public final void setAutoSize(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean autosize)
 	{
 		getMendixObject().setValue(context, MemberNames.AutoSize.toString(), autosize);
 	}
@@ -196,7 +193,7 @@ public class MxColumnSettings
 	/**
 	 * @return value of ColumnWidth
 	 */
-	public final Integer getColumnWidth()
+	public final java.lang.Integer getColumnWidth()
 	{
 		return getColumnWidth(getContext());
 	}
@@ -205,16 +202,16 @@ public class MxColumnSettings
 	 * @param context
 	 * @return value of ColumnWidth
 	 */
-	public final Integer getColumnWidth(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getColumnWidth(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.ColumnWidth.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.ColumnWidth.toString());
 	}
 
 	/**
 	 * Set value of ColumnWidth
 	 * @param columnwidth
 	 */
-	public final void setColumnWidth(Integer columnwidth)
+	public final void setColumnWidth(java.lang.Integer columnwidth)
 	{
 		setColumnWidth(getContext(), columnwidth);
 	}
@@ -224,7 +221,7 @@ public class MxColumnSettings
 	 * @param context
 	 * @param columnwidth
 	 */
-	public final void setColumnWidth(com.mendix.systemwideinterfaces.core.IContext context, Integer columnwidth)
+	public final void setColumnWidth(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer columnwidth)
 	{
 		getMendixObject().setValue(context, MemberNames.ColumnWidth.toString(), columnwidth);
 	}

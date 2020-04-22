@@ -4,9 +4,6 @@
 
 package xlsreport.proxies;
 
-/**
- * 
- */
 public class MxTemplate
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject mxTemplateMendixObject;
@@ -129,7 +126,7 @@ public class MxTemplate
 	/**
 	 * @return value of TemplateID
 	 */
-	public final Long getTemplateID()
+	public final java.lang.Long getTemplateID()
 	{
 		return getTemplateID(getContext());
 	}
@@ -138,16 +135,16 @@ public class MxTemplate
 	 * @param context
 	 * @return value of TemplateID
 	 */
-	public final Long getTemplateID(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Long getTemplateID(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Long) getMendixObject().getValue(context, MemberNames.TemplateID.toString());
+		return (java.lang.Long) getMendixObject().getValue(context, MemberNames.TemplateID.toString());
 	}
 
 	/**
 	 * Set value of TemplateID
 	 * @param templateid
 	 */
-	public final void setTemplateID(Long templateid)
+	public final void setTemplateID(java.lang.Long templateid)
 	{
 		setTemplateID(getContext(), templateid);
 	}
@@ -157,7 +154,7 @@ public class MxTemplate
 	 * @param context
 	 * @param templateid
 	 */
-	public final void setTemplateID(com.mendix.systemwideinterfaces.core.IContext context, Long templateid)
+	public final void setTemplateID(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Long templateid)
 	{
 		getMendixObject().setValue(context, MemberNames.TemplateID.toString(), templateid);
 	}
@@ -165,7 +162,7 @@ public class MxTemplate
 	/**
 	 * @return value of Name
 	 */
-	public final String getName()
+	public final java.lang.String getName()
 	{
 		return getName(getContext());
 	}
@@ -174,16 +171,16 @@ public class MxTemplate
 	 * @param context
 	 * @return value of Name
 	 */
-	public final String getName(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getName(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Name.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Name.toString());
 	}
 
 	/**
 	 * Set value of Name
 	 * @param name
 	 */
-	public final void setName(String name)
+	public final void setName(java.lang.String name)
 	{
 		setName(getContext(), name);
 	}
@@ -193,7 +190,7 @@ public class MxTemplate
 	 * @param context
 	 * @param name
 	 */
-	public final void setName(com.mendix.systemwideinterfaces.core.IContext context, String name)
+	public final void setName(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String name)
 	{
 		getMendixObject().setValue(context, MemberNames.Name.toString(), name);
 	}
@@ -201,7 +198,7 @@ public class MxTemplate
 	/**
 	 * @return value of Description
 	 */
-	public final String getDescription()
+	public final java.lang.String getDescription()
 	{
 		return getDescription(getContext());
 	}
@@ -210,16 +207,16 @@ public class MxTemplate
 	 * @param context
 	 * @return value of Description
 	 */
-	public final String getDescription(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getDescription(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.Description.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Description.toString());
 	}
 
 	/**
 	 * Set value of Description
 	 * @param description
 	 */
-	public final void setDescription(String description)
+	public final void setDescription(java.lang.String description)
 	{
 		setDescription(getContext(), description);
 	}
@@ -229,7 +226,7 @@ public class MxTemplate
 	 * @param context
 	 * @param description
 	 */
-	public final void setDescription(com.mendix.systemwideinterfaces.core.IContext context, String description)
+	public final void setDescription(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String description)
 	{
 		getMendixObject().setValue(context, MemberNames.Description.toString(), description);
 	}
@@ -369,7 +366,7 @@ public class MxTemplate
 	/**
 	 * @return value of CustomeDateFormat
 	 */
-	public final String getCustomeDateFormat()
+	public final java.lang.String getCustomeDateFormat()
 	{
 		return getCustomeDateFormat(getContext());
 	}
@@ -378,16 +375,16 @@ public class MxTemplate
 	 * @param context
 	 * @return value of CustomeDateFormat
 	 */
-	public final String getCustomeDateFormat(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String getCustomeDateFormat(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (String) getMendixObject().getValue(context, MemberNames.CustomeDateFormat.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.CustomeDateFormat.toString());
 	}
 
 	/**
 	 * Set value of CustomeDateFormat
 	 * @param customedateformat
 	 */
-	public final void setCustomeDateFormat(String customedateformat)
+	public final void setCustomeDateFormat(java.lang.String customedateformat)
 	{
 		setCustomeDateFormat(getContext(), customedateformat);
 	}
@@ -397,7 +394,7 @@ public class MxTemplate
 	 * @param context
 	 * @param customedateformat
 	 */
-	public final void setCustomeDateFormat(com.mendix.systemwideinterfaces.core.IContext context, String customedateformat)
+	public final void setCustomeDateFormat(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String customedateformat)
 	{
 		getMendixObject().setValue(context, MemberNames.CustomeDateFormat.toString(), customedateformat);
 	}

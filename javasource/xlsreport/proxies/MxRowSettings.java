@@ -4,9 +4,6 @@
 
 package xlsreport.proxies;
 
-/**
- * 
- */
 public class MxRowSettings
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject mxRowSettingsMendixObject;
@@ -124,7 +121,7 @@ public class MxRowSettings
 	/**
 	 * @return value of RowIndex
 	 */
-	public final Integer getRowIndex()
+	public final java.lang.Integer getRowIndex()
 	{
 		return getRowIndex(getContext());
 	}
@@ -133,16 +130,16 @@ public class MxRowSettings
 	 * @param context
 	 * @return value of RowIndex
 	 */
-	public final Integer getRowIndex(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getRowIndex(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.RowIndex.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.RowIndex.toString());
 	}
 
 	/**
 	 * Set value of RowIndex
 	 * @param rowindex
 	 */
-	public final void setRowIndex(Integer rowindex)
+	public final void setRowIndex(java.lang.Integer rowindex)
 	{
 		setRowIndex(getContext(), rowindex);
 	}
@@ -152,7 +149,7 @@ public class MxRowSettings
 	 * @param context
 	 * @param rowindex
 	 */
-	public final void setRowIndex(com.mendix.systemwideinterfaces.core.IContext context, Integer rowindex)
+	public final void setRowIndex(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer rowindex)
 	{
 		getMendixObject().setValue(context, MemberNames.RowIndex.toString(), rowindex);
 	}
@@ -160,7 +157,7 @@ public class MxRowSettings
 	/**
 	 * @return value of DefaultHeight
 	 */
-	public final Boolean getDefaultHeight()
+	public final java.lang.Boolean getDefaultHeight()
 	{
 		return getDefaultHeight(getContext());
 	}
@@ -169,16 +166,16 @@ public class MxRowSettings
 	 * @param context
 	 * @return value of DefaultHeight
 	 */
-	public final Boolean getDefaultHeight(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Boolean getDefaultHeight(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Boolean) getMendixObject().getValue(context, MemberNames.DefaultHeight.toString());
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.DefaultHeight.toString());
 	}
 
 	/**
 	 * Set value of DefaultHeight
 	 * @param defaultheight
 	 */
-	public final void setDefaultHeight(Boolean defaultheight)
+	public final void setDefaultHeight(java.lang.Boolean defaultheight)
 	{
 		setDefaultHeight(getContext(), defaultheight);
 	}
@@ -188,7 +185,7 @@ public class MxRowSettings
 	 * @param context
 	 * @param defaultheight
 	 */
-	public final void setDefaultHeight(com.mendix.systemwideinterfaces.core.IContext context, Boolean defaultheight)
+	public final void setDefaultHeight(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean defaultheight)
 	{
 		getMendixObject().setValue(context, MemberNames.DefaultHeight.toString(), defaultheight);
 	}
@@ -196,7 +193,7 @@ public class MxRowSettings
 	/**
 	 * @return value of RowHeight
 	 */
-	public final Integer getRowHeight()
+	public final java.lang.Integer getRowHeight()
 	{
 		return getRowHeight(getContext());
 	}
@@ -205,16 +202,16 @@ public class MxRowSettings
 	 * @param context
 	 * @return value of RowHeight
 	 */
-	public final Integer getRowHeight(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.Integer getRowHeight(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (Integer) getMendixObject().getValue(context, MemberNames.RowHeight.toString());
+		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.RowHeight.toString());
 	}
 
 	/**
 	 * Set value of RowHeight
 	 * @param rowheight
 	 */
-	public final void setRowHeight(Integer rowheight)
+	public final void setRowHeight(java.lang.Integer rowheight)
 	{
 		setRowHeight(getContext(), rowheight);
 	}
@@ -224,7 +221,7 @@ public class MxRowSettings
 	 * @param context
 	 * @param rowheight
 	 */
-	public final void setRowHeight(com.mendix.systemwideinterfaces.core.IContext context, Integer rowheight)
+	public final void setRowHeight(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer rowheight)
 	{
 		getMendixObject().setValue(context, MemberNames.RowHeight.toString(), rowheight);
 	}

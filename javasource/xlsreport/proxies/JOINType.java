@@ -6,28 +6,28 @@ package xlsreport.proxies;
 
 public enum JOINType
 {
-	LEFT(new String[][] { new String[] { "en_US", "LEFT JOIN" }, new String[] { "nl_NL", "LEFT JOIN" } }),
-	INNER(new String[][] { new String[] { "en_US", "INNER JOIN" }, new String[] { "nl_NL", "INNER JOIN" } }),
-	RIGHT(new String[][] { new String[] { "en_US", "RIGHT JOIN" }, new String[] { "nl_NL", "RIGHT JOIN" } }),
-	FULL(new String[][] { new String[] { "en_US", "FULL JOIN" }, new String[] { "nl_NL", "FULL JOIN" } });
+	LEFT(new java.lang.String[][] { new java.lang.String[] { "en_US", "LEFT JOIN" }, new java.lang.String[] { "nl_NL", "LEFT JOIN" } }),
+	INNER(new java.lang.String[][] { new java.lang.String[] { "en_US", "INNER JOIN" }, new java.lang.String[] { "nl_NL", "INNER JOIN" } }),
+	RIGHT(new java.lang.String[][] { new java.lang.String[] { "en_US", "RIGHT JOIN" }, new java.lang.String[] { "nl_NL", "RIGHT JOIN" } }),
+	FULL(new java.lang.String[][] { new java.lang.String[] { "en_US", "FULL JOIN" }, new java.lang.String[] { "nl_NL", "FULL JOIN" } });
 
-	private java.util.Map<String,String> captions;
+	private java.util.Map<java.lang.String, java.lang.String> captions;
 
-	private JOINType(String[][] captionStrings)
+	private JOINType(java.lang.String[][] captionStrings)
 	{
-		this.captions = new java.util.HashMap<String,String>();
-		for (String[] captionString : captionStrings)
+		this.captions = new java.util.HashMap<java.lang.String, java.lang.String>();
+		for (java.lang.String[] captionString : captionStrings)
 			captions.put(captionString[0], captionString[1]);
 	}
 
-	public String getCaption(String languageCode)
+	public java.lang.String getCaption(java.lang.String languageCode)
 	{
 		if (captions.containsKey(languageCode))
 			return captions.get(languageCode);
 		return captions.get("en_US");
 	}
 
-	public String getCaption()
+	public java.lang.String getCaption()
 	{
 		return captions.get("en_US");
 	}
