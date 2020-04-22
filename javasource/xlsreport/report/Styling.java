@@ -119,7 +119,7 @@ public class Styling
         }
         if (MxStyle.getTextBold())
         {
-            font.setBoldweight(Font.BOLDWEIGHT_BOLD);
+            font.setBold(true);
         }
         style.setFont(font);
         // Alignment
@@ -129,7 +129,7 @@ public class Styling
         if (MxStyle.getBackgroundColor() != null && MxStyle.getBackgroundColor() != MxColor.Blank)
         {
             style.setFillForegroundColor(getColor(MxStyle.getBackgroundColor()));
-            style.setFillPattern(CellStyle.SOLID_FOREGROUND);
+            style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
         }
         style.setRotation(MxStyle.getTextRotation().shortValue());
         if (MxStyle.getTextRotation() == 0)
@@ -139,19 +139,19 @@ public class Styling
         // Create border lines.
         if (MxStyle.getBorderTop() > 0)
         {
-            style.setBorderTop(MxStyle.getBorderTop().shortValue());
+            style.setBorderTop(BorderStyle.valueOf(MxStyle.getBorderTop().shortValue()));
         }
         if (MxStyle.getBorderBottom() > 0)
         {
-            style.setBorderBottom(MxStyle.getBorderBottom().shortValue());
+            style.setBorderBottom(BorderStyle.valueOf(MxStyle.getBorderBottom().shortValue()));
         }
         if (MxStyle.getBorderLeft() > 0)
         {
-            style.setBorderLeft(MxStyle.getBorderLeft().shortValue());
+            style.setBorderLeft(BorderStyle.valueOf(MxStyle.getBorderLeft().shortValue()));
         }
         if (MxStyle.getBorderRight() > 0)
         {
-            style.setBorderRight(MxStyle.getBorderRight().shortValue());
+            style.setBorderRight(BorderStyle.valueOf(MxStyle.getBorderRight().shortValue()));
         }
         if (MxStyle.getBorderColor() != null && MxStyle.getBorderColor() != MxColor.Blank)
         {
@@ -175,69 +175,69 @@ public class Styling
         switch (color)
         {
             case Black:
-                return HSSFColor.BLACK.index;
+                return HSSFColor.HSSFColorPredefined.BLACK.getIndex();
             case Blue:
-                return HSSFColor.BLUE.index;
+                return HSSFColor.HSSFColorPredefined.BLUE.getIndex();
             case Brown:
-                return HSSFColor.BROWN.index;
+                return HSSFColor.HSSFColorPredefined.BROWN.getIndex();
             case Green:
-                return HSSFColor.GREEN.index;
+                return HSSFColor.HSSFColorPredefined.GREEN.getIndex();
             case Light_Blue:
-                return HSSFColor.LIGHT_BLUE.index;
+                return HSSFColor.HSSFColorPredefined.LIGHT_BLUE.getIndex();
             case Orange:
-                return HSSFColor.ORANGE.index;
+                return HSSFColor.HSSFColorPredefined.ORANGE.getIndex();
             case Pink:
-                return HSSFColor.PINK.index;
+                return HSSFColor.HSSFColorPredefined.PINK.getIndex();
             case Red:
-                return HSSFColor.RED.index;
+                return HSSFColor.HSSFColorPredefined.RED.getIndex();
             case White:
-                return HSSFColor.WHITE.index;
+                return HSSFColor.HSSFColorPredefined.WHITE.getIndex();
             case Yellow:
-                return HSSFColor.YELLOW.index;
+                return HSSFColor.HSSFColorPredefined.YELLOW.getIndex();
             case Gray_1:
-                return HSSFColor.GREY_25_PERCENT.index;
+                return HSSFColor.HSSFColorPredefined.GREY_25_PERCENT.getIndex();
             case Gray_2:
-                return HSSFColor.GREY_40_PERCENT.index;
+                return HSSFColor.HSSFColorPredefined.GREY_40_PERCENT.getIndex();
             case Gray_3:
-                return HSSFColor.GREY_50_PERCENT.index;
+                return HSSFColor.HSSFColorPredefined.GREY_50_PERCENT.getIndex();
             case Gray_4:
-                return HSSFColor.GREY_80_PERCENT.index;
+                return HSSFColor.HSSFColorPredefined.GREY_80_PERCENT.getIndex();
             default:
-                return HSSFColor.WHITE.index;
+                return HSSFColor.HSSFColorPredefined.WHITE.getIndex();
         }
     }
 
-    private static short getAlignment(TextAlignment align)
+    private static HorizontalAlignment getAlignment(TextAlignment align)
     {
         if (align != null)
         {
             switch (align)
             {
                 case Left:
-                    return CellStyle.ALIGN_LEFT;
+                    return HorizontalAlignment.LEFT;
                 case Center:
-                    return CellStyle.ALIGN_CENTER;
+                    return HorizontalAlignment.CENTER;
                 case Right:
-                    return CellStyle.ALIGN_RIGHT;
+                    return HorizontalAlignment.RIGHT;
             }
         }       
-        return CellStyle.ALIGN_LEFT;
+        return HorizontalAlignment.LEFT;
     }
 
-    private static short getVerticalAlignment(TextVerticalAlignment align)
+    private static VerticalAlignment getVerticalAlignment(TextVerticalAlignment align)
     {
         if (align != null)
         {
             switch (align)
             {
                 case Top:
-                    return CellStyle.VERTICAL_TOP;
+                    return VerticalAlignment.TOP;
                 case Middle:
-                    return CellStyle.VERTICAL_CENTER;
+                    return VerticalAlignment.CENTER;
                 case Bottom:
-                    return CellStyle.VERTICAL_BOTTOM;
+                    return VerticalAlignment.BOTTOM;
             }
         }
-        return CellStyle.VERTICAL_TOP;
+        return VerticalAlignment.TOP;
     }
 }
