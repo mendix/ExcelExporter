@@ -1,13 +1,12 @@
-import { brand, contrast, font, spacing } from '../variables';
+import { brand, contrast, font } from "../variables";
+/*
 
-//
-// DISCLAIMER:
-// Do not change this file because it is core styling.
-// Customizing core files will make updating Atlas much more difficult in the future.
-// To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
-//
+DISCLAIMER:
+Do not change this file because it is core styling.
+Customizing core files will make updating Atlas much more difficult in the future.
+To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
 
-/* ==========================================================================
+==========================================================================
     Text
 
 //== Design Properties
@@ -36,10 +35,10 @@ export const textDanger = {
 };
 export const textWhite = {
     text: {
-        color: '#FFF',
+        color: "#FFF",
     },
 };
-
+//
 export const textContrastLowest = {
     text: {
         color: contrast.lowest,
@@ -75,24 +74,24 @@ export const textContrastHighest = {
         color: contrast.highest,
     },
 };
-
+//
 // Text Alignment
 export const textLeft = {
     text: {
-        textAlign: 'left',
+        textAlign: "left",
     },
 };
 export const textCenter = {
     text: {
-        textAlign: 'center',
+        textAlign: "center",
     },
 };
 export const textRight = {
     text: {
-        textAlign: 'right',
+        textAlign: "right",
     },
 };
-
+//
 // Text Weights
 export const textLight = {
     text: {
@@ -114,38 +113,38 @@ export const textBold = {
         fontWeight: font.weightBold,
     },
 };
-
+//
 // Text Sizes
 export const textSmall = {
     text: {
         fontSize: font.sizeSmall,
-        lineHeight: font.sizeSmall,
+        lineHeight: font.sizeSmall + 2,
     },
 };
 export const textLarge = {
     text: {
         fontSize: font.sizeLarge,
-        lineHeight: font.sizeLarge,
+        lineHeight: font.sizeLarge + 2,
     },
 };
-
+//
 //== Extra Classes
 //## Helper classes to change the look and feel of the widget
 //-------------------------------------------------------------------------------------------------------------------//
-
+//
 // Text Transformations
 export const textLowercase = {
     text: {
-        textTransform: 'lowercase',
+        textTransform: "lowercase",
     },
 };
 export const textUppercase = {
     text: {
-        textTransform: 'uppercase',
+        textTransform: "uppercase",
     },
 };
 export const textCapitalize = {
     text: {
-        textTransform: 'capitalize',
+        textTransform: "capitalize",
     },
 };

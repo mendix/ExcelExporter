@@ -1,21 +1,18 @@
-import { background, border, brand, button, contrast, font, input } from '../variables';
-import { Platform } from 'react-native';
-import {} from '../variables';
+import { Platform } from "react-native";
+import { background, border, brand, button, contrast, font, input } from "../variables";
+/*
 
-//
-// DISCLAIMER:
-// Do not change this file because it is core styling.
-// Customizing core files will make updating Atlas much more difficult in the future.
-// To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
-//
+DISCLAIMER:
+Do not change this file because it is core styling.
+Customizing core files will make updating Atlas much more difficult in the future.
+To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
 
-/* ==========================================================================
+==========================================================================
     Feedback
 
     Default Class For Mendix Feedback Widget
 ========================================================================== */
-
-export const com_mendix_widget_native_feedback_Feedback = (Feedback = {
+export const com_mendix_widget_native_feedback_Feedback = {
     floatingButton: {
         // All ViewStyle properties are allowed
         borderRadius: 0,
@@ -23,8 +20,8 @@ export const com_mendix_widget_native_feedback_Feedback = (Feedback = {
         borderTopLeftRadius: button.borderRadius,
         borderBottomLeftRadius: button.borderRadius,
         elevation: 1.5,
-        shadowColor: contrast.lower,
-        shadowOpacity: 0.7,
+        shadowColor: "#000",
+        shadowOpacity: 0.2,
         shadowRadius: 10,
         shadowOffset: {
             width: 0,
@@ -38,6 +35,7 @@ export const com_mendix_widget_native_feedback_Feedback = (Feedback = {
     title: {
         // All TextStyle properties are allowed
         color: font.color,
+        fontFamily: font.family,
     },
     textAreaInput: {
         // All TextStyle properties are allowed
@@ -47,17 +45,14 @@ export const com_mendix_widget_native_feedback_Feedback = (Feedback = {
         selectionColor: input.selectionColor,
         placeholderTextColor: input.placeholderTextColor,
         underlineColorAndroid: input.underlineColorAndroid,
-
         height: 100,
         fontSize: input.fontSize,
         fontFamily: input.fontFamily,
-        borderWidth: input.width,
         borderRadius: input.borderRadius,
         borderTopWidth: input.borderWidth,
         borderBottomWidth: input.borderWidth,
         borderWidth: Platform.select({ android: border.width }),
-
-        textAlignVertical: 'top',
+        textAlignVertical: "top",
         paddingVertical: input.paddingVertical,
         paddingHorizontal: input.paddingHorizontal,
     },
@@ -68,22 +63,23 @@ export const com_mendix_widget_native_feedback_Feedback = (Feedback = {
         fontFamily: input.fontFamily,
     },
     switchInput: {
-        // All TextStyle properties are allowed
+        // thumbColorOn, thumbColorOff, trackColorOn, trackColorOff and all TextStyle properties are allowed
         margin: 0,
         padding: 0,
         marginRight: Platform.select({ ios: 0, android: -5 }),
         thumbColorOn: background.primary,
         trackColorOn: brand.success,
-        thumbColorOff: background.lowest,
-        trackColorOff: contrast.lowest,
+        thumbColorOff: contrast.regular,
+        trackColorOff: contrast.lower,
     },
     button: {
         // Just these 3 properties are allowed
         color: brand.primary,
-        borderColor: border.color, // Required for IOS
-        borderWidth: border.width, // Required for IOS
+        borderColor: border.color,
+        borderWidth: border.width,
     },
     activityIndicator: {
+        // Only color is allowed
         color: font.color,
     },
-});
+};

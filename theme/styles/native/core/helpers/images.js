@@ -1,28 +1,28 @@
-import { border } from '../variables';
+import { border } from "../variables";
+/*
 
-//
-// DISCLAIMER:
-// Do not change this file because it is core styling.
-// Customizing core files will make updating Atlas much more difficult in the future.
-// To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
-//
+DISCLAIMER:
+Do not change this file because it is core styling.
+Customizing core files will make updating Atlas much more difficult in the future.
+To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
 
-/* ==========================================================================
+==========================================================================
     Image
 
 //== Design Properties
 //## Helper classes to change the look and feel of the widget
 ========================================================================== */
-
-
+//
+//
 //== Extra Classes
 //## Helper classes to change the look and feel of the widget
 //-------------------------------------------------------------------------------------------------------------------//
 // Image Sizes
 export const thumbnail = {
     image: {
-        width: 120,
-        height: 100,
+        width: "100%",
+        height: "auto",
+        aspectRatio: 1,
         borderRadius: border.radius,
     },
 };

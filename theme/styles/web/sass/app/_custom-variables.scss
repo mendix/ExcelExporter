@@ -21,6 +21,10 @@ $default-border-color:                              $gray-primary;
 
 //== Step 3: Typography
 $font-family-import:                                "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700";
+@if $font-family-import != false {
+    // Only import, if the import is set
+    @import url($font-family-import);
+}
 $font-family-base:                                  "Open Sans", sans-serif;
 $font-base-size:                                    14px;
 $font-base-color:                                   #555555;
@@ -29,6 +33,7 @@ $font-size-h1:                                      31px;
 $font-size-h2:                                      26px;
 $font-size-h3:                                      24px;
 $font-size-h4:                                      18px;
+$font-color-detail:                                 $gray-light;
 $font-color-headers:                                #17347B;
 
 //== Step 2: UI Customization
@@ -58,3 +63,11 @@ $font-size-default:                                 $font-base-size;
 $font-color-default:                                $font-base-color;
 $border-color-default:                              $default-border-color;
 $font-color-header:				                    $font-color-headers;
+
+
+//== Settings
+//## Enable or disable your desired framework features
+// Use of !important
+$important-flex:                                    true; // ./base/flex.scss
+$important-spacing:                                 true; // ./base/spacing.scss
+$important-helpers:                                 true; // ./helpers/helperclasses.scss

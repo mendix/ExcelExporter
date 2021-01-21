@@ -1,15 +1,19 @@
 import { spacing } from "../variables";
+/*
 
-//
-// DISCLAIMER:
-// Do not change this file because it is core styling.
-// Customizing core files will make updating Atlas much more difficult in the future.
-// To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
-//
+DISCLAIMER:
+Do not change this file because it is core styling.
+Customizing core files will make updating Atlas much more difficult in the future.
+To customize any core styling, copy the part you want to customize to styles/native/app/ so the core styling is overwritten.
 
-export const com_mendix_widget_native_rating_Rating = (Rating = {
+==========================================================================
+    Rating
+
+    Default Class For Mendix Rating Widget
+========================================================================== */
+export const com_mendix_widget_native_rating_Rating = {
     container: {
-        // All ViewStyle properties are allowed
+    // All ViewStyle properties are allowed
     },
     containerDisabled: {
         // All ViewStyle properties are allowed
@@ -20,4 +24,4 @@ export const com_mendix_widget_native_rating_Rating = (Rating = {
         size: 30,
         marginRight: spacing.smaller,
     },
-});
+};
