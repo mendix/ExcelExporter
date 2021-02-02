@@ -1,6 +1,7 @@
 package excelimporter.reader.readers;
 
 import java.util.HashMap;
+import java.util.function.Predicate;
 
 import org.apache.poi.hssf.eventusermodel.HSSFListener;
 import org.apache.poi.hssf.record.BOFRecord;
@@ -20,19 +21,19 @@ import org.apache.poi.hssf.record.SSTRecord;
 public class ExcelXLSReaderDataFirstPassListener implements HSSFListener {
 	private final int iCanHasSheet;
 	private final int startRow;
-	private int nrOfColumns = 1;
+	private int nrOfColumns = 0;
 
-	private ExcelReader xlsReader;
+	private Predicate<String> isColumnUsed;
 
 	int workbookNow = -1;
 	int sheetNow = -1;
 
 	private HashMap<Integer,String> sstmap;
 
-	public ExcelXLSReaderDataFirstPassListener(int iCanHasSheet, int startRow, ExcelReader xlsReader )  {
+	public ExcelXLSReaderDataFirstPassListener(int iCanHasSheet, int startRow, Predicate<String> isColumnUsed)  {
 		this.iCanHasSheet = iCanHasSheet;
 		this.startRow = startRow;
-		this.xlsReader = xlsReader;
+		this.isColumnUsed = isColumnUsed;
 	}
 
 	/**
@@ -120,7 +121,7 @@ public class ExcelXLSReaderDataFirstPassListener implements HSSFListener {
 	}
 
 	private boolean mayUseValue( int row, int col ) {
-		return row >= this.startRow && this.xlsReader.getSettings().aliasIsMapped( String.valueOf(col) );
+		return row >= this.startRow && this.isColumnUsed.test( String.valueOf(col) );
 	}
 
 	public int getNrOfColumns() {

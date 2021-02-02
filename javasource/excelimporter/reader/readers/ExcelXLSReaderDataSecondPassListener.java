@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 import org.apache.poi.hssf.eventusermodel.HSSFListener;
 import org.apache.poi.hssf.record.BOFRecord;
@@ -27,8 +28,8 @@ import com.mendix.core.CoreException;
 import excelimporter.reader.readers.ExcelRowProcessor.ExcelCellData;
 
 /**
- * 
- * 
+ *
+ *
  * @author J. van der Hoek - Mendix
  * @version $Id: ExcelXLSReaderDataSecondPassListener.java 9272 2009-05-11
  *          09:19:47Z Jasper van der Hoek $
@@ -49,27 +50,27 @@ public class ExcelXLSReaderDataSecondPassListener implements HSSFListener {
 	private short lastCol = -1;
 
 	private ExcelCellData[] values;
-	private ExcelReader xlsReader;
-	private ExcelRowProcessor excelRowProcessor;
+    private Predicate<String> isColumnUsed;
+    private ExcelRowProcessor excelRowProcessor;
 
 	private HSSFDataFormatter _formatter = new HSSFDataFormatter();
 	private final Map<Integer, FormatRecord> _customFormatRecords = new Hashtable<Integer, FormatRecord>();
 	private final List<ExtendedFormatRecord> _xfRecords = new ArrayList<ExtendedFormatRecord>();
 
 	public ExcelXLSReaderDataSecondPassListener(int iCanHasSheet, int startRow, HashMap<Integer, String> sstmap,
-			ExcelReader xlsReader, int nrOfColumns) throws CoreException {
+                                                ExcelRowProcessor excelRowProcessor, Predicate<String> isColumnUsed, int nrOfColumns) throws CoreException {
 		this.iCanHasSheet = iCanHasSheet;
 		this.startRow = startRow;
 		this.sstmap = sstmap;
 
-		this.xlsReader = xlsReader;
+		this.isColumnUsed = isColumnUsed;
 		this.values = new ExcelCellData[++nrOfColumns];
-		this.excelRowProcessor = new ExcelRowProcessor(xlsReader);
+		this.excelRowProcessor = excelRowProcessor;
 	}
 
 	/**
 	 * This method listens for incoming records and handles them as required.
-	 * 
+	 *
 	 * @param record The record that was found while reading.
 	 */
 	@Override
@@ -189,7 +190,7 @@ public class ExcelXLSReaderDataSecondPassListener implements HSSFListener {
 	 * Formats the given numeric of date Cell's contents as a String, in as close as
 	 * we can to the way that Excel would do so. Uses the various format records to
 	 * manage this.
-	 * 
+	 *
 	 * TODO - move this to a central class in such a way that hssf.usermodel can
 	 * make use of it too
 	 */
@@ -302,7 +303,7 @@ public class ExcelXLSReaderDataSecondPassListener implements HSSFListener {
 	}
 
 	private boolean mayUseValue(int row, int col) {
-		return row >= this.startRow && this.xlsReader.getSettings().aliasIsMapped(String.valueOf(col));
+		return row >= this.startRow && this.isColumnUsed.test(String.valueOf(col));
 	}
 
 	public class ExcelRuntimeException extends RuntimeException {

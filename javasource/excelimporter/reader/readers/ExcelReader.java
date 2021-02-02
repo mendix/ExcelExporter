@@ -16,17 +16,10 @@ import mxmodelreflection.proxies.MxObjectReference;
 import mxmodelreflection.proxies.MxObjectType;
 import mxmodelreflection.proxies.PrimitiveTypes;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.hssf.eventusermodel.HSSFEventFactory;
-import org.apache.poi.hssf.eventusermodel.HSSFListener;
-import org.apache.poi.hssf.eventusermodel.HSSFRequest;
-import org.apache.poi.hssf.record.crypto.Biff8EncryptionKey;
 import org.apache.poi.openxml4j.exceptions.NotOfficeXmlFileException;
 import org.apache.poi.openxml4j.exceptions.OLE2NotOfficeXmlFileException;
 import org.apache.poi.poifs.filesystem.NotOLE2FileException;
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.util.RecordFormatException;
 
 import replication.AssociationConfig;
@@ -58,6 +51,7 @@ import excelimporter.proxies.ReferenceKeyType;
 import excelimporter.proxies.RemoveIndicator;
 import excelimporter.proxies.Template;
 import excelimporter.reader.readers.replication.ExcelReplicationSettings;
+import system.proxies.FileDocument;
 
 /**
  * Read an excel file can retrieve header information from by
@@ -112,44 +106,29 @@ public class ExcelReader {
 			
 			try {
 				// we maintain a 0-based rownumber here.
-				int iCanHasSheet = (Integer) this.template.getValue(context, Template.MemberNames.SheetIndex.toString());
-				iCanHasSheet --;
-				if( iCanHasSheet < 0 )
-					throw new CoreException("The sheetnumber must be larger than 1");
+				final int sheetIndex = (Integer) this.template.getValue(context, Template.MemberNames.SheetIndex.toString()) - 1;
+				if( sheetIndex < 0 )
+					throw new CoreException("The sheet-number must be >= 1");
 
-				int iCanHasRow = (Integer) this.template.getValue(context, Template.MemberNames.HeaderRowNumber.toString());
-				iCanHasRow --;
-				if( iCanHasRow < 0 )
-					throw new CoreException("The header rownumber must be larger than 1");
+				final int rowIndex = (Integer) this.template.getValue(context, Template.MemberNames.HeaderRowNumber.toString()) - 1;
+				if( rowIndex < 0 )
+					throw new CoreException("The header row-number must be >= 1");
 
-				// Headers - 1st pass
-				HashMap<Integer, String> sstmap = headersFirstPass(context, templateDocument, extension, iCanHasSheet, iCanHasRow);
-				
-				ExcelHeadable header = null;
-				// Headers - 2nd pass
+				try (InputStream content = Core.getFileDocumentContent(context, templateDocument)) {
+                    if (content == null)
+                        throw new CoreException("No content found in templatedocument");
+                }
+
+                ExcelHeadable header = null;
 				{
 					switch (extension) {
 					case XLS: {
-						try (InputStream content = Core.getFileDocumentContent(context, templateDocument);
-								POIFSFileSystem poifs = new POIFSFileSystem(content);
-								InputStream workbook = poifs.createDocumentInputStream("Workbook");) {
-
-							if (sstmap == null) {
-								throw new CoreException("No headers could be found on sheet: " + iCanHasSheet
-										+ " on row nr: " + iCanHasRow);
-							}
-							// second pass
-							header = new ExcelXLSReaderHeaderSecondPassListener(iCanHasSheet, iCanHasRow, sstmap);
-							HSSFRequest req = new HSSFRequest();
-							req.addListenerForAllRecords((HSSFListener) header);
-							HSSFEventFactory factory = new HSSFEventFactory();
-							factory.processEvents(req, workbook);
-						}
+                        header = new ExcelXLSHeaderReader(ContentSupplier.of(FileDocument.initialize(context, templateDocument)), sheetIndex, rowIndex);
 						break;
 					}
 					case XLSX: {
 						excelFile = getExcelFile(context, templateDocument);
-						header = new ExcelXLSXHeaderReader(excelFile.getAbsolutePath(), iCanHasSheet, iCanHasRow + 1); // we need a 1-based rownumber in this API
+						header = new ExcelXLSXHeaderReader(excelFile.getAbsolutePath(), sheetIndex, rowIndex);
 						break;
 					}
 					case UNKNOWN:
@@ -165,8 +144,11 @@ public class ExcelReader {
 			}
 			finally {
 				if (excelFile != null) {
-					boolean success = FileUtils.deleteQuietly(excelFile);//.delete();
-					if (!success) logNode.info("Could not delete temp file.");
+					try {
+						excelFile.delete();
+					} catch (final Exception ignored) {
+						logNode.info("Could not delete temp file.");
+					} 
 				}
 				
 				sb = new StringBuilder("Ready importing Headers ");
@@ -177,39 +159,6 @@ public class ExcelReader {
 
 		//If this statement is reached no template was set
 		throw new CoreException("Template or context not set!");
-	}
-
-	private HashMap<Integer, String> headersFirstPass(IContext context, IMendixObject templateDocument,
-			ExcelExtension extension, int iCanHasSheet, int iCanHasRow) throws CoreException, IOException {
-		HashMap<Integer, String> sstmap = null;
-
-		try (InputStream content = Core.getFileDocumentContent(context, templateDocument);) {
-			if (content == null)
-				throw new CoreException("No content found in templatedocument");
-			switch (extension) {
-			case XLS: {
-				try (POIFSFileSystem poifs = new POIFSFileSystem(content);
-				InputStream workbook = poifs.createDocumentInputStream("Workbook");) {
-					ExcelXLSReaderHeaderFirstPassListener firstPass = new ExcelXLSReaderHeaderFirstPassListener(iCanHasSheet, iCanHasRow);
-	
-					HSSFRequest req = new HSSFRequest();
-					req.addListenerForAllRecords(firstPass);
-					HSSFEventFactory factory = new HSSFEventFactory();
-					factory.processEvents(req, workbook);
-	
-					sstmap = firstPass.getSSTMap();
-				}
-				break;
-			}
-			case XLSX: {
-				// nothing
-				break;
-			}
-			case UNKNOWN:
-				throw new CoreException("File extension is not an Excel extension ('.xls' or '.xlsx').");
-			}
-		}
-		return sstmap;
 	}
 
 	public long importData(IContext context, IMendixObject fileDocument, IMendixObject template, IMendixObject parentObject) throws CoreException, ExcelImporterException {
@@ -392,47 +341,18 @@ public class ExcelReader {
 		try {
 			// we store sheetnr and startrow as a zero-based number 
 			// Start importing at this sheet / row
-			int iCanHasSheet = (Integer) template.getValue(this.settings.getContext(), Template.MemberNames.SheetIndex.toString());
-			iCanHasSheet --;
-			if( iCanHasSheet < 0 )
-				throw new CoreException("The sheetnumber must be larger than 1");
+			final int sheetIndex = (Integer) template.getValue(this.settings.getContext(), Template.MemberNames.SheetIndex.toString()) - 1;
+			if( sheetIndex < 0 )
+				throw new CoreException("The sheet-number must be >= 1");
 
-			int startRow = (Integer) template.getValue(this.settings.getContext(), Template.MemberNames.FirstDataRowNumber.toString());
-			startRow --;
-			if( startRow < 0 )
-				throw new CoreException("The rownumber must be larger than 1");
+			final int startRowIndex = (Integer) template.getValue(this.settings.getContext(), Template.MemberNames.FirstDataRowNumber.toString()) - 1;
+			if( startRowIndex < 0 )
+				throw new CoreException("The row-number must be >= 1");
 
-			
 			// Data - 1st pass ... make a sstmap describing which strings we want to load from the excel SST
 			switch(getExcelExtension(this.settings.getContext(), fileDocument)) {
 				case XLS: {
-					ExcelXLSReaderDataFirstPassListener firstPass = new ExcelXLSReaderDataFirstPassListener(iCanHasSheet, startRow, this);
-					{
-						try (InputStream content = Core.getFileDocumentContent(this.settings.getContext(), fileDocument);
-								POIFSFileSystem poifs = new POIFSFileSystem(content);
-								InputStream workbook = getInputStreamFromPOIFS(poifs);) {
-							HSSFRequest req = new HSSFRequest();
-							req.addListenerForAllRecords(firstPass);
-							HSSFEventFactory factory = new HSSFEventFactory();
-							factory.processEvents(req, workbook);
-						}
-					}
-					HashMap<Integer, String> sstmap = firstPass.getSSTMap();
-					
-					// Data - 2nd pass
-					ExcelXLSReaderDataSecondPassListener secondPass = new ExcelXLSReaderDataSecondPassListener(iCanHasSheet, startRow, sstmap, this, firstPass.getNrOfColumns());
-					{
-						try (InputStream content = Core.getFileDocumentContent(this.settings.getContext(), fileDocument);
-								POIFSFileSystem poifs = new POIFSFileSystem(content);
-								InputStream workbook = getInputStreamFromPOIFS(poifs);) {
-							HSSFRequest req = new HSSFRequest();
-							req.addListenerForAllRecords(secondPass);
-							HSSFEventFactory factory = new HSSFEventFactory();
-							factory.processEvents(req, workbook);
-						}
-					}
-					this.rowcounts = secondPass.getRowCounter();
-					
+                    this.rowcounts = ExcelXLSDataReader.readData(ContentSupplier.of(FileDocument.initialize(context, fileDocument)), sheetIndex, startRowIndex, new ExcelRowProcessorImpl(getSettings(), getDocPropertiesMapping()), getSettings()::aliasIsMapped);
 					break;
 				}
 				case XLSX: {
@@ -446,9 +366,8 @@ public class ExcelReader {
 					
 					logNode.debug("nrOfCols: " + nrOfCols);
 
-					// xlsx rows are 1-based
 					excelFile = getExcelFile(this.settings.getContext(), fileDocument);
-					this.rowcounts = ExcelXLSXDataReader.readData(excelFile.getAbsolutePath(), iCanHasSheet, startRow + 1, this);
+					this.rowcounts = ExcelXLSXDataReader.readData(excelFile.getAbsolutePath(), sheetIndex, startRowIndex, new ExcelRowProcessorImpl(getSettings(), getDocPropertiesMapping()), getSettings()::aliasIsMapped);
 					break;
 				}
 				case UNKNOWN:
@@ -481,39 +400,27 @@ public class ExcelReader {
 			this.docProperties.clear();
 			this.settings.clear();
 			if (excelFile != null) {
-				boolean success = FileUtils.deleteQuietly(excelFile);//.delete();
-				if (!success) logNode.info("Could not delete temp file.");
+				try {
+					excelFile.delete();
+				} catch (final Exception ignored) {
+					logNode.info("Could not delete temp file.");
+				}
 			}
 			
 			this.timeMeasurement.endPerformanceTest("Importing data");
 		}
 		return rowcounts;
 	}
-	
-	private InputStream getInputStreamFromPOIFS(POIFSFileSystem poifs) throws CoreException, IOException {
-		Set<String> entryNames = poifs.getRoot().getEntryNames();
-		InputStream inStream = null;
-		
-		if (entryNames.contains("Workbook"))
-			inStream = poifs.createDocumentInputStream("Workbook");
-		else if (entryNames.contains("EncryptedPackage")) {
-			try { // We try the default password as it might just be a write-protected file, as documented in https://poi.apache.org/encryption.html
-				Biff8EncryptionKey.setCurrentUserPassword("VelvetSweatshop");
-				inStream = poifs.createDocumentInputStream("EncryptedPackage");
-				Biff8EncryptionKey.setCurrentUserPassword(null);
-			} catch (IOException e) {
-				throw new CoreException("Unable to open encrypted Excel files.", e);
-			}
-		}
-		
-		return inStream;
-	}
 
 	private static File getExcelFile(IContext context, IMendixObject file) throws IOException {
 		File f = new File(Core.getConfiguration().getTempPath().getAbsolutePath() + "/Mendix_ExcelImporter_" + file.getId().toLong(), "");
 		try (InputStream inputstream = Core.getFileDocumentContent(context, file);
 				OutputStream outputstream = new FileOutputStream(f);) {
-			IOUtils.copy(inputstream, outputstream);
+			byte[] buffer = new byte[4 * 1024];
+			int length;
+			while ((length = inputstream.read(buffer)) > 0) {
+				outputstream.write(buffer, 0, length);
+			}
 		}
 		return f;
 	}
