@@ -267,7 +267,7 @@ public abstract class ExcelXLSXReader {
 				dim = attributes.getValue("ref");
 				String[] fromTo = dim.split(":");
 
-				int colTo = parseCol(fromTo[1]);
+				int colTo = (fromTo.length == 1) ? parseCol(fromTo[0]) : parseCol(fromTo[1]);
 				this.values = new ExcelCellData[colTo + 1];
 
 				return colTo;

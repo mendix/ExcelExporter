@@ -8,8 +8,10 @@ import java.util.List;
 import org.apache.poi.openxml4j.exceptions.OpenXML4JException;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.openxml4j.opc.PackageAccess;
+import org.apache.poi.openxml4j.opc.PackagePart;
 import org.apache.poi.xssf.eventusermodel.XSSFReader;
 import org.apache.poi.xssf.model.StylesTable;
+import org.apache.poi.xssf.usermodel.XSSFRelation;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -50,10 +52,11 @@ public class ExcelXLSXHeaderReader extends ExcelXLSXReader implements ExcelHeada
 			XMLReader parser = XMLReaderFactory.createXMLReader();
 			ExcelXLSXReader.setXMLReaderProperties(parser);
 			logNode.trace("Loaded SAX Parser: " + parser);
-			SheetHandler handler = new SheetHandler(stringsTable, stylesTable, rowNr, sheetNr);
+			SheetHandler handler = new SheetHandler(stringsTable, stylesTable, rowNr + 1, sheetNr);
 			parser.setContentHandler(handler);
 
-			sheet = reader.getSheet("rId" + (sheetNr + 1)); // API is 1-based; parameter is zero-based.
+            ArrayList<PackagePart> sheets = opcPackage.getPartsByContentType(XSSFRelation.WORKSHEET.getContentType());
+            sheet = sheets.get(sheetNr).getInputStream();
 			InputSource sheetSource = new InputSource(sheet);
 			parser.parse(sheetSource);
 		}

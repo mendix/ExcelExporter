@@ -71,8 +71,12 @@ public class ExportCSV  extends Export
 				{
 					value = this.dateFormat.format((Date) value);
 				}
-				
-				values[e] = String.valueOf(value);				
+				if (value == null) { 
+					values[e] = null; 
+				} 
+				else { 
+					values[e] = String.valueOf(value); 
+				}		
 			}			
 			writer.writeNext(values);			
 		}
