@@ -1,47 +1,49 @@
 package excelimporter.reader.readers;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import org.apache.poi.openxml4j.exceptions.OpenXML4JException;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.openxml4j.opc.PackageAccess;
+import org.apache.poi.openxml4j.opc.PackagePart;
 import org.apache.poi.xssf.eventusermodel.XSSFReader;
 import org.apache.poi.xssf.model.StylesTable;
+import org.apache.poi.xssf.usermodel.XSSFRelation;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
-
 import replication.ReplicationSettings.MendixReplicationException;
-import excelimporter.reader.readers.replication.ExcelReplicationSettings;
 
-public class ExcelXLSXDataReader extends ExcelXLSXReader {
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.function.Predicate;
 
-	public static long readData(String fullPathExcelFile, int sheetNr, int startRowNr, ExcelReader xlsReader)
-			throws IOException, OpenXML4JException, SAXException, MendixReplicationException {
+public class ExcelXLSXDataReader {
+
+	public static long readData(String fullPathExcelFile, int sheetNr, int startRowNr, ExcelRowProcessor excelRowProcessor, Predicate<String> isColumnUsed)
+			throws IOException, OpenXML4JException, SAXException {
 		OPCPackage opcPackage = null;
 		InputStream sheet = null;
-		ExcelRowProcessor excelRowProcessor = null;
 		try {
 			opcPackage = OPCPackage.open(fullPathExcelFile, PackageAccess.READ);
 			XSSFReader reader = new XSSFReader(opcPackage);
 			ReadOnlySharedStringsTable stringsTable = new ReadOnlySharedStringsTable(opcPackage);
 			StylesTable stylesTable = reader.getStylesTable();
 
-			excelRowProcessor = new ExcelRowProcessor(xlsReader);
-
 			XMLReader parser = XMLReaderFactory.createXMLReader();
 			ExcelXLSXReader.setXMLReaderProperties(parser);
 			ExcelReader.logNode.trace("Loaded SAX Parser: " + parser);
-			SheetHandler handler = new SheetHandler(xlsReader, stringsTable, stylesTable, startRowNr, excelRowProcessor,
+			SheetHandler handler = new SheetHandler(isColumnUsed, stringsTable, stylesTable, startRowNr + 1, excelRowProcessor,
 					sheetNr);
 			parser.setContentHandler(handler);
 
-			sheet = reader.getSheet("rId" + (sheetNr + 1)); // API is 1-based; parameter is zero-based.
+            ArrayList<PackagePart> sheets = opcPackage.getPartsByContentType(XSSFRelation.WORKSHEET.getContentType());
+            sheet = sheets.get(sheetNr).getInputStream();
 			InputSource sheetSource = new InputSource(sheet);
 			parser.parse(sheetSource);
+
+			return excelRowProcessor.getRowCounter();
 		} finally {
 			try {
 				if (excelRowProcessor != null) {
@@ -52,35 +54,34 @@ public class ExcelXLSXDataReader extends ExcelXLSXReader {
 					else
 						ExcelReader.logNode.info(
 								"Excel Importer successfully imported " + excelRowProcessor.getRowCounter() + " rows");
-					return excelRowProcessor.getRowCounter();
 				}
-			} catch (MendixReplicationException e) {
-			} // Quitely finishing
-			try {
-				if (sheet != null)
-					sheet.close();
-			} catch (IOException ioe) {
-			} // Quitely closing
-			if (opcPackage != null)
-				opcPackage.revert();
+			} catch (MendixReplicationException ignore) {
+			} finally {
+				try {
+					if (sheet != null)
+						sheet.close();
+				} catch (IOException ignore) {
+				}
+				if (opcPackage != null)
+					opcPackage.revert();
+			}
 		}
-		return 0l;
 	}
 
-	private static class SheetHandler extends ExcelSheetHandler {
+	private static class SheetHandler extends ExcelXLSXReader.ExcelSheetHandler {
 
 		private boolean[] columnsUsed;
 		private boolean handleCol = false;
 
 		private ExcelRowProcessor excelRowProcessor;
-		private ExcelReplicationSettings settings;
+		private Predicate<String> isColumnUsed;
 
-		private SheetHandler(ExcelReader xlsReader, ReadOnlySharedStringsTable stringsTable, StylesTable stylesTable,
-				int startRowNr, ExcelRowProcessor excelRowProcessor, int sheetNr) throws MendixReplicationException {
+		private SheetHandler(Predicate<String> isColumnUsed, ReadOnlySharedStringsTable stringsTable, StylesTable stylesTable,
+                             int startRowNr, ExcelRowProcessor excelRowProcessor, int sheetNr) {
 			super(stringsTable, stylesTable, sheetNr, startRowNr);
 			this.excelRowProcessor = excelRowProcessor;
 
-			this.settings = xlsReader.getSettings();
+			this.isColumnUsed = isColumnUsed;
 		}
 
 		@Override
@@ -102,7 +103,7 @@ public class ExcelXLSXDataReader extends ExcelXLSXReader {
 
 				this.columnsUsed = new boolean[colTo + 1];
 				for (int i = 0; i < this.columnsUsed.length; i++) {
-					this.columnsUsed[i] = this.settings.aliasIsMapped(String.valueOf(i));
+					this.columnsUsed[i] = this.isColumnUsed.test(String.valueOf(i));
 				}
 			}
 		}

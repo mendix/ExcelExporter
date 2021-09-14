@@ -104,7 +104,7 @@ public class ExcelXLSReaderHeaderSecondPassListener implements HSSFListener, Exc
 	}
 
 	private void processRecord( short col, Object value ) {
-		ExcelColumn column = new ExcelColumn(new Integer(col), String.valueOf(value));
+		ExcelColumn column = new ExcelColumn(Integer.valueOf(col), String.valueOf(value));
 		this.excelColumns.add(column);
 	}
 

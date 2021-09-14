@@ -299,7 +299,7 @@ public class MetaObjectBuilder
 				Core.delete(context, cachedEnumValue);
 			}
 		}
-		
+
 		enumObject.setValue(context, MxObjectEnum.MemberNames.Values.toString(), valueIds);
 		enumObject.setValue(context, MxObjectMember.MemberNames.AttributeName.toString(), enumPrimitive.getName());
 		enumObject.setValue(context, MxObjectMember.MemberNames.AttributeType.toString(), enumPrimitive.getType().toString());
