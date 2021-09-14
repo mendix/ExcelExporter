@@ -11,3 +11,6 @@ OUTPUT_DIR
 target
 .settings
 .metals
+/.mendix-cache
+/GPUCache
+/theme-cache
