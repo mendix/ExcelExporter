@@ -33,7 +33,7 @@ import java.util.regex.Pattern;
 public class DataOQL
 {
 	private static ILogNode log = Core.getLogger("XLSreport");
-	static final Pattern PATTERN_RESERVED_OQL = Pattern.compile("\\b(select|distinct|as|avg|count|max|min|sum|from|inner|left|right|full|outer|join|on|where|and|or|group|by|limit|offset|order|asc|desc|having|cast|coalesce|like|in|exists|not|case|when|then|else|end|boolean|datetime|float|integer|long|string|null|year|month|day|hour|minute)\\b", Pattern.CASE_INSENSITIVE);
+	static final Pattern PATTERN_RESERVED_OQL = Pattern.compile("\\b(select|distinct|as|avg|count|max|min|sum|from|inner|left|right|full|outer|join|on|where|and|or|group|by|limit|offset|order|asc|desc|having|cast|coalesce|like|in|exists|not|case|when|then|else|end|boolean|datetime|float|integer|long|string|null|year|month|day|hour|minute|quarter|second|week|weekday|dayofyear)\\b", Pattern.CASE_INSENSITIVE);
 	private IContext context;
 	private MxObjectType inputObjectType;
 	
