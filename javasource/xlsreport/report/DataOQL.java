@@ -33,7 +33,6 @@ import java.util.regex.Pattern;
 public class DataOQL
 {
 	private static ILogNode log = Core.getLogger("XLSreport");
-	static final Pattern PATTERN_RESERVED_OQL = Pattern.compile("\\b(select|distinct|as|avg|count|max|min|sum|from|inner|left|right|full|outer|join|on|where|and|or|group|by|limit|offset|order|asc|desc|having|cast|coalesce|like|in|exists|not|case|when|then|else|end|boolean|datetime|float|integer|long|string|null|year|month|day|hour|minute)\\b", Pattern.CASE_INSENSITIVE);
 	private IContext context;
 	private MxObjectType inputObjectType;
 	
@@ -140,7 +139,7 @@ public class DataOQL
 		for (int i = 0; i < this.attributeList.size(); i++)
 		{
 			AttributeData data = this.attributeList.get(i);
-			String attribute = escape(data.getObjectData().getAlias()+"."+data.getAttributeName().replace(" / ", "/"));
+			String attribute = "\"" + data.getObjectData().getAlias() + "." + data.getAttributeName().replace(" / ", "/") + "\"";
 			if (data.isAggregate())
 			{
 				switch (data.getFunction())
@@ -742,22 +741,6 @@ public class DataOQL
 		// convert to UTC
 		DateTime dateTime = new DateTime(value);
 		return dateTime.withZone(DateTimeZone.UTC).toLocalDateTime().toDate();
-	}
-
-	/**
-	 * Check if the string uses reserved words, and if place brackets around it.
-	 * @param unescaped
-	 * @return
-	 */
-	private String escape(String unescaped)
-	{
-		String escaped = unescaped;
-		Matcher matcher = PATTERN_RESERVED_OQL.matcher(unescaped);
-		if (matcher.find())
-		{
-			escaped = matcher.replaceAll("\"$1\"");
-		}
-		return escaped;
 	}
 
 	private String composeTableName(String root, String table) {
