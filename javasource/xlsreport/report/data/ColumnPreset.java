@@ -13,7 +13,6 @@ public class ColumnPreset
 {	
 	private static ILogNode log = Core.getLogger("XLSreport");
 	private String name;
-	private boolean nameAsHeader;
 	private boolean dateTimeFormat = false;
 	private int columnNr;
 	private MxXPath firstPath;
@@ -34,10 +33,9 @@ public class ColumnPreset
 	 * @param firstPath The first object where the XPath will start to an attribute 
 	 * @param styleGuid The GUID of the MxCellStyle object
 	 */
-	public ColumnPreset(String name, boolean nameAsHeader, int columnNr, MxXPath firstPath, long styleGuid)
+	public ColumnPreset(String name, int columnNr, MxXPath firstPath, long styleGuid)
 	{
 		this.name = name;
-		this.nameAsHeader = nameAsHeader;
 		this.columnNr = columnNr;
 		this.firstPath = firstPath;
 		this.styleGuid = styleGuid;
@@ -54,7 +52,6 @@ public class ColumnPreset
 		this.name = name;
 		this.columnNr = columnNr;
 		this.firstPath = firstPath;
-		this.nameAsHeader = true;
 	}
 	
 	public void addDataAggregation(AggregateFunction aggrFunction)
@@ -142,11 +139,6 @@ public class ColumnPreset
 	public String getName()
 	{
 		return name;
-	}
-
-	public boolean isNameAsHeader()
-	{
-		return nameAsHeader;
 	}
 
 	public int getColumnNr()

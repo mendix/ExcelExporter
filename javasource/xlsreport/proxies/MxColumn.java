@@ -17,7 +17,6 @@ public class MxColumn extends xlsreport.proxies.MxData
 	public enum MemberNames
 	{
 		ColumnNumber("ColumnNumber"),
-		NameAsHeader("NameAsHeader"),
 		ObjectAttribute("ObjectAttribute"),
 		DataAggregate("DataAggregate"),
 		DataAggregateFunction("DataAggregateFunction"),
@@ -121,42 +120,6 @@ public class MxColumn extends xlsreport.proxies.MxData
 	public final void setColumnNumber(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer columnnumber)
 	{
 		getMendixObject().setValue(context, MemberNames.ColumnNumber.toString(), columnnumber);
-	}
-
-	/**
-	 * @return value of NameAsHeader
-	 */
-	public final java.lang.Boolean getNameAsHeader()
-	{
-		return getNameAsHeader(getContext());
-	}
-
-	/**
-	 * @param context
-	 * @return value of NameAsHeader
-	 */
-	public final java.lang.Boolean getNameAsHeader(com.mendix.systemwideinterfaces.core.IContext context)
-	{
-		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.NameAsHeader.toString());
-	}
-
-	/**
-	 * Set value of NameAsHeader
-	 * @param nameasheader
-	 */
-	public final void setNameAsHeader(java.lang.Boolean nameasheader)
-	{
-		setNameAsHeader(getContext(), nameasheader);
-	}
-
-	/**
-	 * Set value of NameAsHeader
-	 * @param context
-	 * @param nameasheader
-	 */
-	public final void setNameAsHeader(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean nameasheader)
-	{
-		getMendixObject().setValue(context, MemberNames.NameAsHeader.toString(), nameasheader);
 	}
 
 	/**
