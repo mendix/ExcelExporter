@@ -112,7 +112,7 @@ public class GenerateExcelDoc extends CustomJavaAction<IMendixObject>
 								} else {
 									styleGuid = defaultStyle;
 								}
-								ColumnPreset preset = new ColumnPreset(mxColumn.getName(), mxColumn.getNameAsHeader(), mxColumn.getColumnNumber(), mxColumn.getMxXPath_MxData(), styleGuid);
+								ColumnPreset preset = new ColumnPreset(mxColumn.getName(), mxColumn.getColumnNumber(), mxColumn.getMxXPath_MxData(), styleGuid);
 								if (mxColumn.getResultAggregate()) {
 									preset.addResultAggregation(mxColumn.getResultAggregateFunction());
 								}
