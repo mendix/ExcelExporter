@@ -8,6 +8,7 @@ public class AttributeData
 	private String alias;
 	private ObjectData objectData;	
 	private boolean aggregate;
+  private boolean fullPath;
 	private AggregateFunction function;
 	
 	public AttributeData(String attributeName, String alias, ObjectData objectData)
@@ -45,6 +46,16 @@ public class AttributeData
 	public void setAggregate(boolean aggregate)
 	{
 		this.aggregate = aggregate;
+	}
+  
+  public boolean isFullPath()
+	{
+		return fullPath;
+	}
+
+	public void setFullPath(boolean fullPath)
+	{
+		this.fullPath = fullPath;
 	}
 
 	public AggregateFunction getFunction()

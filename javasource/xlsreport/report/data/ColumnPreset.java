@@ -1,9 +1,12 @@
 package xlsreport.report.data;
 
+import java.util.ArrayList;
+
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.apache.poi.ss.usermodel.CellStyle;
 
 import com.mendix.core.Core;
+import com.mendix.core.CoreException;
 import com.mendix.logging.ILogNode;
 
 import xlsreport.proxies.AggregateFunction;
@@ -149,6 +152,35 @@ public class ColumnPreset
 	public MxXPath getFirstPath()
 	{
 		return firstPath;
+	}
+
+  public static MxXPath getLastPath(MxXPath path) throws CoreException
+	{
+		MxXPath nextPath = path.getMxXPath_ParentMxXPath();
+		if (nextPath == null) return path;
+		else return getLastPath(nextPath);
+	}
+	
+	public String getFullPath() throws CoreException
+	{
+		MxXPath nPath = this.firstPath;
+		ArrayList<String> fullPath = new ArrayList<String>();
+		while (nPath != null) 
+		{
+			switch (nPath.getRetrieveType())
+			{
+			case Attribute:
+				fullPath.add(nPath.getMxXPath_MxObjectMember().getAttributeName()); 
+				break;
+				
+			case Reference:
+				fullPath.add(nPath.getMxXPath_MxObjectReference().getCompleteName());
+				fullPath.add(nPath.getMxXPath_MxObjectType().getCompleteName());
+				break;
+			}
+			nPath = nPath.getMxXPath_ParentMxXPath();
+		}
+		return String.join("/", fullPath);
 	}
 
 	public long getStyleGuid()
